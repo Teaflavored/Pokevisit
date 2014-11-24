@@ -16,4 +16,3 @@
 //= require underscore-min
 //= require backbone-min
 //= require jquery.serializejson.min
-//= require_tree .
