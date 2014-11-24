@@ -18,3 +18,7 @@ group :development do
   gem 'annotate'
   gem 'binding_of_caller'
 end
+
+group :production do
+  gem 'rails_12factor'
+end
