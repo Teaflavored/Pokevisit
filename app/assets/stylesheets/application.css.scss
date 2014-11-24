@@ -16,3 +16,22 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body{
+}
+
+nav.navbar{
+  //transparent background
+  background-color: rgba(0, 0, 0, 0);
+  border-style:none;
+}
+
+.navbar .nav > li > a {
+  //links on right of navbar
+  color: black;
+}
+
+.navbar .navbar-header > a {
+  //brand name
+  color: black;
+}
