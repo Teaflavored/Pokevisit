@@ -12,5 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require bootstrap-sprockets
+//= require underscore-min
+//= require backbone-min
+//= require jquery.serializejson.min
 //= require_tree .
