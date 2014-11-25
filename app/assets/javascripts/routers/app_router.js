@@ -1,6 +1,7 @@
 Pokevisit.Routers.AppRouter = Backbone.Router.extend({
   routes: {
-    "": "main"
+    "": "main",
+    "listings/:id": "show"
   },
 
   initialize: function(options){
@@ -10,6 +11,11 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
   main: function(){
     var mainView = new Pokevisit.Views.MainView()
     this._swapView(mainView)
+  },
+
+  show: function(id){
+    //need to fill with show view
+    alert(id)
   },
 
   _swapView: function(view){

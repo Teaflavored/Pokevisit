@@ -3,6 +3,20 @@ Pokevisit.Views.ListingIndexItem = Backbone.CompositeView.extend({
 
   tagName: "li",
   className: "listing-item",
+  attributes: function(){
+    return {
+      "data-id": this.model.id
+    }
+  },
+
+  events: {
+    "click": "showListing"
+  },
+
+  showListing: function(event){
+    var listingId = $(event.currentTarget).data("id")
+    Backbone.history.navigate("#/listings/" + listingId, { trigger: true })
+  },
 
   initialize: function(){
     this.listenTo(this.model, "sync", this.render)
@@ -15,8 +29,8 @@ Pokevisit.Views.ListingIndexItem = Backbone.CompositeView.extend({
     })
     this.$el.html(renderedContent)
 
-    //styling every list item, need to conver to carousel
-  
+    //styling every list item, need to convert to carousel
+
     if(this.images.length > 0){
       this.$el.css({
         "background-image": "url(" + this.images.models[0].escape("url") + ")",
