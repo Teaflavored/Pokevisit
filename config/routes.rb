@@ -5,5 +5,4 @@ Rails.application.routes.draw do
 
   get '/main', to: "static_pages#main", as: "main"
   root to: "static_pages#landing_page"
-
 end

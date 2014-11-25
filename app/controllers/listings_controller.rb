@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
   end
 
   def show
-    @listing = Listing.find(params[:id])
+    @listing = Listing.includes(:listing_images).find(params[:id])
     render :show
   end
 end

@@ -60,3 +60,14 @@ div.sidebar{
   width:60%;
   overflow-y:scroll;
 }
+
+ul.listings{
+  padding-left:0;
+}
+//listing index
+li.listing-item{
+  list-style:none;
+  display:inline-block;
+  width:50%;
+  border:1px black solid;
+}

@@ -15,6 +15,7 @@ class Listing < ActiveRecord::Base
   validates :user, :hometype, :roomtype, :accomodates, presence: true
 
   belongs_to :user
+  has_many :listing_images
 
   def self.all_except_current_user(user)
     Listing.where("user_id != ?", user.id)
