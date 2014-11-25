@@ -14,6 +14,7 @@ gem 'sdoc', '~> 0.4.0'
 gem 'spring'
 gem 'bcrypt'
 gem 'newrelic_rpm'
+gem 'ejs'
 group :development do
   gem 'better_errors'
   gem 'annotate'

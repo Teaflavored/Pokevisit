@@ -50,3 +50,13 @@ a.navbar-brand span{
   font-size:23px;
   left:47px;
 }
+
+// Main page
+div.sidebar{
+  border:1px black solid;
+  position:fixed;
+  top:50px;
+  right:0px;
+  width:60%;
+  overflow-y:scroll;
+}

@@ -8,7 +8,8 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
   },
 
   main: function(){
-
+    var mainView = new Pokevisit.Views.MainView()
+    this._swapView(mainView)
   },
 
   _swapView: function(view){

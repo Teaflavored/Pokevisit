@@ -9,22 +9,24 @@
         <span class="icon-bar"></span>
       </button>
 
-      <a class="navbar-brand" href="#"><img class="brand" src="assets/pokemon.png"><span>Pokevisit</span></a>
+      <a class="navbar-brand" href="#"><img class="brand" src="assets/pokeball.png"><span>Pokevisit</span></a>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
-        <%= button_to "Sign out", session_url, method: :delete %>
-      <% end %>
+
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li><a href="#">Something else here</a></li>
+          <li><%= button_to "Sign out", session_url, method: :delete %></li>
           <li class="divider"></li>
           <li><a href="#">Separated link</a></li>
         </ul>
       </li>
+
+      <% end %>
     </ul>
     <% if !logged_in? %>
       <div class="main-nav">
