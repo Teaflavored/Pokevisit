@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  before_action :redirect_to_main_if_logged_in, only: [:landing_page]
+
   def landing_page
     render :landing_page
   end

@@ -16,3 +16,8 @@
 //= require underscore-min
 //= require backbone-min
 //= require jquery.serializejson.min
+//= require_tree ../templates
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./views
+//= require pokevisit.js
