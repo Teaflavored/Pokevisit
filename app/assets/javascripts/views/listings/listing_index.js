@@ -1,8 +1,6 @@
 Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
   template: JST["listings/index"],
-
   
-
   initialize: function(options){
     this.listSelector = "ul.listings";
     this.listenTo(this.collection, "add", this.addView);

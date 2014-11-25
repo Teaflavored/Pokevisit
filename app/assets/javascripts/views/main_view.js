@@ -4,14 +4,18 @@ Pokevisit.Views.MainView = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.mainSelector = "div.main"
+
+    var sidebarView = new Pokevisit.Views.ListingSideBar();
+    this.addSubview(this.mainSelector, sidebarView)
+
+    var mapView = new Pokevisit.Views.Map();
+    this.addSubview(this.mainSelector, mapView)
   },
 
   render: function(){
     var renderedContent = this.template()
     this.$el.html(renderedContent)
-
-    var sidebarView = new Pokevisit.Views.ListingSideBar();
-    this.addSubview(this.mainSelector, sidebarView)
+    this.attachSubviews();
 
     return this;
   }

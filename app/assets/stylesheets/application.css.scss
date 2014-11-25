@@ -71,3 +71,18 @@ li.listing-item{
   width:50%;
   border:1px black solid;
 }
+
+div.map-view{
+  position:fixed;
+  top:50px;
+  left:0;
+  bottom:0;
+  width:40%;
+  height:100%;
+}
+
+div#map-canvas{
+  position:absolute;
+  width:100%;
+  height:100%;
+}
