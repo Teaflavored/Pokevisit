@@ -14,7 +14,7 @@ Pokevisit.Views.ListingSideBar = Backbone.CompositeView.extend({
     this.addSubview(this.sidebarSelector, priceFilterView);
 
     var indexView = new Pokevisit.Views.ListingIndex({
-      collection: Pokevisit.listings
+      collection: Pokevisit.filteredListings
     })
     this.addSubview(this.sidebarSelector, indexView);
   },
@@ -23,7 +23,7 @@ Pokevisit.Views.ListingSideBar = Backbone.CompositeView.extend({
     var renderedContent = this.template();
     this.$el.html(renderedContent);
     this.attachSubviews();
-    Pokevisit.listings.fetch();
+    
     return this;
   }
 })
