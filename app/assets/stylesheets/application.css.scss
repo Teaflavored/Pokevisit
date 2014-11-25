@@ -84,5 +84,12 @@ div.map-view{
 div#map-canvas{
   position:absolute;
   width:100%;
+  overflow:hidden;
+  background-color:rgb(229, 227, 223);
   height:100%;
+}
+
+div.filter{
+  width:100%;
+  border:1px black solid;
 }

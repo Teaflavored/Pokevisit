@@ -5,8 +5,8 @@ Pokevisit.Views.Map = Backbone.View.extend({
 
   initialize: function(){
     this._mapOptions = {
-      center: { lat: -34.397, lng: 150.644},
-      zoom: 12
+      center: { lat: 37.7269379, lng: -122.3957547},
+      zoom: 17
     }
   },
 
