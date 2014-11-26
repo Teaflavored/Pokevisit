@@ -40,6 +40,10 @@ Pokevisit.Views.DateFilter = Backbone.CompositeView.extend({
     Pokevisit.filteredListings.trigger("filterResult", {
       "filter": "checkin",
       data: function(listing){
+        //if no dates then return true;
+        if(!listing.get("date_end") && !listing.get("date_avail")){
+          return true;
+        }
         //comparing json string of date vs. date object
         if (dateIn <= new Date(listing.get("date_end")) && dateIn >= new Date(listing.get("date_avail"))){
           //if listing ends before you want to check in
@@ -56,6 +60,10 @@ Pokevisit.Views.DateFilter = Backbone.CompositeView.extend({
     Pokevisit.filteredListings.trigger("filterResult", {
       "filter": "checkout",
       data: function(listing){
+        if(!listing.get("date_end") && !listing.get("date_avail")){
+          return true;
+        }
+        
         if (dateOut <= new Date(listing.get("date_end")) && dateOut >= new Date(listing.get("date_avail"))){
           //if you want to checkout before it ends that's okay
           return true ;
@@ -66,12 +74,31 @@ Pokevisit.Views.DateFilter = Backbone.CompositeView.extend({
     })
   },
 
+  selectFilter: function(){
+    this.$("#select-accomodates-filter").on("change", function(event){
+      var optionValue = $(event.currentTarget).val();
+      Pokevisit.filteredListings.trigger("filterResult", {
+        "filter": "accomodates",
+        data: function(listing){
+          if (listing.get("accomodates") >= optionValue){
+            return true;
+          } else {
+            return false;
+          }
+        }
+
+      })
+    }.bind(this))
+  },
+
   render: function(){
     var renderedContent = this.template();
     this.$el.html(renderedContent)
 
     setTimeout(function(){
       this.attachCalendars();
+      this.$("#select-accomodates-filter").selectpicker()
+      this.selectFilter();
     }.bind(this), 0)
     return this;
   }

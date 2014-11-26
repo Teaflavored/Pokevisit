@@ -17,6 +17,7 @@
 //= require backbone-min
 //= require jquery.nouislider.all.min
 //= require bootstrap-datepicker
+//= require bootstrap-select.min
 //= require jquery.serializejson.min
 //= require pokevisit
 //= require_tree ../templates

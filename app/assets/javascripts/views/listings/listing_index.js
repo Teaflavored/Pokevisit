@@ -49,6 +49,10 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
   setDefaultFilterData: function(){
     this._filterData = {
 
+      accomodates: function(){
+        return true;
+      },
+
       location: function(){
         return false;
       },
