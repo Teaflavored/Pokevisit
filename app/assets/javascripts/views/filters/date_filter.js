@@ -13,12 +13,13 @@ Pokevisit.Views.DateFilter = Backbone.CompositeView.extend({
         return date.valueOf() < now.valueOf() ? 'disabled' : '';
       }
     }).on('changeDate', function(ev) {
+
+      //need to trigger for checkin
+      this.dateFilterIn(ev);
       if (ev.date.valueOf() > checkout.date.valueOf()) {
         var newDate = new Date(ev.date)
         newDate.setDate(newDate.getDate() + 1);
         checkout.setValue(newDate);
-        //need to trigger for checkin
-        this.dateFilterIn(ev);
       }
       checkin.hide();
       this.$('#check-out-filter')[0].focus();
@@ -40,11 +41,11 @@ Pokevisit.Views.DateFilter = Backbone.CompositeView.extend({
       "filter": "checkin",
       data: function(listing){
         //comparing json string of date vs. date object
-        if (new Date(listing.get("date_end")) < dateIn){
+        if (dateIn <= new Date(listing.get("date_end")) && dateIn >= new Date(listing.get("date_avail"))){
           //if listing ends before you want to check in
-          return false;
-        } else {
           return true;
+        } else {
+          return false;
         }
       }
     })
@@ -55,11 +56,11 @@ Pokevisit.Views.DateFilter = Backbone.CompositeView.extend({
     Pokevisit.filteredListings.trigger("filterResult", {
       "filter": "checkout",
       data: function(listing){
-        if (new Date(listing.get("date_end")) < dateOut){
-          //listing ends before you want to checkout
-          return false;
+        if (dateOut <= new Date(listing.get("date_end")) && dateOut >= new Date(listing.get("date_avail"))){
+          //if you want to checkout before it ends that's okay
+          return true ;
         } else {
-          return true;
+          return false;
         }
       }
     })
