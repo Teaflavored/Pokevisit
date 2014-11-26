@@ -9,6 +9,7 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
     this.setDefaultFilterData();
     //current date used for date filtering
     this._currentDate = new Date();
+    this._markers = [];
 
     this.listenTo(this.collection, "add", this.addView);
     this.listenTo(this.collection, "remove", this.removeView);
@@ -36,6 +37,20 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
       model: listing
     })
     this.addSubview(this.listSelector, indexItemView);
+
+    //dropping markers
+    var listingLocation = new google.maps.LatLng(listing.get("lat"), listing.get("lng"))
+
+    var marker = new google.maps.Marker({
+      map:window.pokevisitMap,
+      draggable:true,
+      animation: google.maps.Animation.DROP,
+      position: listingLocation
+    });
+
+    marker.listingId = listing.id
+    this._markers.push(marker)
+
   },
 
   removeView: function(listing){
@@ -44,6 +59,13 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
         this.removeSubview(this.listSelector, this.subviews(this.listSelector)[i])
       }
     }
+
+    this._markers = this._markers.filter(function(marker){
+      if(marker.listingId == listing.id){
+        marker.setMap(null)
+      }
+      return marker.listingId !== listing.id
+    })
   },
 
   setDefaultFilterData: function(){

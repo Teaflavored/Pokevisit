@@ -63,7 +63,7 @@ Pokevisit.Views.DateFilter = Backbone.CompositeView.extend({
         if(!listing.get("date_end") && !listing.get("date_avail")){
           return true;
         }
-        
+
         if (dateOut <= new Date(listing.get("date_end")) && dateOut >= new Date(listing.get("date_avail"))){
           //if you want to checkout before it ends that's okay
           return true ;

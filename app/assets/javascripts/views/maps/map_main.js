@@ -7,7 +7,7 @@ Pokevisit.Views.MapMain = Backbone.CompositeView.extend({
       center: { lat: 37.726666666, lng: -122.395555555},
       zoom: 18
     }
-    this._map = new google.maps.Map(this.el, this._mapOptions)
+    window.pokevisitMap = this._map = new google.maps.Map(this.el, this._mapOptions)
 
     //grabbing button
     var input = document.getElementById("form-search")
@@ -43,7 +43,7 @@ Pokevisit.Views.MapMain = Backbone.CompositeView.extend({
       this._map.fitBounds(place.geometry.viewport);
     } else {
       this._map.setCenter(place.geometry.location);
-      this._map.setZoom(17);  // Why 17? Because it looks good.
+      this._map.setZoom(17);
     }
   },
 
@@ -67,7 +67,6 @@ Pokevisit.Views.MapMain = Backbone.CompositeView.extend({
   },
 
   render: function(){
-
     return this;
   }
 })
