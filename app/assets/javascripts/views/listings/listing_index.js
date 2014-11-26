@@ -3,25 +3,10 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.listSelector = "ul.listings";
-
-    this._filterData = {
-      // room: function(){
-      //
-      // },
-
-      location: function(){
-        return true;
-      },
-      //
-      // price: function(listing){
-      //   debugger
-      //   if (listing.escape("price") >= 0 && listing.escape("price") <= 1000){
-      //     return true;
-      //   } else {
-      //     return false;
-      //   }
-      // }
-    }
+    //sets default filter data
+    this.setDefaultFilterData();
+    //current date used for date filtering
+    this._currentDate = new Date();
 
     this.listenTo(this.collection, "add", this.addView);
     this.listenTo(this.collection, "remove", this.removeView);
@@ -55,6 +40,37 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
     for( var i = 0; i < this.subviews(this.listSelector).length; i++){
       if (this.subviews(this.listSelector)[i].model.id === listing.id){
         this.removeSubview(this.listSelector, this.subviews(this.listSelector)[i])
+      }
+    }
+  },
+
+  setDefaultFilterData: function(){
+    this._filterData = {
+
+      location: function(){
+        return false;
+      },
+
+      checkin: function(listing){
+        if (listing.get("date_avail") < this._currentDate){
+          //if date available is before current date, don't show it
+          return false;
+        } else {
+          return true;
+        }
+      },
+
+      checkout: function(listing){
+        //always true for checkout
+        return true;
+      },
+
+      price: function(listing){
+        if (listing.get("price") >= 0 && listing.get("price") <= 1000){
+          return true;
+        } else {
+          return false;
+        }
       }
     }
   },
