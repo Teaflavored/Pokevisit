@@ -145,13 +145,16 @@ div.noUi-connect{
   background:#F64747;
 }
 
-li#list-your-place{
+a#list-your-place{
+  display:block;
   border-color:#007a87;
   border-bottom-color:#004f58;
   background-color:#007a87;
   color:#fff;
-  height:23px;
+  height:30px;
   border-radius:2px;
   margin-right:15px;
-  margin-top:5px;
+  margin-top:9px;
+  font-size:17px;
+  padding-top:4px;
 }
