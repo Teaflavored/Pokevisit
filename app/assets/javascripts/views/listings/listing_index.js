@@ -1,6 +1,8 @@
 Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
   template: JST["listings/index"],
 
+  className: "listings-index",
+  
   initialize: function(options){
     this.listSelector = "ul.listings";
     //sets default filter data
