@@ -77,7 +77,7 @@ div.main-nav ul{
 
 // Main page
 div.sidebar{
-  border:1px black solid;
+  border-left:0.5px solid #E4E6E3;
   position:fixed;
   top:50px;
   right:0px;
@@ -150,6 +150,31 @@ div.noUi-connect{
   background:#F64747;
 }
 
+//date filter stuffs
+div.filter.date-filter{
+  display:block;
+  position:relative;
+}
+div.date-label{
+  display:inline-block;
+}
+div.filter-choices{
+  position:absolute;
+  right:250px;
+  top:20px;
+  display:inline-block;
+}
+
+div.filter-choices input{
+  width:170px;
+  height:35px;
+}
+div.filter-choices input:first-child{
+  height:35px;
+  margin-right:15px;
+}
+
+
 a#list-your-place{
   display:block;
   border-color:#007a87;
@@ -190,4 +215,9 @@ div.new-form-group{
 
 div.new-form-group form.new-form{
   margin:0 auto;
+}
+
+div.filter-label{
+  color:#565a5c;
+  font-size:15px;
 }
