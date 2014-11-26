@@ -9,10 +9,19 @@
 #  accomodates :integer          not null
 #  created_at  :datetime
 #  updated_at  :datetime
+#  lat         :float            not null
+#  lng         :float            not null
+#  price       :integer          not null
+#  date_avail  :datetime
+#  date_end    :datetime
+#  address     :string(255)
 #
 
 class Listing < ActiveRecord::Base
   validates :user, :hometype, :roomtype, :accomodates, presence: true
+  #geocode address
+  geocoded_by :address, latitude: :lat, longitude: :lng
+  after_validation :geocode
 
   belongs_to :user
   has_many :listing_images
