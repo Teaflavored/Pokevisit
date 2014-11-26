@@ -44,11 +44,28 @@ img.brand{
   position:absolute;
   top:10px;
 }
-
+a.navbar-brand{
+  padding-right:0;
+  width:150px;
+}
 a.navbar-brand span{
   position:absolute;
   font-size:23px;
   left:47px;
+}
+
+.navbar-form .form-control{
+  position:relative;
+  width:260px;
+  height:80%;
+  padding-left:25px;
+}
+
+.navbar-form .glyphicon{
+  z-index:3;
+  position:absolute;
+  top:17px;
+  left:170px;
 }
 
 // Main page

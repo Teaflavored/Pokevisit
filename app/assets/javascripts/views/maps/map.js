@@ -8,10 +8,43 @@ Pokevisit.Views.MapMain = Backbone.CompositeView.extend({
       zoom: 18
     }
     this._map = new google.maps.Map(this.el, this._mapOptions)
+
+    //grabbing button
+    var input = document.getElementById("form-search")
+    //prevent enter submitting
+    $(input).keydown(function(event){
+      if (event.which == 13){
+        event.preventDefault();
+      }
+    })
+
+    this._autocomplete = new google.maps.places.Autocomplete(input);
+    this._autocomplete.bindTo('bounds', this._map);
+
+
+    //maps listens to bound changing
     google.maps.event.addListener(this._map, "bounds_changed", function(){
       this.handleMapMove();
     }.bind(this))
 
+    google.maps.event.addListener(this._autocomplete, "place_changed", function(){
+      this.handlePlaceChange();
+    }.bind(this))
+
+  },
+
+  handlePlaceChange: function(){
+    var place = this._autocomplete.getPlace();
+    if (!place.geometry) {
+      return;
+    }
+
+    if (place.geometry.viewport) {
+      this._map.fitBounds(place.geometry.viewport);
+    } else {
+      this._map.setCenter(place.geometry.location);
+      this._map.setZoom(17);  // Why 17? Because it looks good.
+    }
   },
 
   handleMapMove: function(){
