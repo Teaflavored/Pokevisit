@@ -15,7 +15,8 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
   },
 
   new: function(){
-    
+    var newView = new Pokevisit.Views.ListingNew()
+    this._swapView(newView)
   },
 
   show: function(id){
