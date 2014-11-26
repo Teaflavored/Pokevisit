@@ -6,12 +6,11 @@ Pokevisit.Collections.Listings = Backbone.Collection.extend({
 
   },
 
-  //updateFilteredCollections
   updateFilteredCollection: function(filterData){
     //need Pokevisit.listings to pass every filter
     var filterCondition = function(listing){
       for(key in filterData){
-        debugger
+
         if(filterData[key](listing) === false){
           return false;
         }
@@ -20,12 +19,7 @@ Pokevisit.Collections.Listings = Backbone.Collection.extend({
       return true;
     }
 
-    Pokevisit.filteredListings.set(Pokevisit.listings.filter(filterCondition))
-  },
-
-  filterByCoords: function(latLngRangeObj){
-    //return collection filtered by range of coordinates
-    return this;
+    this.set(Pokevisit.listings.filter(filterCondition))
   }
 })
 

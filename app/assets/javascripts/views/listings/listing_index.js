@@ -9,16 +9,9 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
       //
       // },
 
-      location: function(listing){
-        if (listing.get("lat") >= 37.728528974525844
-            && listing.get("lat") <= 37.725261931200215
-            && listing.get("lng") >= -122.39876950293274
-            && listing.get("lng") <= -122.39273989706726){
-              return true;
-            }
-
-          return false;
-      },
+      location: function(){
+        return true;
+      }
 
       // price: function(listing){
       //   if (listing.get("price") > 100 && listing.get("price") < 1000){
@@ -29,7 +22,8 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
 
     this.listenTo(this.collection, "add", this.addView);
     this.listenTo(this.collection, "remove", this.removeView);
-    this.listenTo(this.collection, "filter", this.updateFilter)
+    this.listenTo(this.collection, "filterResult", this.updateFilter);
+
     Pokevisit.listings.fetch({
       success: function(){
         this.collection.updateFilteredCollection(this._filterData);
@@ -43,7 +37,7 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
   },
 
   updateFilter: function(filterData){
-    this[filterData.filter] = filterData.data;
+    this._filterData[filterData.filter] = filterData.data;
     this.collection.updateFilteredCollection(this._filterData);
   },
 
@@ -55,9 +49,11 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
   },
 
   removeView: function(listing){
-    _.each(this.subviews(this.listSelector), function(view){
-      //delete the subview
-    })
+    for( var i = 0; i < this.subviews(this.listSelector).length; i++){
+      if (this.subviews(this.listSelector)[i].model.id === listing.id){
+        this.removeSubview(this.listSelector, this.subviews(this.listSelector)[i])
+      }
+    }
   },
 
   render: function(){
