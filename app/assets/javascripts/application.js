@@ -15,6 +15,7 @@
 //= require bootstrap-sprockets
 //= require underscore-min
 //= require backbone-min
+//= require jquery.nouislider.all.min
 //= require jquery.serializejson.min
 //= require pokevisit
 //= require_tree ../templates

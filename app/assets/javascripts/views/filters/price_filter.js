@@ -3,25 +3,63 @@ Pokevisit.Views.PriceFilter = Backbone.CompositeView.extend({
 
   className: "price-filter filter",
 
-  onRender: function(){
-
-    this.$("input#slider").jRange({
-      from: 1,
-      to: 100,
+  attachSlider: function(){
+    this.$("#slider").noUiSlider({
+      start: [ 0, 1000 ],
       step: 1,
-      scale: [1,25,50,75,100],
-      format: '%s',
-      width: 300,
-      showLabels: true,
-      isRange : true
+      behaviour: 'drag-tap',
+      connect: true,
+      range: {
+        "min":  0,
+        "max":  1000
+      }
     });
 
+    this.$lowPrice = this.$("#low-slider-price");
+    this.$highPrice = this.$("#high-slider-price");
+
+    //update values when sliding
+    this.onSlide();
+    //trigger filter
+    this.slideFilter();
+  },
+
+  onSlide: function(){
+    this.$("#slider").on("slide", function(){
+      var values = this.$("#slider").val();
+      this.$lowPrice.html("$ " + parseInt(values[0]));
+      this.$highPrice.html("$ " + parseInt(values[1]));
+    }.bind(this))
+  },
+
+  slideFilter: function(){
+    this.$("#slider").on("change", function(){
+      var values = this.$("#slider").val();
+
+      Pokevisit.filteredListings.trigger("filterResult", {
+        "filter": "price",
+        data: function(listing){
+          if (listing.get("price") >= parseInt(values[0]) && listing.get("price") <= parseInt(values[1])){
+            return true;
+          } else {
+            return false;
+          }
+        }
+      })
+
+    }.bind(this))
   },
 
   render: function(){
     var renderedContent = this.template();
     this.$el.html(renderedContent);
-    this.onRender();
+
+
+    //need to setTimeout so we can correctly initialize slider
+    setTimeout(function(){
+      this.attachSlider();
+    }.bind(this),0)
+
     return this;
   }
 })

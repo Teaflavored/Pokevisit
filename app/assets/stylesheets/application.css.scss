@@ -11,12 +11,14 @@
  * file per style scope.
  *
  *= require_self
+ *= require jquery.nouislider.min
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 body{
+  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif
 }
 
 nav.navbar{
@@ -108,6 +110,37 @@ div#map-canvas{
 
 div.filter{
   width:100%;
-  height:70px;
-  border:1px black solid;
+  height:80px;
+  position:relative;
+  padding:20px;
+  color:#565a5c;
+}
+
+div#slider{
+  position:absolute;
+  height:10%;
+  width:60%;
+  margin-left:165px;
+  top:30px;
+}
+
+div.slider-label{
+  position:absolute;
+  top:30px;
+}
+
+span#low-slider-price{
+  position:absolute;
+  top:53px;
+  left:175px;
+}
+
+span#high-slider-price{
+  position:absolute;
+  top:53px;
+  right:128px;
+}
+
+div.noUi-connect{
+  background:#F64747;
 }

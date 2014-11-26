@@ -11,11 +11,14 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
 
       location: function(){
         return true;
-      }
-
+      },
+      //
       // price: function(listing){
-      //   if (listing.get("price") > 100 && listing.get("price") < 1000){
+      //   debugger
+      //   if (listing.escape("price") >= 0 && listing.escape("price") <= 1000){
       //     return true;
+      //   } else {
+      //     return false;
       //   }
       // }
     }

@@ -23,7 +23,7 @@ Pokevisit.Views.ListingSideBar = Backbone.CompositeView.extend({
     var renderedContent = this.template();
     this.$el.html(renderedContent);
     this.attachSubviews();
-    
+
     return this;
   }
 })
