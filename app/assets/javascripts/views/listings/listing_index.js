@@ -9,6 +9,8 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
     this.setDefaultFilterData();
     //current date used for date filtering
     this._currentDate = new Date();
+
+    //holds all the markers
     this._markers = [];
 
     this.listenTo(this.collection, "add", this.addView);
@@ -37,20 +39,33 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
       model: listing
     })
     this.addSubview(this.listSelector, indexItemView);
+    this.addMarker(listing);
+  },
 
-    //dropping markers
+  addMarker: function(listing){
     var listingLocation = new google.maps.LatLng(listing.get("lat"), listing.get("lng"))
+    //using airbnb's icons
 
     var marker = new google.maps.Marker({
       map:window.pokevisitMap,
       draggable:true,
       animation: google.maps.Animation.DROP,
-      position: listingLocation
+      position: listingLocation,
+      icon: "/assets/marker.png",
+      listingId: listing.id,
+      infoWindow: new google.maps.InfoWindow()
     });
 
-    marker.listingId = listing.id
-    this._markers.push(marker)
+    //set content, but to another view object later
+    marker.infoWindow.setContent(listing.get("roomtype"))
 
+
+    //open window
+    google.maps.event.addListener(marker, "click", function(){
+      marker.infoWindow.open(window.pokevisitMap, marker)
+    })
+
+    this._markers.push(marker)
   },
 
   removeView: function(listing){
@@ -70,6 +85,10 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
 
   setDefaultFilterData: function(){
     this._filterData = {
+
+      roomtype: function(){
+        return true;
+      },
 
       accomodates: function(){
         return true;
