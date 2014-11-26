@@ -1,1 +1,1 @@
-json.extract!(listing, :id, :user_id, :hometype, :roomtype, :accomodates, :lat, :lng)
+json.extract!(listing, :id, :user_id, :hometype, :roomtype, :accomodates, :lat, :lng, :price)

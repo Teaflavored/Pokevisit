@@ -13,15 +13,14 @@ User.transaction do
 end
 
 Listing.transaction do
-  u1.listings.create!(hometype: "blah", roomtype: "blah",
-                      accomodates: 1, lat: 37.726666666,
-                      lng: -122.395555555)
+  u1.listings.create!(hometype: "trouble coffee", roomtype: "trouble coffee",
+                      accomodates: 1, lat: 37.760244,
+                      lng: -122.505382, price: 100)
 
-  u2.listings.create!(hometype: "blah2", roomtype: "blah2",
-  accomodates: 1, lat: 37.726666666,
-  lng: -122.395555555)
+  u2.listings.create!(hometype: "trouble coffee", roomtype: "trouble coffee",
+  accomodates: 1, lat: 37.760244,
+  lng: -122.505382, price: 200)
 
   u2.listings.create!(hometype: "blah", roomtype: "blah",
-  accomodates: 1, lat: 38,
-  lng: -122.395555555)
+  accomodates: 1, lat: 37.762628, lng: -122.494401, price: 500)
 end
