@@ -3,8 +3,12 @@ Pokevisit.Views.ListingShow = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.listenTo(this.model, "sync", this.render)
+    this.summarySelector = "div.show-summary"
 
-    var summaryView = new Pokevisit
+    var summaryView = new Pokevisit.Views.ListingSummary({
+      model: this.model
+    })
+    this.addSubview(this.summarySelector, summaryView)
   },
 
   render: function(){
@@ -14,6 +18,7 @@ Pokevisit.Views.ListingShow = Backbone.CompositeView.extend({
     })
 
     this.$el.html(renderedContent);
+    this.attachSubviews();
     return this;
   }
 })
