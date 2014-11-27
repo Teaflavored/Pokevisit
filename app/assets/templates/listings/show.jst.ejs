@@ -1,1 +1,8 @@
-<%= listing.escape("roomtype") %>
+<div id="show-page-images" class="owl-carousel">
+  <% images.each(function(image){ %>
+  <div>
+    <img src=<%= image.escape("url") %>>
+  </div>
+
+  <% }) %>
+</div>
