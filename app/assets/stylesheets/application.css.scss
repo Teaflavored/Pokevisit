@@ -186,7 +186,8 @@ div.date-label{
 }
 div.filter-choices{
   position:absolute;
-  right:85px;
+  width:60%;
+  left:195px;
   top:20px;
   display:inline-block;
 }
@@ -194,15 +195,12 @@ div.filter-choices{
 div.filter-choices input{
   border:1px solid transparent;
   border-color:#CCCCB6;
-  width:170px;
+  width:30%;
   height:35px;
   margin-right:15px;
 }
 
-.btn-group > .btn:first-child{
-  width:170px;
-  top:-1px;
-}
+
 
 
 a#list-your-place{
@@ -267,12 +265,14 @@ div.filter-label{
 
 //check boxes
 div.check-boxes{
+  width:60%;
   position:absolute;
-  right:105px;
+  left:195px;
 }
 
 div.check-boxes > label{
-  text-align:center;
+  width:32%;
+  height:75px;
 }
 
 div.room-label.filter-label{
@@ -368,4 +368,15 @@ nav.navbar.navbar-default{
 
 .noUi-handle.noUi-handle-lower:hover, .noUi-handle.noUi-handle-upper:hover{
   cursor: pointer;
+}
+div.btn-group.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
+  width:30%;
+}
+div.filter-choices div.btn-group > .btn:first-child{
+  width:100%;
+}
+
+div#slider{
+  margin-left:0;
+  left:195px;
 }

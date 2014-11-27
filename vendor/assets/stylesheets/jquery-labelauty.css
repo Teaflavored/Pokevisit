@@ -146,6 +146,6 @@ input.labelauty + label > span.labelauty-checked-image
 }
 
 input.labelauty + label{
-	width:180px;
+	width:80%;
 	margin-right:10px;
 }
