@@ -1,6 +1,7 @@
 Pokevisit.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     "": "main",
+    "own_listings": "indexYourListings",
     "listings/new": "new",
     "listings/:id": "show"
   },
@@ -26,6 +27,11 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
       model: listing
     })
     this._swapView(showView);
+  },
+
+  indexYourListings: function(){
+    alert('hi')
+
   },
 
   _swapView: function(view){

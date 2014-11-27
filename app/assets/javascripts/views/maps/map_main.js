@@ -19,7 +19,7 @@ Pokevisit.Views.MapMain = Backbone.CompositeView.extend({
       }
     })
 
-    this._autocomplete = new google.maps.places.Autocomplete(input);
+    window.pokevisitAutocomplete = this._autocomplete = new google.maps.places.Autocomplete(input);
     this._autocomplete.bindTo('bounds', this._map);
 
 

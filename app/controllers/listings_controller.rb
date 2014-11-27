@@ -10,4 +10,10 @@ class ListingsController < ApplicationController
     @listing = Listing.includes(:listing_images).find(params[:id])
     render :show
   end
+
+  def own_listings
+    #get list of user's own listings then ride off of index json
+    @listings = current_user.listings
+    render :index
+  end
 end

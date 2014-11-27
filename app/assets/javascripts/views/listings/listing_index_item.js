@@ -29,9 +29,9 @@ Pokevisit.Views.ListingIndexItem = Backbone.CompositeView.extend({
   },
 
   changeMarker: function(event){
-    
-  },
 
+  },
+  
   revertMarker: function(event){
 
   },
