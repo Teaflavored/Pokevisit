@@ -5,22 +5,52 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-u1 = 1
-u2 = 2
+
 User.transaction do
-  u1 = User.create!(email: "random@random.org", password: "password")
-  u2 = User.create!(email: "random2@random.org", password: "password")
+  User.create!(email: "random@random.org", password: "password")
+  User.create!(email: "random2@random.org", password: "password")
+  User.create!(email: "random3@random.org", password: "password")
+  User.create!(email: "random4@random.org", password: "password")
+  User.create!(email: "random5@random.org", password: "password")
+  User.create!(email: "random6@random.org", password: "password")
+  User.create!(email: "random7@random.org", password: "password")
+end
+
+def create_listings_for(user, room_types, accomodates, prices, home_types)
+  user.listings.create!(
+    roomtype: room_types.sample,
+    accomodates: accomodates.sample,
+    lat: Faker::Address.latitude,
+    lng: Faker::Address.longitude,
+    price: prices.sample,
+    hometype: home_types.sample
+  )
+end
+
+def create_listing_images_for(user, images)
+  image_url = "/assets/" + images.sample
+  user.listings.sample.listing_images.create!(
+    url: image_url
+  )
 end
 
 Listing.transaction do
-  u1.listings.create!(hometype: "trouble coffee", roomtype: "trouble coffee",
-                      accomodates: 1, lat: 37.760244,
-                      lng: -122.505382, price: 100)
+  u2 = User.find(2)
+  u3 = User.find(3)
+  room_types = ["entire_room", "private_room", "shared_room"]
+  home_types = ["random", "random2", "random3"]
+  images = ["test_pic1.jpeg","test_pic2.jpeg","test_pic3.jpeg","test_pic4.jpg","test_pic5.jpeg",
+    "test_pic6.jpeg","test_pic7.jpeg","test_pic8.jpeg"]
+  accomodates = (1..16).to_a
+  prices = (1..1000).to_a
 
-  u2.listings.create!(hometype: "trouble coffee", roomtype: "trouble coffee",
-  accomodates: 1, lat: 37.760244,
-  lng: -122.505382, price: 200)
+  60.times do
+    create_listings_for(u2, room_types, accomodates, prices, home_types)
+    create_listings_for(u3, room_types, accomodates, prices, home_types)
+  end
 
-  u2.listings.create!(hometype: "blah", roomtype: "blah",
-  accomodates: 1, lat: 37.762628, lng: -122.494401, price: 500)
+  300.times do
+    create_listing_images_for(u2, images)
+    create_listing_images_for(u3, images)
+  end
 end
