@@ -16,8 +16,9 @@ gem 'spring'
 gem 'bcrypt'
 gem 'newrelic_rpm'
 gem 'ejs'
+gem 'faker'
 group :development do
-  gem 'faker'
+
   gem 'better_errors'
   gem 'annotate'
   gem 'binding_of_caller'
