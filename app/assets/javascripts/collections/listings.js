@@ -19,6 +19,23 @@ Pokevisit.Collections.Listings = Backbone.Collection.extend({
     }
 
     this.set(Pokevisit.listings.filter(filterCondition))
+  },
+
+  getOrFetch: function(id){
+    var listing;
+    if (listing = this.get(id)){
+      listing.fetch();
+    } else {
+      listing = new Pokevisit.Models.Listing({
+        id: id
+      })
+      listing.fetch({
+        success: function(){
+          this.add(listing)
+        }.bind(this)
+      })
+    }
+    return listing;
   }
 })
 

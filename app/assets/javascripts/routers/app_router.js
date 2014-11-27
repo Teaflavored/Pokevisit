@@ -21,7 +21,11 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
 
   show: function(id){
     //need to fill with show view
-    alert(id)
+    var listing = Pokevisit.listings.getOrFetch(id)
+    var showView = new Pokevisit.Views.ListingShow({
+      model: listing
+    })
+    this._swapView(showView);
   },
 
   _swapView: function(view){

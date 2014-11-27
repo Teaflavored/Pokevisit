@@ -5,7 +5,8 @@ Pokevisit.Views.MapMain = Backbone.CompositeView.extend({
   initialize: function(){
     this._mapOptions = {
       center: { lat: 37.726666666, lng: -122.395555555},
-      zoom: 18
+      //default leave at 17
+      zoom: 3
     }
     window.pokevisitMap = this._map = new google.maps.Map(this.el, this._mapOptions)
 

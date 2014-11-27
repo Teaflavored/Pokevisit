@@ -16,6 +16,7 @@
 //= require underscore-min
 //= require backbone-min
 //= require jquery.nouislider.all.min
+//= require jquery-labelauty
 //= require bootstrap-datepicker
 //= require bootstrap-select.min
 //= require jquery.serializejson.min

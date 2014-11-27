@@ -4,12 +4,16 @@ Pokevisit.Views.RoomFilter = Backbone.CompositeView.extend({
   className: "room-filter filter",
 
   listenToCheckBox: function(){
+    this.$("input").labelauty({
+      checked_label: "Unselect",
+      unchecked_label: "Select"
+    });
     this.$("input").on("change", function(event){
       var roomTypes = this.$("input:checked").map(function(){
         return $(this).val();
       }).get();
 
-      //send filter trigger
+      //filter trigger
       Pokevisit.filteredListings.trigger("filterResult", {
         "filter": "roomtype",
         data: function(listing){

@@ -14,6 +14,7 @@
  *= require jquery.nouislider.min
  *= require datepicker
  *= require bootstrap-select.min
+ *= require jquery-labelauty
  */
 
 @import "bootstrap-sprockets";
@@ -94,6 +95,8 @@ div.sidebar{
   top:50px;
   right:0px;
   width:60%;
+  bottom:0;
+  height:auto;
   overflow-y:scroll;
 }
 
@@ -104,12 +107,14 @@ ul.listings{
 li.listing-item{
   list-style:none;
   display:inline-block;
-  width:50%;
-  border:1px black solid;
+  width:46%;
+  margin:10px;
 }
 
 div.listings-index{
-  min-height:200px;
+  height:auto;
+  right:0;
+  bottom:0;
   background:#f5f5f5;
 }
 
@@ -134,8 +139,11 @@ div.filter{
   width:100%;
   height:80px;
   position:relative;
+  margin-bottom:30px;
   padding:20px;
   color:#565a5c;
+  border-top:1px solid #dce0e0;
+  border-color:rgba(220,224,224,0.5);
 }
 
 div#slider{
@@ -243,13 +251,69 @@ div.filter-label{
   font-size:15px;
 }
 
+//btn groups useful for forms
+
 .btn-group > .btn:first-child{
   color:#565a5c;
-  width:100px;
+  width:170px;
   top:0px;
 }
 
 .btn-group > .btn{
   color:#565a5c;
   width:100px;
+}
+
+//check boxes
+div.check-boxes{
+  position:absolute;
+  right:65px;
+}
+
+div.label-images span{
+  margin-right:80px;
+}
+
+div.label-images span:first-child{
+  margin-left:15px;
+}
+
+div.room-label.filter-label{
+  display:inline-block;
+  position:absolute;
+}
+
+div.listing-item-img{
+  position:relative;
+  border:1px solid transparent;
+  border-color:#CCCCB6;
+  margin-left:20px;
+}
+
+div.listing-item-img div.listing-item-price{
+  width:60px;
+  color:#fff;
+  background-color:rgba(60,63,64,0.9);
+  position:absolute;
+  bottom:30px;
+  padding: 0px 10px;
+}
+div.listing-item-img div.listing-item-price h6{
+  display:inline-block;
+}
+div.listing-item-img div.listin-item-price span.price{
+  font-family:Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:20px;
+}
+
+div.listing-item-description{
+  margin-left:20px;
+}
+
+div.listing-item-description a{
+  text-decoration:none;
+  font-size:14px;
+  color:#565a5c;
+  font-family:Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin-left:0px;
 }
