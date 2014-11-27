@@ -317,3 +317,29 @@ div.listing-item-description a{
   font-family:Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
   margin-left:0px;
 }
+
+div.carousel-inner{
+  height:400px;
+}
+
+div.carousel-inner div.item img{
+  width:100%;
+}
+
+.carousel-control.left, .carousel-control.right{
+  background-image:none;
+}
+
+.carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev{
+  color:black;
+}
+
+.carousel-control .glyphicon-chevron-right, .carousel-control .icon-prev{
+  color:black;
+}
+
+.glyphicon-chevron-left:before, .glyphicon-chevron-right:before{
+  font-size:70px;
+  font-weight:normal;
+  font-color:rbga(255,255,255,1);
+}

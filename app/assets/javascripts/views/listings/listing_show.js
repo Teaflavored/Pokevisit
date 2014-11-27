@@ -3,9 +3,8 @@ Pokevisit.Views.ListingShow = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.listenTo(this.model, "sync", this.render)
-  },
 
-  attachCarousel: function(){
+    var summaryView = new Pokevisit
   },
 
   render: function(){
@@ -15,10 +14,6 @@ Pokevisit.Views.ListingShow = Backbone.CompositeView.extend({
     })
 
     this.$el.html(renderedContent);
-    setTimeout(function(){
-      this.attachCarousel();
-    }.bind(this), 0)
-
     return this;
   }
 })
