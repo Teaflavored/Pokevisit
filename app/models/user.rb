@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
 
   #associations
   has_many :listings
+  has_many :reservations
 
   def self.generate_session_token
     SecureRandom.urlsafe_base64

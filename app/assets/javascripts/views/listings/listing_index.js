@@ -51,13 +51,14 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
 
     var marker = new google.maps.Marker({
       map:window.pokevisitMap,
-      draggable:true,
+      draggable:false,
       animation: google.maps.Animation.DROP,
       position: listingLocation,
       icon: "/assets/marker.png",
       listingId: listing.id,
       infoWindow: new google.maps.InfoWindow()
     });
+
 
     //set content, but to another view object later
     marker.infoWindow.setContent(listing.get("roomtype"))
