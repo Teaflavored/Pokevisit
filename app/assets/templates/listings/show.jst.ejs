@@ -10,8 +10,7 @@
   <div class="carousel-inner" role="listbox">
     <% var i = 0 %>
     <% images.each(function(image){ %>
-      <div class="item <%= i === 0 ? "active" : "" %>" >
-        <img src="<%= image.escape("url") %>">
+      <div class="item <%= i === 0 ? "active" : "" %>" style="background-image: url('<%= image.escape("url") %>');">
         <% i++ %>
       </div>
     <% }) %>

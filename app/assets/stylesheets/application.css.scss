@@ -186,7 +186,7 @@ div.date-label{
 }
 div.filter-choices{
   position:absolute;
-  right:60px;
+  right:85px;
   top:20px;
   display:inline-block;
 }
@@ -268,15 +268,11 @@ div.filter-label{
 //check boxes
 div.check-boxes{
   position:absolute;
-  right:65px;
+  right:105px;
 }
 
-div.label-images span{
-  margin-right:80px;
-}
-
-div.label-images span:first-child{
-  margin-left:15px;
+div.check-boxes > label{
+  text-align:center;
 }
 
 div.room-label.filter-label{
@@ -284,11 +280,23 @@ div.room-label.filter-label{
   position:absolute;
 }
 
+li.listing-item{
+  height:250px;
+}
+
 div.listing-item-img{
   position:relative;
   border:1px solid transparent;
+  background:no-repeat;
   border-color:#CCCCB6;
+  background-size: cover;
+  background-position: center center;
+  height:100%;
+  width:100%;
   margin-left:20px;
+}
+div.listing-item-img:hover{
+  cursor:pointer;
 }
 
 div.listing-item-img div.listing-item-price{
@@ -323,8 +331,12 @@ div.carousel-inner{
   height:540px;
 }
 
-div.carousel-inner div.item img{
+div.carousel-inner div.item{
   width:100%;
+  height:100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .carousel-control.left, .carousel-control.right{
@@ -348,4 +360,12 @@ div.carousel-inner div.item img{
 
 nav.navbar.navbar-default{
   margin-bottom:0;
+}
+
+.noUi-base:hover{
+  cursor:pointer;
+}
+
+.noUi-handle.noUi-handle-lower:hover, .noUi-handle.noUi-handle-upper:hover{
+  cursor: pointer;
 }

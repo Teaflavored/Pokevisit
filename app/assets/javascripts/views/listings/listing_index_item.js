@@ -38,8 +38,6 @@ Pokevisit.Views.ListingIndexItem = Backbone.CompositeView.extend({
     if(this.images.length > 0){
       this.$("div.listing-item-img").css({
         "background-image": "url(" + this.images.models[0].escape("url") + ")",
-        "background-size": "100%",
-        "height": "250px"
       })
     }
     return this;

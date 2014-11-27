@@ -39,8 +39,8 @@ Listing.transaction do
   u3 = User.find(3)
   room_types = ["entire_room", "private_room", "shared_room"]
   home_types = ["random", "random2", "random3"]
-  images = ["test_pic1.jpeg","test_pic2.jpeg","test_pic3.jpeg","test_pic4.jpg","test_pic5.jpeg",
-    "test_pic6.jpeg","test_pic7.jpeg","test_pic8.jpeg"]
+  images = ["test_pic1.jpg","test_pic2.jpg","test_pic3.jpg","test_pic4.jpg","test_pic5.jpg",
+    "test_pic6.jpg","test_pic7.jpg","test_pic8.jpg", "test_pic9.jpg"]
   accomodates = (1..16).to_a
   prices = (1..1000).to_a
 
@@ -48,7 +48,6 @@ Listing.transaction do
     create_listings_for(u2, room_types, accomodates, prices, home_types)
     create_listings_for(u3, room_types, accomodates, prices, home_types)
   end
-
   300.times do
     create_listing_images_for(u2, images)
     create_listing_images_for(u3, images)
