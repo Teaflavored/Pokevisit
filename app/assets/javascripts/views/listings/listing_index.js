@@ -35,11 +35,14 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
   },
 
   addView: function(listing){
+    this.addMarker(listing);
+
     var indexItemView = new Pokevisit.Views.ListingIndexItem({
-      model: listing
+      model: listing,
+      _markers: this._markers
     })
     this.addSubview(this.listSelector, indexItemView);
-    this.addMarker(listing);
+
   },
 
   addMarker: function(listing){
@@ -67,6 +70,7 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
 
     this._markers.push(marker)
   },
+
 
   removeView: function(listing){
     for( var i = 0; i < this.subviews(this.listSelector).length; i++){

@@ -12,7 +12,9 @@ Pokevisit.Views.ListingIndexItem = Backbone.CompositeView.extend({
   },
 
   events: {
-    "click": "showListing"
+    "click": "showListing",
+    "mouseenter": "changeMarker",
+    "mouseleave": "revertMarker"
   },
 
   showListing: function(event){
@@ -20,9 +22,18 @@ Pokevisit.Views.ListingIndexItem = Backbone.CompositeView.extend({
     Backbone.history.navigate("#/listings/" + listingId, { trigger: true })
   },
 
-  initialize: function(){
+  initialize: function(options){
+    this._markers = options._markers
     this.listenTo(this.model, "sync", this.render)
     this.images = this.model.images()
+  },
+
+  changeMarker: function(event){
+    
+  },
+
+  revertMarker: function(event){
+
   },
 
   render: function(){
