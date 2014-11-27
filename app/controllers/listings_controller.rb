@@ -2,12 +2,12 @@ class ListingsController < ApplicationController
   before_action :redirect_unless_logged_in
 
   def index
-    @listings = Listing.all_except_current_user(current_user)
+    @listings = Listing.includes(:listing_images).all_except_current_user(current_user)
     render :index
   end
 
   def show
-    @listing = Listing.includes(:listing_images).find(params[:id])
+    @listing = Listing.includes(:listing_images, :reservations).find(params[:id])
     render :show
   end
 

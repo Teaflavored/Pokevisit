@@ -4,3 +4,8 @@ json.images do
     json.extract!(image, :id, :url, :listing_id)
   end
 end
+json.reservations do
+  json.array!(@listing.reservations) do |reservation|
+    json.partial!("reservations/reservation", reservation: reservation)
+  end
+end
