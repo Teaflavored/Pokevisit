@@ -1,11 +1,12 @@
 Pokevisit.Views.ListingShow = Backbone.CompositeView.extend({
   template: JST["listings/show"],
 
-  className: "listing-show-main",
-
   initialize: function(options){
     this.listenTo(this.model, "sync", this.render)
     this.summarySelector = "div.show-summary"
+    this.requestSelector = "div.show-request"
+    this.aboutSelector = "div.show-about"
+    this.reviewSelector = "div.show-review"
 
     var summaryView = new Pokevisit.Views.ListingSummary({
       model: this.model
@@ -15,15 +16,17 @@ Pokevisit.Views.ListingShow = Backbone.CompositeView.extend({
     var requestView = new Pokevisit.Views.ListingRequest({
       model: this.model
     })
-    
+    this.addSubview(this.requestSelector, requestView)
 
     var aboutView = new Pokevisit.Views.ListingAbout({
       model: this.model
     })
+    this.addSubview(this.aboutSelector, aboutView)
 
     var reviewView = new Pokevisit.Views.ListingReview({
       model: this.model
     })
+    this.addSubview(this.reviewSelector, reviewView)
   },
 
   render: function(){

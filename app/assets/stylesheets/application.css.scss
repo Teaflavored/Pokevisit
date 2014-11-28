@@ -15,6 +15,7 @@
  *= require datepicker
  *= require bootstrap-select.min
  *= require jquery-labelauty
+ *= require listing_show
  */
 
 @import "bootstrap-sprockets";
@@ -343,7 +344,7 @@ div.carousel-inner div.item{
 div.carousel-inner div.pricing{
   position:absolute;
   bottom:0;
-  right:120px;
+  right:122px;
   width:315px;
   height:40px;
   font-size:24px;

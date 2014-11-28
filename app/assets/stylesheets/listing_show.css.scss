@@ -1,0 +1,25 @@
+//summary part
+.container{
+  width:83%;
+  height:205px;
+}
+
+.show-summary{
+  display:inline-block;
+  width:66%;
+  height:100%;
+}
+
+.show-summary div.listing-summary{
+  height:100%;
+  width:100%;
+}
+
+
+//summary request
+.show-request{
+  display:inline-block;
+  width:33%;
+  height:100%;
+  border:1px black solid;
+}

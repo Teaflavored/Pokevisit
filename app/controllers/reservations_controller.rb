@@ -36,4 +36,10 @@ class ReservationsController < ApplicationController
     @reservation.destroy
     render json: @reservation
   end
+
+  private
+
+  def reservation_params
+    params.require(:reservation).permit(:start_date, :end_date, :guests)
+  end
 end
