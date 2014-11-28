@@ -30,10 +30,22 @@ Pokevisit.Views.ListingIndexItem = Backbone.CompositeView.extend({
 
   changeMarker: function(event){
 
+    _.each(this._markers, function(marker){
+      if(marker.listingId === this.model.id){
+        marker.setIcon("/assets/marker2.png");
+        marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
+      }
+    }.bind(this))
   },
-  
+
   revertMarker: function(event){
 
+    _.each(this._markers, function(marker){
+      if(marker.listingId === this.model.id){
+        marker.setIcon("/assets/marker.png");
+        marker.setZIndex(google.maps.Marker.MAX_ZINDEX)
+      }
+    }.bind(this))
   },
 
   render: function(){
