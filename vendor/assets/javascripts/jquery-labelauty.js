@@ -176,7 +176,11 @@
 			window.console.log( "jQuery-LABELAUTY: " + message );
 	};
 
-	function create( input_id, messages_object, label )
+	//set messages object to array, take first element, then shift that element out
+	//messages_object contains check and unchecked messages
+	var LABELAUTYIMGCOUNTER = 0;
+
+	function create( input_id, messages_object, label)
 	{
 		var block;
 		var unchecked_message;
@@ -192,6 +196,7 @@
 			if( messages_object[1] == null )
 				checked_message = unchecked_message;
 			else
+				//need to fix this
 				checked_message = messages_object[1];
 		}
 

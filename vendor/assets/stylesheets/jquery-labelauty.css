@@ -59,7 +59,7 @@ input.labelauty + label > span.labelauty-checked
 /* Stylish icons inside label */
 
 input.labelauty + label > span.labelauty-unchecked-image,
-input.labelauty + label > span.labelauty-checked-image
+input.labelauty + label > span.labelauty-checked-image0
 {
 	display: inline-block;
 	width: 16px;
@@ -75,8 +75,8 @@ input.labelauty + label > span.labelauty-checked-image
 }
 
 /* When there's a label, add a little margin to the left */
-input.labelauty + label > span.labelauty-unchecked-image + span.labelauty-unchecked,
-input.labelauty + label > span.labelauty-checked-image + span.labelauty-checked
+input.labelauty + label > span.labelauty-unchecked-image0 + span.labelauty-unchecked,
+input.labelauty + label > span.labelauty-checked-image0 + span.labelauty-checked
 {
 	margin-left: 7px;
 }
@@ -87,7 +87,7 @@ input.labelauty:not(:checked):not([disabled]) + label:hover
 	background-color: #eaeaea;
 	color: #a7a7a7;
 }
-input.labelauty:not(:checked) + label > span.labelauty-checked-image
+input.labelauty:not(:checked) + label > span.labelauty-checked-image0
 {
 	display: none;
 }
@@ -140,7 +140,7 @@ input.labelauty + label > span.labelauty-unchecked-image
 	background-image: url( input-unchecked.png );
 }
 
-input.labelauty + label > span.labelauty-checked-image
+input.labelauty + label > span.labelauty-checked-image0
 {
 	background-image: url( input-checked.png );
 }
