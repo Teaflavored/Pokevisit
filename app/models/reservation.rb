@@ -16,6 +16,7 @@ class Reservation < ActiveRecord::Base
   STATUSES = ["PENDING", "APPROVED", "DENIED"]
   validates :user, :listing, :status, :start_date, :end_date, presence: true
   validates :status, inclusion: { in: STATUSES }
+  validate :ensure_no_overlapping_approved_reservation
 
   belongs_to :listing
   belongs_to :user
@@ -70,5 +71,13 @@ class Reservation < ActiveRecord::Base
 
   def overlapping_approved_reservations
     self.overlapping_reservations.where("status = 'APPROVED'")
+  end
+
+  private
+
+  def ensure_no_overlapping_approved_reservation
+    if overlapping_approved_reservations.length > 0
+      errors.add(:reservation, "can't be made")
+    end
   end
 end

@@ -11,15 +11,42 @@ Pokevisit.Views.ListingRequest = Backbone.CompositeView.extend({
     this.listenTo(this.model, "sync", this.render)
     this._checkIn = undefined;
     this._checkOut = undefined;
+
+    //need to go through reservations for a listing then see if any of date ranges
+    //have been accepted
+
+
   },
 
   attachDate: function(){
+
+    this.reservations = this.model.reservations();
+    this.unavailableDayRanges = [];
+
+    this.reservations.each(function(reservation){
+      if (reservation.escape("status") == "APPROVED"){
+        this.unavailableDayRanges.push([new Date(reservation.get("start_date")), new Date(reservation.get("end_date"))])
+      }
+    }.bind(this))
+
     var nowTemp = new Date();
     var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
     var listing = this.model;
+    var dayRanges = this.unavailableDayRanges;
 
     var checkin = this.$('#check-in-select').datepicker({
       onRender: function(date) {
+        dateFlag = ""
+        _.each(dayRanges, function(dayRange){
+          if(date >= dayRange[0] && date<= dayRange[1]){
+            dateFlag = "disabled";
+          }
+        });
+
+        if(dateFlag === "disabled"){
+          return dateFlag;
+        }
+
         if (date.valueOf() < new Date(listing.escape("date_avail")).valueOf() ||
             date.valueOf() > new Date(listing.escape("date_end"))) {
           return "disabled";
@@ -52,6 +79,16 @@ Pokevisit.Views.ListingRequest = Backbone.CompositeView.extend({
 
     var checkout = this.$('#check-out-select').datepicker({
       onRender: function(date) {
+        dateFlag = ""
+        _.each(dayRanges, function(dayRange){
+          if(date >= dayRange[0] && date<= dayRange[1]){
+            dateFlag = "disabled";
+          }
+        });
+
+        if(dateFlag === "disabled"){
+          return dateFlag;
+        }
 
         if (date.valueOf() > new Date(listing.escape("date_end").valueOf()) ||
             date.valueOf() < new Date(listing.escape("date_avail")).valueOf()){
@@ -126,7 +163,9 @@ Pokevisit.Views.ListingRequest = Backbone.CompositeView.extend({
     this.$el.html(renderedContent);
 
     setTimeout(function(){
-      this.attachDate()
+      if( this.model.get("user_id")){
+        this.attachDate()
+      }
       this.attachSelect()
     }.bind(this), 0)
 

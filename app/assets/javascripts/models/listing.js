@@ -17,7 +17,7 @@ Pokevisit.Models.Listing = Backbone.Model.extend({
 
     delete jsonResp.images
     delete jsonResp.reservations
-    
+
     return jsonResp
   }
 })
