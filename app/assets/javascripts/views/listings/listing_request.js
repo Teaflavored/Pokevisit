@@ -14,8 +14,6 @@ Pokevisit.Views.ListingRequest = Backbone.CompositeView.extend({
 
     //need to go through reservations for a listing then see if any of date ranges
     //have been accepted
-
-
   },
 
   attachDate: function(){

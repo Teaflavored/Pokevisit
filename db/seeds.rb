@@ -23,7 +23,9 @@ def create_listings_for(user, room_types, accomodates, prices, home_types)
     lat: Faker::Address.latitude,
     lng: Faker::Address.longitude,
     price: prices.sample,
-    hometype: home_types.sample
+    hometype: home_types.sample,
+    date_avail: Faker::Date.between(Date.new(2015,1,1), Date.new(2015,5,1)),
+    date_end: Faker::Date.between(Date.new(2015,6,1), Date.new(2014,8,1))
   )
 end
 

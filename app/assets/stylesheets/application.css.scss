@@ -61,6 +61,14 @@ a.navbar-brand span{
   font-size:23px;
   left:47px;
 }
+
+ul.nav.navbar-nav li img{
+  margin-top:12px;
+  width:25px;
+  height:25px;
+  border-radius: 50%;
+}
+
 @media (min-width: 768){
   img.header-img{
     display:inline;
@@ -81,6 +89,7 @@ a.navbar-brand span{
     height:25px;
   }
 }
+
 .navbar .nav > li > a.dropdown-toggle{
   color:#565a5c;
   padding-left:0px;
