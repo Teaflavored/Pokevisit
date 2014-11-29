@@ -1,8 +1,18 @@
-<input type="text" name="" id="check-in-select" placeholder="Check In" class="btn">
-<input type="text" id="check-out-select" placeholder="Check Out" class="btn">
-<select id="select-accomodates-filter">
-  <% _.times(listing.get("accomodates"), function(n){ %>
-    <option value=<%= n + 1 %>><%= n + 1 %> Guest</option>
-  <% }) %>
+<div class="labels">
+  <span class="check-in-label">Check In</span>
+  <span class="check-out-label">Check Out</span>
+  <span class="guests-label">Guests</span>
+</div>
+
+<input type="text" name="" id="check-in-select" placeholder="MM/DD/YYYY" class="btn">
+<input type="text" id="check-out-select" placeholder="MM/DD/YYYY" class="btn">
+
+<select id="select-accomodates">
+  <% if (listing.get("accomodates")) {%>
+     <% _.times(listing.get("accomodates"), function(n){ %>
+      <option value=<%= n + 1 %>><%= n + 1 %></option>
+    <% }) %>
+  <% } %>
 </select>
-<button class="book-button">Request To Book</button>
+
+<button class="book-button">Select Dates/Guests</button>

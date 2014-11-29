@@ -21,5 +21,36 @@
   display:inline-block;
   width:33%;
   height:100%;
-  border:1px black solid;
+}
+
+div.labels{
+  margin-top:30px;
+}
+
+div.labels span:nth-child(1), div.labels span:nth-child(2){
+  display:inline-block;
+  width:35%;
+}
+
+.show-request input.btn{
+  width:35%;
+  border: 1px solid #E4E6E3;
+}
+
+div.btn-group.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
+  width:28%;
+}
+.show-request .btn-group > .btn:first-child{
+  width:100%;
+}
+
+.show-request button.book-button{
+  margin-top:30px;
+  width:100%;
+  border-color:#ff5a5f;
+  border-bottom-color:#e00007;
+  background-color:#ff5a5f;
+  color:#fff;
+  height:42px;
+  border-radius:2px;
 }

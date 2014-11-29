@@ -13,10 +13,10 @@ Pokevisit.Views.ListingShow = Backbone.CompositeView.extend({
     })
     this.addSubview(this.summarySelector, summaryView)
 
-    // var requestView = new Pokevisit.Views.ListingRequest({
-    //   model: this.model
-    // })
-    // this.addSubview(this.requestSelector, requestView)
+    var requestView = new Pokevisit.Views.ListingRequest({
+      model: this.model
+    })
+    this.addSubview(this.requestSelector, requestView)
 
     var aboutView = new Pokevisit.Views.ListingAbout({
       model: this.model
