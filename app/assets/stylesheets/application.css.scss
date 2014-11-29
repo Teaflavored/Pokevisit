@@ -21,6 +21,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+input.sign-out{
+  border:none;
+  display:block;
+  margin:0 auto;
+  background:none;
+}
+
+.dropdown-menu > li > a{
+  text-align:center;
+}
+
 body{
   font-family: 'Source Sans Pro', sans-serif;
 }

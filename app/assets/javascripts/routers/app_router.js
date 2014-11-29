@@ -2,8 +2,9 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     "": "main",
     "own_listings": "indexYourListings",
+    "reservations": "showReservations",
     "listings/new": "new",
-    "listings/:id": "show"
+    "listings/:id": "show",
   },
 
   initialize: function(options){
@@ -19,6 +20,15 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
     var newView = new Pokevisit.Views.ListingNew()
     this._swapView(newView)
   },
+
+  showReservations: function(){
+    var reservationView = new Pokevisit.Views.ReservationIndex({
+      collection: Pokevisit.yourPendingReservations
+    })
+
+    Pokevisit.yourPendingReservations.fetch();
+    this._swapView
+  }
 
   show: function(id){
     //need to fill with show view
