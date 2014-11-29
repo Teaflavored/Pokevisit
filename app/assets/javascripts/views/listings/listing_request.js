@@ -16,7 +16,7 @@ Pokevisit.Views.ListingRequest = Backbone.CompositeView.extend({
 
   createReservation: function(event){
     event.preventDefault();
-  }
+  },
 
   render: function(){
     var renderedContent = this.template({
