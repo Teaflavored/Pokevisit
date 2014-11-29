@@ -141,6 +141,10 @@ Pokevisit.Views.ListingRequest = Backbone.CompositeView.extend({
           //successful reservation
           Pokevisit.yourPendingReservations.add(newReservation)
           this.changeButtonSuccessCSS();
+        }.bind(this),
+
+        error: function(){
+          this.changeButtonErrorCSS();
         }.bind(this)
       })
     }
@@ -153,6 +157,14 @@ Pokevisit.Views.ListingRequest = Backbone.CompositeView.extend({
     this.$("button.book-button").css("background", "#007a87")
     this.$("button.book-button").css("border-color", "#007a87")
     this.$("button.book-button").css("border-bottom-color", "#004f58")
+    this.$("button.book-button").attr("disabled", "disabled")
+  },
+
+  changeButtonErrorCSS: function(){
+    this.$("button.book-button").html("Check Your Dates!")
+    this.$("button.book-button").css("background", "#f39c12")
+    this.$("button.book-button").css("border-color", "#f39c12")
+    this.$("button.book-button").css("border-bottom-color", "#f39c12")
   },
 
   render: function(){
