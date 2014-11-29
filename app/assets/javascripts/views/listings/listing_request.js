@@ -9,50 +9,71 @@ Pokevisit.Views.ListingRequest = Backbone.CompositeView.extend({
   initialize: function(){
     //gray out button
     this.listenTo(this.model, "sync", this.render)
-    this._checkIn = null;
-    this._checkOut = null;
-  },
-
-  changeButtonText: function(){
-    if(this._checkIn && this._checkOut){
-      this.$("button.book-button").html("Request to Book");
-    }
+    this._checkIn = undefined;
+    this._checkOut = undefined;
   },
 
   attachDate: function(){
     var nowTemp = new Date();
     var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+    var listing = this.model;
 
     var checkin = this.$('#check-in-select').datepicker({
       onRender: function(date) {
+        if (date.valueOf() < new Date(listing.escape("date_avail")).valueOf() ||
+            date.valueOf() > new Date(listing.escape("date_end"))) {
+          return "disabled";
+        } else {
+          return "";
+        }
         return date.valueOf() < now.valueOf() ? 'disabled' : '';
       }
     }).on('changeDate', function(ev) {
 
       //need to update checkin and update button
       this._checkIn = ev.date;
-      this.changeButtonText();
+
+      //must make sure date is within the listing's selected dates
 
       if (ev.date.valueOf() > checkout.date.valueOf()) {
         var newDate = new Date(ev.date)
         newDate.setDate(newDate.getDate() + 1);
         checkout.setValue(newDate);
+        this._checkOut = newDate
       }
       checkin.hide();
+
       this.$('#check-out-select')[0].focus();
     }.bind(this)).data('datepicker');
+
+    //set a default for the checkin-date
+    this.$('#check-in-select').datepicker("setValue", new Date(listing.escape("date_avail")))
+    this._checkIn = new Date(listing.escape("date_avail"));
+
     var checkout = this.$('#check-out-select').datepicker({
       onRender: function(date) {
+
+        if (date.valueOf() > new Date(listing.escape("date_end").valueOf()) ||
+            date.valueOf() < new Date(listing.escape("date_avail")).valueOf()){
+          return "disabled";
+        } else {
+          return "";
+        }
         return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
-      }
+      }.bind(this)
     }).on('changeDate', function(ev) {
       checkout.hide();
       //need to update checkout and update button
 
       this._checkOut = ev.date;
-      this.changeButtonText();
 
     }.bind(this)).data('datepicker');
+
+    var listingStartDate = new Date(listing.escape("date_avail"));
+    listingStartDate.setDate(listingStartDate.getDate() + 1);
+    this.$('#check-out-select').datepicker("setValue", listingStartDate);
+    this._checkOut = listingStartDate;
+
   },
 
   attachSelect: function(){
@@ -61,6 +82,7 @@ Pokevisit.Views.ListingRequest = Backbone.CompositeView.extend({
 
   createReservation: function(event){
     event.preventDefault();
+    var $button = $(event.currentTarget)
     if(!this._checkIn || !this._checkOut){
       return;
     } else {
@@ -80,10 +102,20 @@ Pokevisit.Views.ListingRequest = Backbone.CompositeView.extend({
       newReservation.save({}, {
         success: function(){
           //successful reservation
-          yourPendingReservations.add(newReservation)
+          Pokevisit.yourPendingReservations.add(newReservation)
+          this.changeButtonSuccessCSS();
         }.bind(this)
       })
     }
+
+  },
+
+
+  changeButtonSuccessCSS: function(){
+    this.$("button.book-button").html("Successful Reservation")
+    this.$("button.book-button").css("background", "#007a87")
+    this.$("button.book-button").css("border-color", "#007a87")
+    this.$("button.book-button").css("border-bottom-color", "#004f58")
   },
 
   render: function(){
