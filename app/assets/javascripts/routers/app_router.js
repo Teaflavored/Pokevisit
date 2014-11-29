@@ -27,8 +27,8 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
     })
 
     Pokevisit.yourPendingReservations.fetch();
-    this._swapView
-  }
+    this._swapView(reservationView)
+  },
 
   show: function(id){
     //need to fill with show view

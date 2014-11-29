@@ -1,0 +1,75 @@
+div.reservations-index{
+  margin: 30px auto;
+  width:100%;
+  height:auto;
+}
+
+div.reservation-index-item{
+  position:relative;
+  display:inline-block;
+  width:40%;
+  margin-left:90px;
+  border:2px solid #E4E6E3;
+  border-radius:5px;
+  margin-bottom:30px;
+}
+
+div.reservation-index-item div.reservation-status{
+  text-align:center;
+  position:relative;
+  display:inline-block;
+  width:30%;
+}
+
+div.reservation-index-item div.reservation-status div.status-picture{
+  display:inline-block;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  height:100px;
+  width:100px;
+}
+
+div.reservation-index-item div.reservation-image{
+  position:absolute;
+  top:0;
+  right:0;
+  display:inline-block;
+  width:65%;
+  height:100%;
+}
+
+div.reservation-index-item div.reservation-image img{
+  height:100%;
+  border-radius:5px;
+  width:100%;
+}
+
+div.reservation-index-item div.reservation-image img:hover{
+  cursor: pointer;
+}
+
+div.reservation-description{
+  position:absolute;
+  right:0;
+  width:60%;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  bottom:20px;
+  font-size:17px;
+  color:#fff;
+  background-color:rgba(60,63,64,0.9);
+
+}
+
+.pending{
+  background: url("/assets/pending.png")
+}
+
+.approved{
+  background: url("/assets/approved.png")
+}
+
+.denied{
+  background: url("/assets/denied.png")
+}

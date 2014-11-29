@@ -34,11 +34,10 @@ class Reservation < ActiveRecord::Base
 
       Reservation.transaction do
         self.status = "APPROVED"
-        self.save!
         overlapping_pending_reservations.each do |reservation|
           reservation.deny!
         end
-
+        self.save!
         return true
       end
     end
@@ -88,7 +87,6 @@ class Reservation < ActiveRecord::Base
       errors.add(:reservation, "invalid reservation")
     end
   end
-
 
   def end_date_has_to_be_after_start
     if self.end_date < self.start_date

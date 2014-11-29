@@ -1,0 +1,21 @@
+<div class="reservation-status">
+  <h2><%= reservation.get("status") %></h2>
+  <% var checkInDate = new Date(reservation.get("start_date")) %>
+  <% checkInDate = (checkInDate.getMonth() + 1 + '/' + checkInDate.getDate() + '/' +  checkInDate.getFullYear()) %>
+
+  <div class="status-picture <%= status %>">
+  </div>
+
+  <% var checkOutDate = new Date(reservation.get("end_date")) %>
+  <% checkOutDate = (checkOutDate.getMonth() + 1 + '/' + checkOutDate.getDate() + '/' +  checkOutDate.getFullYear()) %>
+
+  <p><strong>Check In: </strong><%= checkInDate %></p>
+  <p><strong>Check Out: </strong><%= checkOutDate %></p>
+</div>
+
+
+<div class="reservation-image">
+  <img src='<%= img.escape("url") %>'>
+</div>
+
+<div class="reservation-description"><%= listing.get("address") %></div>
