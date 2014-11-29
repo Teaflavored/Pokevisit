@@ -17,6 +17,8 @@ class Reservation < ActiveRecord::Base
   validates :user, :listing, :status, :start_date, :end_date, presence: true
   validates :status, inclusion: { in: STATUSES }
   validate :ensure_no_overlapping_approved_reservation
+  validate :ensure_date_is_within_listing_dates
+  validate :end_date_has_to_be_after_start
 
   belongs_to :listing
   belongs_to :user
@@ -78,6 +80,19 @@ class Reservation < ActiveRecord::Base
   def ensure_no_overlapping_approved_reservation
     if overlapping_approved_reservations.length > 0
       errors.add(:reservation, "can't be made")
+    end
+  end
+
+  def ensure_date_is_within_listing_dates
+    if self.start_date < self.listing.date_avail || self.start_date > self.listing.date_end || self.end_date > self.listing.date_end || self.end_date < self.listing.date_avail
+      errors.add(:reservation, "invalid reservation")
+    end
+  end
+
+
+  def end_date_has_to_be_after_start
+    if self.end_date < self.start_date
+      errors.add(:reservation, "invalid reservation")
     end
   end
 end
