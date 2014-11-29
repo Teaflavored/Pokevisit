@@ -208,6 +208,7 @@
 						'<span class="labelauty-checked-image"></span>' +
 						'<span class="labelauty-checked">' + checked_message + '</span>' +
 					'</label>';
+			LABELAUTYIMGCOUNTER++;
 		}
 		else
 		{
