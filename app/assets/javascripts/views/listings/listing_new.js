@@ -187,6 +187,7 @@ Pokevisit.Views.ListingNew = Backbone.CompositeView.extend({
       function(Blobs){
         _.each(Blobs, function(blob){
           this._imageUrls.push(blob.url)
+          this.$("div.img-preview").append(blob.url + ", ")
         }.bind(this))
       }.bind(this)
     );

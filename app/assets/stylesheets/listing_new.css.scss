@@ -28,5 +28,102 @@ div.new-form-group form.new-form{
 }
 
 div.new-form-group form.new-form div.container{
+  width:63%;
   height:70px;
+  margin-bottom:20px;
+}
+
+div.new-form-group form.new-form div.container{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+div.new-form-group form.new-form div.container .new-label{
+  font-family:'Source Sans Pro', sans-serif;
+  font-size:25px;
+  width:20%;
+  color:#565a5c;
+  display:inline-block;
+}
+
+div.new-form-group form.new-form div.container .hometype-btn-group{
+  display:inline-block;
+  margin-top:10px;
+  margin-bottom:30px;
+  width:80;
+}
+
+div.new-form-group form.new-form div.container .hometype-btn-group button{
+  font-size:20px;
+  background:#fff;
+  border-color:#c4c4c4;
+  height:60px;
+  width:200px;
+  color:#565a5c;
+}
+
+div.new-form-group form.new-form div.container .hometype-btn-group button.active{
+  background:#edefed;
+}
+
+
+div.new-form-group form.new-form div.container .roomtype-btn-group{
+  display:inline-block;
+  margin-top:10px;
+  margin-bottom:30px;
+  width:80;
+}
+
+div.new-form-group form.new-form div.container .roomtype-btn-group button{
+  font-size:20px;
+  background:#fff;
+  border-color:#c4c4c4;
+  height:60px;
+  width:200px;
+  color:#565a5c;
+}
+
+div.new-form-group form.new-form div.container .roomtype-btn-group button.active{
+  background:#edefed;
+}
+
+input#date-avail-new, input#date-end-new{
+  border:1px solid;
+  border-color:#c4c4c4;
+}
+
+button#select-pictures{
+  background:#ff5a5f;
+  font-size:23px;
+  color:#fff;
+  width:200px;
+  height:50px;
+  vertical-align:top;
+}
+
+div.img-preview{
+  display:inline-block;
+  height:70px;
+  width:50%;
+}
+
+input#address-search{
+  width:63%;
+  height:40px;
+  font-size:20px;
+  display:inline-block;
+}
+
+input#new-price{
+  width:63%;
+  height:40px;
+  font-size:20px;
+  display:inline-block;
+}
+
+button.create-listing-btn{
+  border-color:#ff5a5f;
+  border-bottom-color:#e00007;
+  background-color:#ff5a5f;
+  color:#fff;
 }
