@@ -51,6 +51,25 @@ Pokevisit.Views.ListingReservationIndex = Backbone.CompositeView.extend({
 
   denyReservation: function(event){
     event.preventDefault();
+
+    var reservationId = $(event.currentTarget).data("reservation")
+    var reservationView;
+
+    _.each(this.subviews(this.listingReservationsSelector), function(view){
+      if (view.model.id === reservationId){
+        reservationView = view;
+      }
+    })
+
+    $.ajax({
+      url: "/reservations/" + reservationId +"/deny",
+      type: "GET",
+      dataType: "json",
+      success: function(){
+        reservationView.$el.fadeOut(1000, _.bind(reservationView.remove, reservationView) );
+        this.model.fetch();
+      }.bind(this)
+    })
   },
 
   updateReservationViews: function(deletedView){

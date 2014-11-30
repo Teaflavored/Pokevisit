@@ -17,7 +17,7 @@ class ReservationsController < ApplicationController
   end
 
   def deny
-    @reservation = Reservation.find(params[:reservation_i])
+    @reservation = Reservation.find(params[:reservation_id])
     @reservation.deny!
     render json: ["Successful deny!"]
   end
