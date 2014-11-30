@@ -8,7 +8,8 @@ Pokevisit.Views.ListingNew = Backbone.CompositeView.extend({
     "click .roomtype-btn-group button": "getRoomType",
     "change #select-accomodates-option": "updateAccomodates",
     "keyup #new-price": "getPrice",
-    "click .create-listing-btn": "createListing"
+    "click .create-listing-btn": "createListing",
+    "click button#select-pictures": "selectPictures"
   },
 
   initialize: function(options){
@@ -88,43 +89,38 @@ Pokevisit.Views.ListingNew = Backbone.CompositeView.extend({
       this.model.save({},{
         success: function(){
 
-          var successCB = function(num){
-            if (num === this._numImages){
-              Backbone.history.navigate("#/listings/" + this.model.id , { trigger: true })
-            } else {
-              num++;
-            }
+          var successCB = function(modelId){
+            //need to edit to your listings later or add options if it's your listing
+            Backbone.history.navigate("#/listings/" + modelId, { trigger: true })
           }
 
-          this.createImages(this.model.id, successCB)
+          if (this._imageUrls.length === 0){
+            this._imageUrls.push("/assets/test_pic1.jpg")
+          }
+
+          this.createImages(this.model.id, this._imageUrls, successCB)
         }.bind(this)
       })
     }
   },
 
-  createImages: function(listingId, successCB){
-    //need to give default image if images list is empty
-    if (this._imageUrls.length === 0){
-      this._imageUrls.push("/assets/test_pic1.jpg")
-    }
-
-    this._numImages = this._imageUrls.length;
-    var imagesCreated = 0;
-
-    _.each(this._imageUrls, function(url){
-      var image = new Pokevisit.Models.Image();
-      var imageParams = {
-        "image": {
-          "listing_id": listingId,
-          "url": url
-        }
+  createImages: function(listingId, urls, successCB){
+    var image = new Pokevisit.Models.Image();
+    var imageParams = {
+      "image": {
+        "listing_id": listingId,
+        "url": urls.shift()
       }
-      image.set(imageParams)
-      image.save({},{
-        success: function(){
-          successCB(imagesCreated)
-        }.bind(this)
-      })
+    }
+    image.set(imageParams)
+    image.save({},{
+      success: function(){
+        if (urls.length > 0){
+          this.createImages(listingId, urls, successCB)
+        } else {
+          successCB(listingId)
+        }
+      }.bind(this)
     })
   },
 
@@ -186,6 +182,15 @@ Pokevisit.Views.ListingNew = Backbone.CompositeView.extend({
     }.bind(this))
   },
 
+  selectPictures: function(){
+    filepicker.pickMultiple(
+      function(Blobs){
+        _.each(Blobs, function(blob){
+          this._imageUrls.push(blob.url)
+        }.bind(this))
+      }.bind(this)
+    );
+  },
 
   render: function(){
     this.setFilepicker();
