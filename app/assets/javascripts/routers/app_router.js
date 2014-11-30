@@ -5,6 +5,7 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
     "reservations": "showReservations",
     "listings/new": "new",
     "listings/:id/reservations": "reservationIndex",
+    "edit-profile": "editUserProfile",
     "listings/:id": "show",
   },
 
@@ -23,6 +24,13 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
       model: listing
     })
     this._swapView(newView)
+  },
+
+  editUserProfile: function(){
+    var userView = new Pokevisit.Views.User()
+    //need model here?
+
+    this._swapView(userView)
   },
 
   showReservations: function(){
@@ -52,7 +60,7 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
   },
 
   reservationIndex: function(id){
-    
+
     var listing = Pokevisit.ownListings.getOrFetch(id);
     if (Pokevisit.currentUserId != listing.get("user_id")){
       return;
