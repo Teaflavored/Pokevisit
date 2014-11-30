@@ -1,3 +1,3 @@
-Pokevisit.Models.UserImage = Backbone.Models.extend({
+Pokevisit.Models.UserImage = Backbone.Model.extend({
   urlRoot: "/user_images"
 })

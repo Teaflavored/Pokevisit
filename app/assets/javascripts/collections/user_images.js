@@ -1,5 +1,5 @@
 Pokevisit.Collections.UserImages = Backbone.Collection.extend({
-  urlRoot: "/user_images",
+  url: "/user_images",
   model: Pokevisit.Models.UserImage
 })
 
