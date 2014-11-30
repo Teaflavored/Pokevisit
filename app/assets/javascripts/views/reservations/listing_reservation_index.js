@@ -110,10 +110,6 @@ Pokevisit.Views.ListingReservationIndex = Backbone.CompositeView.extend({
     this.$el.html(renderedContent)
     this.attachSubviews();
 
-    setTimeout(function(){
-      //for jquery plugins
-    }.bind(this), 0)
-
     return this;
   }
 })
