@@ -15,7 +15,6 @@
 #  date_avail  :datetime
 #  date_end    :datetime
 #  address     :string(255)
-#
 
 class Listing < ActiveRecord::Base
   validates :user, :hometype, :roomtype, :accomodates, presence: true

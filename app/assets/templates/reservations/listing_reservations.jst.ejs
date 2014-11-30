@@ -1,3 +1,14 @@
-<div>
-test
+<div class="listing-description">
+  <h2>Listing information</h2>
+  <div><strong>Address:</strong> <%= listing.get("address") %></div>
+
+  <% var dateAvail = new Date(listing.get("date_avail")) %>
+  <% dateAvail = (dateAvail.getMonth() + 1 + '/' + dateAvail.getDate() + '/' +  dateAvail.getFullYear()) %>
+
+  <div><strong>Date Available:</strong> <%= dateAvail %></div>
+
+  <% var dateEnd = new Date(listing.get("date_end")) %>
+  <% dateEnd = (dateEnd.getMonth() + 1 + '/' + dateEnd.getDate() + '/' +  dateEnd.getFullYear()) %>
+
+  <div><strong>Date Available:</strong> <%= dateEnd %></div>
 </div>
