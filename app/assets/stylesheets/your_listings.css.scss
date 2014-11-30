@@ -1,7 +1,13 @@
 div.your-listings{
   width:50%;
   margin:0 auto;
-  margin-top:50px;
+  margin-top:20px;
+}
+
+.your-listings-header{
+  margin-top:30px;
+  margin-bottom:0px;
+  text-align: center;
 }
 
 div.your-listings h1{
@@ -27,6 +33,7 @@ div.your-listings div.your-listing-item div.your-listing-image{
 div.your-listings div.your-listing-item div.your-listing-location,
 div.your-listings div.your-listing-item div.your-listing-avail,
 div.your-listings div.your-listing-item div.your-listing-end{
+  vertical-align:top;
   position:absolute;
   left:140px;
 }
@@ -49,15 +56,15 @@ div.your-listings div.your-listing-item button.show-reservations{
 }
 
 div.your-listings div.your-listing-item div.your-listing-location{
-  top:10px;
+  top:-20px;
 }
 
 div.your-listings div.your-listing-item div.your-listing-avail{
-  top:40px;
+  top:10px;
 }
 
 div.your-listings div.your-listing-item div.your-listing-end{
-  top:70px;
+  top:40px;
 }
 
 div.your-listings div.your-listing-item div.your-listing-image img{

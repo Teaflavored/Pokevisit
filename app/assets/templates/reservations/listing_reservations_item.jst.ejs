@@ -1,0 +1,32 @@
+
+<div class="date-in-label">Date In:</div>
+<% var dateIn = new Date(reservation.get("start_date")) %>
+<% dateIn.setDate(dateIn.getDate() + 1) %>
+
+<div class="date-in">
+  <time  class="icon">
+    <em><%= weekDay[dateIn.getDay()] %></em>
+    <strong><%= months[dateIn.getMonth()]%></strong>
+    <span><%= dateIn.getDate() %></span>
+  </time>
+</div>
+
+<div class="date-out-label">Date Out:</div>
+<% var dateOut = new Date(reservation.get("end_date")) %>
+<% dateOut.setDate(dateOut.getDate() + 1) %>
+
+<div class="date-out">
+  <time  class="icon">
+    <em><%= weekDay[dateOut.getDay()] %></em>
+    <strong><%= months[dateOut.getMonth()]%></strong>
+    <span><%= dateOut.getDate() %></span>
+  </time>
+</div>
+
+<div class="reservation-user-info">User</div>
+<div class="reservation-user-img">
+  <img alt="IMG" class="reservation-user-img-icon">
+</div>
+
+<button class="approve-reservation btn" data-reservation=<%= reservation.id %> >Approve</button>
+<button class="deny-reservation btn" data-reservation=<%= reservation.id %> >Deny</button>
