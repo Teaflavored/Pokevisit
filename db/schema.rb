@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141128222834) do
+ActiveRecord::Schema.define(version: 20141130231420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 20141128222834) do
 
   add_index "reservations", ["listing_id"], name: "index_reservations_on_listing_id", using: :btree
   add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
+
+  create_table "user_images", force: true do |t|
+    t.integer  "user_id",                                             null: false
+    t.string   "url",        default: "/assets/default_user_pic.jpg", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_images", ["user_id"], name: "index_user_images_on_user_id", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false

@@ -10,6 +10,7 @@
 #  end_date   :datetime         not null
 #  created_at :datetime
 #  updated_at :datetime
+#  guests     :integer
 #
 
 class Reservation < ActiveRecord::Base

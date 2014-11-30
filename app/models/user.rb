@@ -16,9 +16,11 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 5, allow_nil: true}
 
   after_initialize :ensure_session_token
+  after_validation :create_user_image
 
   #associations
   has_many :listings
+  has_one :user_image
   has_many :reservations
 
   def self.generate_session_token
@@ -50,5 +52,11 @@ class User < ActiveRecord::Base
 
   def ensure_session_token
     self.session_token ||= User.generate_session_token
+  end
+
+  def create_user_image
+    if(!self.user_image)
+      UserImage.create(user: self)
+    end
   end
 end
