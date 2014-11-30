@@ -5,20 +5,22 @@
 
 <div class="new-form-group">
   <form class="new-form">
+
     <div class="container">
       <div class="hometype-label new-label">Home Type</div>
       <div class="hometype-btn-group" role="group" aria-label="...">
-        <button type="button" class="btn">Full House</button>
-        <button type="button" class="btn">Apartment</button>
-        <button type="button" class="btn">Bed & Breakfast</button>
+        <button type="button" class="btn" data-home="full_house">Full House</button>
+        <button type="button" class="btn" data-home="apartment">Apartment</button>
+        <button type="button" class="btn" data-home="bed_breakfast">Bed & Breakfast</button>
       </div>
     </div>
+
     <div class="container">
       <div class="roomtype-label new-label">Room Type</div>
       <div class="roomtype-btn-group" role="group" aria-label="...">
-        <button type="button" class="btn">Entire Room</button>
-        <button type="button" class="btn">Private Room</button>
-        <button type="button" class="btn">Shared Room</button>
+        <button type="button" class="btn" data-room="entire_room">Entire Room</button>
+        <button type="button" class="btn" data-room="private_room">Private Room</button>
+        <button type="button" class="btn" data-room="shared_room">Shared Room</button>
       </div>
     </div>
 
@@ -32,7 +34,7 @@
     </div>
 
     <div class="container">
-      <div class="date-label new-label">Dates Available</div>
+      <div class="date-label new-label">Dates</div>
       <input type="text" id="date-avail-new" placeholder="Date Available" class="btn">
       <input type="text" id="date-end-new" placeholder="Date End" class="btn">
     </div>
@@ -49,12 +51,12 @@
     </div>
 
     <div class="container">
-      <div class="price-label">Price</div>
-      <input type="number" class="form-control" class="new-price" placeholder="Price">
+      <div class="price-label">Price (USD)</div>
+      <input type="number" class="form-control" id="new-price" placeholder="Price">
     </div>
 
     <div class="container">
-      <button class="btn create-listing-btn">Create Listing</button
+      <button class="btn create-listing-btn disabled" disabled>Create Listing</button
     </div>
   </form>
 </div>
