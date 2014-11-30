@@ -1,0 +1,29 @@
+<div class="your-listing-image">
+  <% if (image) { %>
+    <img src='<%= image.escape("url") %>'>
+  <% } else { %>
+    <img alt="IMG">
+  <% } %>
+</div>
+
+<div class="your-listing-location">
+  <div class="listing-description"><strong>Address:</strong> <%= listing.escape("address")%> </div>
+</div>
+
+<div class="your-listing-avail">
+  <% var dateAvail = new Date(listing.get("date_avail")) %>
+  <% dateAvail = (dateAvail.getMonth() + 1 + '/' + dateAvail.getDate() + '/' +  dateAvail.getFullYear()) %>
+
+  <div class="listing-description"><strong>Date Available:</strong> <%= dateAvail %></div>
+</div>
+
+<div class="your-listing-end">
+  <% var dateEnd = new Date(listing.get("date_end")) %>
+  <% dateEnd = (dateEnd.getMonth() + 1 + '/' + dateEnd.getDate() + '/' +  dateEnd.getFullYear()) %>
+
+  <div class="listing-description"><strong>Date End:</strong> <%= dateEnd %> </div>
+</div>
+
+<button class="btn btn-special edit-listing">Edit Listing</button>
+
+<button class="btn btn-special show-reservations">Show Reservations</button>

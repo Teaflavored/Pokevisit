@@ -4,6 +4,7 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
     "own_listings": "indexYourListings",
     "reservations": "showReservations",
     "listings/new": "new",
+    "listings/:id/reservations": "reservationIndex",
     "listings/:id": "show",
   },
 
@@ -43,8 +44,20 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
   },
 
   indexYourListings: function(){
-    alert('hi')
+    var yourListingsView = new Pokevisit.Views.YourListings({
+      collection: Pokevisit.ownListings
+    })
+    Pokevisit.ownListings.fetch();
+    this._swapView(yourListingsView)
+  },
 
+  reservationIndex: function(id){
+    var listing = Pokevisit.ownListings.getOrFetch(id);
+    var listingReservationIndexView = new Pokevisit.Views.ListingReservationIndex({
+      model:listing,
+      collection: listing.reservations()
+    })
+    this._swapView(listingReservationIndexView)
   },
 
   _swapView: function(view){

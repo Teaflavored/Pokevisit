@@ -32,7 +32,8 @@ Pokevisit.Collections.Listings = Backbone.Collection.extend({
       })
     }
     return listing;
-  }
+  },
+
 })
 
 Pokevisit.listings = new Pokevisit.Collections.Listings()

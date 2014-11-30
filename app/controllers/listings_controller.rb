@@ -23,8 +23,8 @@ class ListingsController < ApplicationController
   def own_listings
     #get list of user's own listings then ride off of index json
     #use for approve and deny
-    @listings = current_user.listings
-    render :index
+    @listings = current_user.listings.includes(:reservations)
+    render :own_listings
   end
 
   private

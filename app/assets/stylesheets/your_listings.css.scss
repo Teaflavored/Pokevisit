@@ -1,0 +1,66 @@
+div.your-listings{
+  width:50%;
+  margin:0 auto;
+  margin-top:50px;
+}
+
+div.your-listings h1{
+  text-align:center;
+}
+
+div.your-listings div.your-listing-item{
+  position:relative;
+  border-radius:3px;
+  border: 1px solid #edefed;
+  height:100px;
+  margin-bottom:20px;
+}
+
+div.your-listings div.your-listing-item div.your-listing-image{
+  position:absolute;
+  height:80px;
+  width:90px;
+  top:10px;
+  left:30px;
+}
+
+div.your-listings div.your-listing-item div.your-listing-location,
+div.your-listings div.your-listing-item div.your-listing-avail,
+div.your-listings div.your-listing-item div.your-listing-end{
+  position:absolute;
+  left:140px;
+}
+
+div.your-listings div.your-listing-item button{
+  position:absolute;
+  width:139px;
+  text-align:center;
+  right:30px;
+}
+
+div.your-listings div.your-listing-item button.edit-listing{
+  background:#007a87;
+  top:10px;
+}
+
+div.your-listings div.your-listing-item button.show-reservations{
+  background:#ff5a5f;
+  top:55px;
+}
+
+div.your-listings div.your-listing-item div.your-listing-location{
+  top:10px;
+}
+
+div.your-listings div.your-listing-item div.your-listing-avail{
+  top:40px;
+}
+
+div.your-listings div.your-listing-item div.your-listing-end{
+  top:70px;
+}
+
+div.your-listings div.your-listing-item div.your-listing-image img{
+  width:100%;
+  height:100%;
+}
