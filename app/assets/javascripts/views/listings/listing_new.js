@@ -11,6 +11,28 @@ Pokevisit.Views.ListingNew = Backbone.CompositeView.extend({
     "click .create-listing-btn": "createListing"
   },
 
+  initialize: function(options){
+    //once this page is submitted, on success of creation, should link user to show page
+    //of the listing he/she just made and let them edit the summary etc which can be show on other
+    //pages
+    this.setFilepicker();
+
+    this._imageUrls = [];
+    this._numImages = 0;
+
+    this._params = Object.create(null);
+    this._params["listing"] = {
+      "hometype": null,
+      "roomtype": null,
+      "accomodates": 1,
+      "date_avail": null,
+      "date_end": null,
+      "address": null,
+      "price": null
+    }
+    window.testParams = this._params.listing
+  },
+
   getHomeType: function(event){
     var $clickedButton = $(event.currentTarget);
     $clickedButton.addClass("active")
@@ -38,27 +60,6 @@ Pokevisit.Views.ListingNew = Backbone.CompositeView.extend({
     this.convertButton();
   },
 
-
-  initialize: function(options){
-    //once this page is submitted, on success of creation, should link user to show page
-    //of the listing he/she just made and let them edit the summary etc which can be show on other
-    //pages
-    this.setFilepicker();
-
-    this._imageUrls = [];
-    this._params = Object.create(null);
-    this._params["listing"] = {
-      "hometype": null,
-      "roomtype": null,
-      "accomodates": 1,
-      "date_avail": null,
-      "date_end": null,
-      "address": null,
-      "price": null
-    }
-    window.testParams = this._params.listing
-  },
-
   setFilepicker: function(){
     if (filepicker){
       //if loaded set key
@@ -82,13 +83,49 @@ Pokevisit.Views.ListingNew = Backbone.CompositeView.extend({
       return
     } else {
       //create listing, on success create images, on success of images, redirect to show view
+
       this.model.set(this._params)
       this.model.save({},{
         success: function(){
-          alert('success')
+
+          var successCB = function(num){
+            if (num === this._numImages){
+              Backbone.history.navigate("#/listings/" + this.model.id , { trigger: true })
+            } else {
+              num++;
+            }
+          }
+
+          this.createImages(this.model.id, successCB)
         }.bind(this)
       })
     }
+  },
+
+  createImages: function(listingId, successCB){
+    //need to give default image if images list is empty
+    if (this._imageUrls.length === 0){
+      this._imageUrls.push("/assets/test_pic1.jpg")
+    }
+
+    this._numImages = this._imageUrls.length;
+    var imagesCreated = 0;
+
+    _.each(this._imageUrls, function(url){
+      var image = new Pokevisit.Models.Image();
+      var imageParams = {
+        "image": {
+          "listing_id": listingId,
+          "url": url
+        }
+      }
+      image.set(imageParams)
+      image.save({},{
+        success: function(){
+          successCB(imagesCreated)
+        }.bind(this)
+      })
+    })
   },
 
   paramsCompleted: function(){

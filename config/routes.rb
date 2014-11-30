@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get "deny"
   end
 
+  resources :listing_images, defaults: { format: :json}, only: [:create]
+
   get '/main', to: "static_pages#main", as: "main"
   root to: "static_pages#landing_page"
 end
