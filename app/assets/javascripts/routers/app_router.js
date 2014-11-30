@@ -52,7 +52,11 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
   },
 
   reservationIndex: function(id){
+    
     var listing = Pokevisit.ownListings.getOrFetch(id);
+    if (Pokevisit.currentUserId != listing.get("user_id")){
+      return;
+    }
     var listingReservationIndexView = new Pokevisit.Views.ListingReservationIndex({
       model:listing,
       collection: listing.reservations()

@@ -1,5 +1,6 @@
 class ReservationsController < ApplicationController
   before_action :redirect_unless_logged_in
+  before_action :redirect_if_reservation_doesnt_belong_to_you, only: [:approve, :deny]
 
   def index
     #all reservations made by current_user, used to see if any approved or denied
@@ -41,5 +42,12 @@ class ReservationsController < ApplicationController
 
   def reservation_params
     params.require(:reservation).permit(:start_date, :end_date, :guests, :listing_id)
+  end
+
+  def redirect_if_reservation_doesnt_belong_to_you
+    @reservation = Reservation.find(params[:reservation_id])
+    if @reservation.listing.user.id != current_user.id
+      redirect_to root_url
+    end
   end
 end
