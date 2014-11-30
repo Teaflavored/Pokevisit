@@ -2,19 +2,59 @@
   <h1>List Your Space</h1>
   <p>Make some pokecash by renting your place.</p>
 </div>
+
 <div class="new-form-group">
   <form class="new-form">
     <div class="container">
-      <label for="listing_hometype">Home Type</label>
+      <div class="hometype-label new-label">Home Type</div>
+      <div class="hometype-btn-group" role="group" aria-label="...">
+        <button type="button" class="btn">Full House</button>
+        <button type="button" class="btn">Apartment</button>
+        <button type="button" class="btn">Bed & Breakfast</button>
+      </div>
     </div>
     <div class="container">
-      <label for="listing_roomtype">Room Type</label>
+      <div class="roomtype-label new-label">Room Type</div>
+      <div class="roomtype-btn-group" role="group" aria-label="...">
+        <button type="button" class="btn">Entire Room</button>
+        <button type="button" class="btn">Private Room</button>
+        <button type="button" class="btn">Shared Room</button>
+      </div>
     </div>
+
     <div class="container">
-      <label for="listing_accomodates">Accomodates</label>
+    <div class="roomtype-label new-label">Accomodates</div>
+      <select id="select-accomodates-option">
+        <% _.times(16, function(n){ %>
+          <option value=<%= n + 1 %>><%= n + 1 %> Guest</option>
+        <% }) %>
+      </select>
     </div>
+
     <div class="container">
-      <label for="listing_address">City</label>
+      <div class="date-label new-label">Dates Available</div>
+      <input type="text" id="date-avail-new" placeholder="Date Available" class="btn">
+      <input type="text" id="date-end-new" placeholder="Date End" class="btn">
+    </div>
+
+    <div class="container">
+      <button type="button" class="btn">Select Picture</button>
+      <div class="img-preview">
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="address-label">Address</div>
+      <input type="text" class="form-control" id="address-search" placeholder="Where are you going?">
+    </div>
+
+    <div class="container">
+      <div class="price-label">Price</div>
+      <input type="number" class="form-control" class="new-price" placeholder="Price">
+    </div>
+
+    <div class="container">
+      <button class="btn create-listing-btn">Create Listing</button
     </div>
   </form>
 </div>
