@@ -34,6 +34,11 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
     this.collection.updateFilteredCollection(this._filterData);
   },
 
+  updateMatches: function(){
+    var matches = this.collection.length
+    this.$("h1.matches-result").html('' + matches + " Rentals Available." )
+  },
+
   addView: function(listing){
     this.addMarker(listing);
 
@@ -42,7 +47,7 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
       _markers: this._markers
     })
     this.addSubview(this.listSelector, indexItemView);
-
+    this.updateMatches();
   },
 
   addMarker: function(listing){
@@ -74,6 +79,7 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
 
 
   removeView: function(listing){
+    this.updateMatches();
     for( var i = 0; i < this.subviews(this.listSelector).length; i++){
       if (this.subviews(this.listSelector)[i].model.id === listing.id){
         this.removeSubview(this.listSelector, this.subviews(this.listSelector)[i])

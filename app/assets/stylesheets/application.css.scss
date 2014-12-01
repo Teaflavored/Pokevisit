@@ -429,3 +429,21 @@ div.listing-show-main{
   margin-top:30px;
   margin-bottom:25px;
 }
+
+div.matches-found{
+  position:relative;
+  border-top:1px solid #dce0e0;
+  border-bottom:1px solid #dce0e0;
+  height:77px;
+}
+
+div.matches-found h1{
+  position:absolute;
+  right:130px;
+  margin-top:30px;
+  font-size:14px;
+  line-height:normal;
+  font-weight:normal;
+  color:#565a5c;
+  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
