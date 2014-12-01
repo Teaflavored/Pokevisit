@@ -16,11 +16,11 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 5, allow_nil: true}
 
   after_initialize :ensure_session_token
-  after_validation :create_user_image
+  # after_validation :create_user_image
 
   #associations
   has_many :listings
-  has_one :user_image
+  # has_one :user_image
   has_many :reservations
 
   def self.generate_session_token

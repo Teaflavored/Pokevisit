@@ -12,9 +12,9 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
   initialize: function(options){
     this.$rootEl = options.$rootEl;
     //fetch all user images and update header
-    Pokevisit.allUserImages.fetch({
+    Pokevisit.allUsers.fetch({
       success: function(){
-        $("img.header-img").attr("src", Pokevisit.allUserImages.findWhere({user_id: Pokevisit.currentUserId}).get("url"))
+        $("img.header-img").attr("src", Pokevisit.allUsers.findWhere({id: Pokevisit.currentUserId}).get("image_url"))
       }
     })
   },

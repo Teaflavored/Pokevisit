@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :users, only: [:create]
+  resources :users, defaults: { format: :json }, only: [:index, :update]
   resource :session, only: [:create, :destroy]
   get "listings/own_listings", to: "listings#own_listings", as: "own_listing"
   resources :listings, defaults: { format: :json }, only: [:index, :show, :create]

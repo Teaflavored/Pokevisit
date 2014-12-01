@@ -9,6 +9,7 @@ Pokevisit.Views.ListingShow = Backbone.CompositeView.extend({
     this.reviewSelector = "div.show-review"
 
     var summaryView = new Pokevisit.Views.ListingSummary({
+      collection: Pokevisit.allUsers,
       model: this.model
     })
     this.addSubview(this.summarySelector, summaryView)

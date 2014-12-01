@@ -1,4 +1,29 @@
-<img>
-<h2 class="summary-description"><%= listing.escape("description") %></h2>
+<img src='<%= user ? user.get("image_url") : "/assets/user_image_placeholder.jpg" %>'>
+<h3 class="user-email"><%= user ? user.get("email") : "placeholder@placeholder.com" %></h3>
+<h3 class="summary-description"><%= listing.escape("address") %></h3>
+
+<div class="date-avail-label">Date Available</div>
+<% var dateIn = new Date(listing.get("date_avail")) %>
+<% dateIn.setDate(dateIn.getDate() + 1) %>
+
+<div class="date-avail">
+  <time class="icon">
+    <em><%= weekDay[dateIn.getDay()] %></em>
+    <strong><%= months[dateIn.getMonth()]%></strong>
+    <span><%= dateIn.getDate() %></span>
+  </time>
+</div>
+
+<div class="date-end-label">Date End</div>
+<% var dateOut = new Date(listing.get("date_end")) %>
+<% dateOut.setDate(dateOut.getDate() + 1) %>
+
+<div class="date-end">
+  <time  class="icon">
+    <em><%= weekDay[dateOut.getDay()] %></em>
+    <strong><%= months[dateOut.getMonth()]%></strong>
+    <span><%= dateOut.getDate() %></span>
+  </time>
+</div>
+
 <p class="summary-location"><%= listing.escape("address") %></p>
-PlaceHolder
