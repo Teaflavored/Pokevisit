@@ -6,7 +6,7 @@
 <div class="about-content">
   <h1>About This Listing</h1>
   <% var description = listing.escape("description") ? listing.escape("description") : "The guest apartment has its own entrance located on the ground level of our home. The private apartment is 720 sq and has 8 ft ceilings. The living room and kitchen are new and the bath and the two bedrooms are remodeled."%>
-  <p><%= description %></p>
+  <p class="description-p"><%= description %></p>
 
   <textarea class="listing-description-textbox" placeholder="Add something about this place here" ></textarea>
   <div class="description-buttons">
@@ -35,8 +35,8 @@
       </div>
       <div class="col-xs-6">
         <div>Room: <strong class="info-info"><%= listing.escape("roomtype") %></strong></div>
-        <div>CheckIn: <strong class="info-info"></strong></div>
-        <div>CheckOut: <strong class="info-info"></strong></div>
+        <div>CheckIn Time: <strong class="info-info"></strong></div>
+        <div>CheckOut Time: <strong class="info-info"></strong></div>
       </div>
     </div>
   </div>

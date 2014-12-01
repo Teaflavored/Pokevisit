@@ -50,7 +50,7 @@ Listing.transaction do
   u2 = User.find(2)
   u3 = User.find(3)
   room_types = ["entire_room", "private_room", "shared_room"]
-  home_types = ["full_house", "apartment", "bed_breakfast"]
+  home_types = ["Full House", "Apartment", "Bed & breakfast"]
   images = ["test_pic1.jpg","test_pic2.jpg","test_pic3.jpg","test_pic4.jpg","test_pic5.jpg",
     "test_pic6.jpg","test_pic7.jpg","test_pic8.jpg", "test_pic9.jpg"]
   accomodates = (1..16).to_a

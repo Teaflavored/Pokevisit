@@ -13,6 +13,7 @@ Pokevisit.Views.ListingAbout = Backbone.CompositeView.extend({
   events: {
     "click img.saveDesc": "saveDesc",
     "click img.eraseDesc": "clearDesc",
+    "keyup textarea.listing-description-textbox": "descriptionPreview"
   },
 
   initialize: function(){
@@ -53,6 +54,7 @@ Pokevisit.Views.ListingAbout = Backbone.CompositeView.extend({
     this.$("textarea.listing-description-textbox").val("")
   },
 
+
   setShowState: function(){
     if (this.model.get("user_id") === Pokevisit.currentUserId){
       this.showState = "edit"
@@ -62,13 +64,22 @@ Pokevisit.Views.ListingAbout = Backbone.CompositeView.extend({
     }
   },
 
+  descriptionPreview: function(event){
+    var content = $(event.currentTarget).val()
+    if (content.length === 0){
+      this.$("p.description-p").html(this.model.escape("description"))
+    } else {
+      this.$("p.description-p").html(content)
+    }
+  },
+
   render: function(){
     this.setShowState();
     var images = this.model.images().models
     var imagesLength = images.length
     var image = images[_.random(0, imagesLength - 1)]
     var showNotice = $("body").scrollTop() > 0 ? false : true;
-    
+
     var renderedContent = this.template()({
       listing: this.model,
       image: image,
