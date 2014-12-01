@@ -10,11 +10,16 @@ Pokevisit.Views.ListingAbout = Backbone.CompositeView.extend({
   //need to account if current user is viewing this part
   className: "listing-about-main container",
 
+  events: {
+    "click img.saveDesc": "saveDesc",
+    "click img.eraseDesc": "clearDesc",
+  },
+
   initialize: function(){
     this.listenTo(this.model, "sync change:description", this.render)
-    
     this.showState = "show"
 
+    //adding header to notify users they have to scroll down to edit
     $(window).scroll(function(){
       var scrollPixels = $("body").scrollTop();
       this.$("div.edit-your-page-notice").css("top", (50 - scrollPixels) + "px")
@@ -31,6 +36,21 @@ Pokevisit.Views.ListingAbout = Backbone.CompositeView.extend({
         this.$("div.edit-your-page-notice").removeClass("hide")
       }
     })
+
+  },
+
+  saveDesc: function(event){
+    var desc = this.$("textarea.listing-description-textbox").val()
+    this.model.set({ "description": desc})
+    this.model.save({},{
+      success: function(){
+
+      }.bind(this)
+    })
+  },
+
+  clearDesc: function(){
+    this.$("textarea.listing-description-textbox").val("")
   },
 
   setShowState: function(){
@@ -44,7 +64,6 @@ Pokevisit.Views.ListingAbout = Backbone.CompositeView.extend({
 
   render: function(){
     this.setShowState();
-
     var images = this.model.images().models
     var imagesLength = images.length
     var image = images[_.random(0, imagesLength - 1)]
@@ -53,8 +72,9 @@ Pokevisit.Views.ListingAbout = Backbone.CompositeView.extend({
       listing: this.model,
       image: image
     })
-    this.$el.html(renderedContent)
 
+    this.$el.html(renderedContent)
     return this;
   }
 })
+;
