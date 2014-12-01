@@ -213,11 +213,34 @@ div.edit-your-page-notice{
   color:#fff;
   font-size:22px;
   opacity: 1;
-  transition: all 1s ease;
+  transition: opacity 0.5s ease-in-out;
 }
 div.edit-your-page-notice.fade{
   opacity:0;
 }
 div.edit-your-page-notice.hide{
   display:hidden;
+}
+
+textarea.listing-description-textbox{
+  width:100%;
+  height:60px;
+}
+div.description-buttons{
+  height:35px;
+}
+div.description-buttons div{
+  display:inline-block;
+  width:30px;
+  height:30px;
+  float:right;
+}
+
+div.description-buttons div img{
+  width:100%;
+  height:100%;
+}
+
+div.description-buttons div img:hover{
+  cursor:pointer;
 }
