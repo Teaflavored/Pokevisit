@@ -63,11 +63,9 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
       listingId: listing.id,
     });
 
-    var viewToShow;
-    _.each(this.subviews(this.listSelector), function(view){
-      if (view.model.id === listing.id){
-        viewToShow = view
-      }
+    var viewToShow = new Pokevisit.Views.ListingIndexItem({
+      model: listing,
+      _markers: this._markers
     })
     //set content, but to another view object later
 
@@ -75,7 +73,7 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
     google.maps.event.addListener(marker, "click", function(){
       var div = document.createElement('div');
       div.id = 'infowindow-listing';
-      div.appendChild(viewToShow.render().el)
+      div.appendChild(viewToShow.render().$el.get(0))
 
       window.pokevisitMapInfo.setContent(div);
       window.pokevisitMapInfo.open(window.pokevisitMap, this)
