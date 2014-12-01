@@ -20,11 +20,18 @@ Pokevisit.Views.ListingAbout = Backbone.CompositeView.extend({
 
   updateListingCheckInTime: function(event){
     var newCheckInTime = this.$("#check-in-time").val();
-
+    if (newCheckInTime != this.model.get("checkintime")){
+      this.model.set({checkintime: newCheckInTime});
+      this.model.save({},{})
+    }
   },
 
   updateListingCheckOutTime: function(event){
     var newCheckOutTime = this.$("#check-out-time").val();
+    if (newCheckOutTime != this.model.get("checkouttime")){
+      this.model.set({checkouttime: newCheckOutTime});
+      this.model.save({},{})
+    }
   },
 
   initialize: function(){

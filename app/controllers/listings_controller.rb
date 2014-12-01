@@ -39,6 +39,6 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:hometype, :roomtype, :accomodates, :description,:date_avail, :date_end, :address, :price)
+    params.require(:listing).permit(:hometype, :checkintime, :checkouttime, :roomtype, :accomodates, :description,:date_avail, :date_end, :address, :price)
   end
 end
