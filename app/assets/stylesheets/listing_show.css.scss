@@ -189,9 +189,35 @@ div.info-container{
 div.carousel-inner div.pricing.fixed-pricing{
   top:0;
   position:fixed;
+  z-index:9001;
 }
 
 div.show-request.fixed-request{
   top:40px;
   position:fixed;
+  z-index:9001;
+}
+
+div.datepicker.dropdown-menu{
+  z-index:9999;
+}
+
+div.edit-your-page-notice{
+  text-align:left;
+  width:100%;
+  left:0;
+  position:fixed;
+  top:50px;
+  background:rgba(60, 63, 64, 0.9);
+  height:40px;
+  color:#fff;
+  font-size:22px;
+  opacity: 1;
+  transition: all 1s ease;
+}
+div.edit-your-page-notice.fade{
+  opacity:0;
+}
+div.edit-your-page-notice.hide{
+  display:hidden;
 }
