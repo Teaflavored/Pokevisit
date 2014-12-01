@@ -1,6 +1,5 @@
 <img class="listing-show-img" src='<%= user ? user.get("image_url") : "/assets/user_image_placeholder.jpg" %>'>
 <h3 class="user-email"><%= user ? user.get("email") : "placeholder@placeholder.com" %></h3>
-<h3 class="summary-description"><%= listing.escape("address") %></h3>
 
 <div class="date-avail-label">Date Available</div>
 <% var dateIn = new Date(listing.get("date_avail")) %>
