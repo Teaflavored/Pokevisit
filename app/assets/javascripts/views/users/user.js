@@ -1,12 +1,15 @@
 Pokevisit.Views.User = Backbone.CompositeView.extend({
   template: JST["users/user"],
 
+  className: "user-profile-view",
+
   initialize: function(){
     this.setFilepicker();
   },
 
   events: {
-    "click button.change-profile-picture": "uploadPicture"
+    "click h1.change-profile-picture": "uploadPicture",
+    "click img.profile-picture-pic": "uploadPicture"
   },
 
   setFilepicker: function(){
@@ -24,6 +27,7 @@ Pokevisit.Views.User = Backbone.CompositeView.extend({
       userImage.save({}, {
         success: function(){
           $("img.header-img").attr("src", userImage.get("url"))
+          this.$("img.profile-picture-pic").attr("src", userImage.get("url"))
         }
       })
       //update header
