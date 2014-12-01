@@ -13,7 +13,18 @@ Pokevisit.Views.ListingAbout = Backbone.CompositeView.extend({
   events: {
     "click img.saveDesc": "saveDesc",
     "click img.eraseDesc": "clearDesc",
-    "keyup textarea.listing-description-textbox": "descriptionPreview"
+    "keyup textarea.listing-description-textbox": "descriptionPreview",
+    "changeTime #check-in-time": "updateListingCheckInTime",
+    "changeTime #check-out-time": "updateListingCheckOutTime"
+  },
+
+  updateListingCheckInTime: function(event){
+    var newCheckInTime = this.$("#check-in-time").val();
+
+  },
+
+  updateListingCheckOutTime: function(event){
+    var newCheckOutTime = this.$("#check-out-time").val();
   },
 
   initialize: function(){
@@ -73,6 +84,15 @@ Pokevisit.Views.ListingAbout = Backbone.CompositeView.extend({
     }
   },
 
+  attachTimepicker: function(){
+    this.$("#check-in-time").timepicker({'setTime': '1:00pm'});
+    this.$("#check-out-time").timepicker();
+    if (this.model.get("checkintime") && this.model.get("checkouttime")){
+      this.$("#check-in-time").timepicker('setTime', this.model.get("checkintime"))
+      this.$("#check-out-time").timepicker('setTime', this.model.get("checkouttime") )
+    }
+  },
+
   render: function(){
     this.setShowState();
     var images = this.model.images().models
@@ -87,6 +107,11 @@ Pokevisit.Views.ListingAbout = Backbone.CompositeView.extend({
     })
 
     this.$el.html(renderedContent)
+
+    setTimeout(function(){
+      this.attachTimepicker()
+    }.bind(this),0)
+
     return this;
   }
 })

@@ -21,6 +21,7 @@ class Listing < ActiveRecord::Base
   #geocode address
   geocoded_by :address, latitude: :lat, longitude: :lng
   after_validation :geocode
+  after_initialize :get_check_in_check_out_times
 
   belongs_to :user
   has_many :listing_images
@@ -28,5 +29,12 @@ class Listing < ActiveRecord::Base
 
   def self.all_except_current_user(user)
     Listing.where("user_id != ?", user.id)
+  end
+
+  private
+
+  def get_check_in_check_out_times
+    self.checkintime ||= "12:00pm"
+    self.checkouttime ||= "6:00pm"
   end
 end

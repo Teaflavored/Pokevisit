@@ -20,6 +20,7 @@
 //= require bootstrap-datepicker
 //= require bootstrap-select.min
 //= require jquery.serializejson.min
+//= require jquery.timepicker
 //= require pokevisit
 //= require_tree ../templates
 //= require_tree ./models
