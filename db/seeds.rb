@@ -64,13 +64,23 @@ Listing.transaction do
     create_listings_for(u2, room_types, accomodates, prices, home_types)
     create_listings_for(u3, room_types, accomodates, prices, home_types)
   end
+
   300.times do
     create_listing_images_for(u2, images)
     create_listing_images_for(u3, images)
+    create_listing_images_for(u1, images)
   end
 
   listings = Listing.all.where("user_id != ?", u1.id)
+
   200.times do
     create_reservations_for(u1, listings)
+  end
+
+  u1_listings = Listing.all.where("user_id = ? ", u1.id)
+
+  200.times do
+    create_reservations_for(u2, u1_listings)
+    create_reservations_for(u3, u1_listings)
   end
 end
