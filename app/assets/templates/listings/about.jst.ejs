@@ -17,8 +17,8 @@
       </div>
       <div class="col-xs-6">
         <div>Room: <strong class="info-info"><%= listing.escape("roomtype") %></strong></div>
-        <div>CheckIn: <strong class="info-info"></strong></div>
-        <div>CheckOut: <strong class="info-info"></strong></div>
+        <div>CheckIn: <strong class="info-info"><%= listing.escape("checkintime") %></strong></div>
+        <div>CheckOut: <strong class="info-info"><%= listing.escape("checkouttime") %></strong></div>
       </div>
     </div>
   </div>
