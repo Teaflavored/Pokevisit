@@ -9,7 +9,7 @@ Pokevisit.Views.MapMain = Backbone.CompositeView.extend({
       zoom: 10
     }
     window.pokevisitMap = this._map = new google.maps.Map(this.el, this._mapOptions)
-
+    window.pokevisitMapInfo = new google.maps.InfoWindow()
     //grabbing button
     var input = document.getElementById("form-search")
     //prevent enter submitting

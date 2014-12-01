@@ -149,6 +149,7 @@ li.listing-item{
   display:inline-block;
   width:46%;
   margin:10px;
+  height:250px;
 }
 
 div.listings-index{
@@ -293,9 +294,6 @@ div.room-label.filter-label{
   position:absolute;
 }
 
-li.listing-item{
-  height:250px;
-}
 
 div.listing-item-img{
   position:relative;
@@ -446,4 +444,14 @@ div.matches-found h1{
   font-weight:normal;
   color:#565a5c;
   font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+div#infowindow-listing{
+  width:300px;
+  height:274px;
+}
+
+div#infowindow-listing li{
+  width:85%;
+  height:85%;
 }

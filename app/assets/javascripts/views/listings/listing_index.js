@@ -40,13 +40,13 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
   },
 
   addView: function(listing){
-    this.addMarker(listing);
 
     var indexItemView = new Pokevisit.Views.ListingIndexItem({
       model: listing,
       _markers: this._markers
     })
     this.addSubview(this.listSelector, indexItemView);
+    this.addMarker(listing);
     this.updateMatches();
   },
 
@@ -61,17 +61,25 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
       position: listingLocation,
       icon: "/assets/marker.png",
       listingId: listing.id,
-      infoWindow: new google.maps.InfoWindow()
     });
 
-
+    var viewToShow;
+    _.each(this.subviews(this.listSelector), function(view){
+      if (view.model.id === listing.id){
+        viewToShow = view
+      }
+    })
     //set content, but to another view object later
-    marker.infoWindow.setContent(listing.get("roomtype"))
-
 
     //open window
     google.maps.event.addListener(marker, "click", function(){
-      marker.infoWindow.open(window.pokevisitMap, marker)
+      var div = document.createElement('div');
+      div.id = 'infowindow-listing';
+      div.appendChild(viewToShow.render().el)
+
+      window.pokevisitMapInfo.setContent(div);
+      window.pokevisitMapInfo.open(window.pokevisitMap, this)
+      window.pokevisitMap.panTo(listingLocation)
     })
 
     this._markers.push(marker)
