@@ -2,6 +2,7 @@ Pokevisit.Views.ListingShow = Backbone.CompositeView.extend({
   template: JST["listings/show"],
 
   initialize: function(options){
+
     this.listenTo(this.model, "sync", this.render)
     this.summarySelector = "div.show-summary"
     this.requestSelector = "div.show-request"
