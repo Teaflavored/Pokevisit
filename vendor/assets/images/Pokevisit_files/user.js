@@ -1,2 +1,0 @@
-(function() { this.JST || (this.JST = {}); this.JST["users/user"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<h1 class="change-profile-picture">Change Your Profile Picture!</h1>\n<div class="profile-picture">\n  <div class="profile-picture-holder">\n    <img class="profile-picture-pic" src=\n    \'',  user ? user.escape("image_url") : "/assets/user_image_placeholder.jpg" ,'\'>\n  </div>\n</div>\n');}return __p.join('');};
-}).call(this);

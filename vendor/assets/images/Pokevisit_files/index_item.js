@@ -1,2 +1,0 @@
-(function() { this.JST || (this.JST = {}); this.JST["listings/index_item"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<div class="listing-item-img">\n  <div class="listing-item-price"><h6>$</h6><span class="price">',  listing.get("price") ,'</span></div>\n\n\n</div>\n<div class="listing-item-description-div">\n  <div class="listing-item-description"><a href="#/listings/',  listing.id ,'">',  listing.escape("address") ,'</a></div>\n</div>\n');}return __p.join('');};
-}).call(this);
