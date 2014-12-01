@@ -29,6 +29,17 @@ Pokevisit.Views.ListingShow = Backbone.CompositeView.extend({
       model: this.model
     })
     this.addSubview(this.reviewSelector, reviewView)
+
+    $(window).scroll(function(){
+      var scrollPixels = $("body").scrollTop();
+      if (scrollPixels > 513){
+        this.$("div.pricing").addClass("fixed-pricing")
+        this.$("div.show-request").addClass("fixed-request")
+      } else {
+        this.$("div.pricing").removeClass("fixed-pricing")
+        this.$("div.show-request").removeClass("fixed-request")
+      }
+    })
   },
 
   render: function(){

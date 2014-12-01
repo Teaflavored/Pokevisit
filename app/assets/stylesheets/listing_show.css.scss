@@ -185,3 +185,13 @@ strong.info-info{
 div.info-container{
   height:90px;
 }
+
+div.carousel-inner div.pricing.fixed-pricing{
+  top:0;
+  position:fixed;
+}
+
+div.show-request.fixed-request{
+  top:40px;
+  position:fixed;
+}
