@@ -454,3 +454,11 @@ div#infowindow-listing li{
   width:85%;
   height:85%;
 }
+
+ul.nav.navbar-nav li img{
+  margin-top:0px;
+}
+
+.navbar .nav > li > a.dropdown-toggle{
+  padding-bottom:0px;
+}
