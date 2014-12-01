@@ -1,4 +1,4 @@
-<img src='<%= user ? user.get("image_url") : "/assets/user_image_placeholder.jpg" %>'>
+<img class="listing-show-img" src='<%= user ? user.get("image_url") : "/assets/user_image_placeholder.jpg" %>'>
 <h3 class="user-email"><%= user ? user.get("email") : "placeholder@placeholder.com" %></h3>
 <h3 class="summary-description"><%= listing.escape("address") %></h3>
 
@@ -26,4 +26,6 @@
   </time>
 </div>
 
-<p class="summary-location"><%= listing.escape("address") %></p>
+
+<div class="address-label">Address:</div>
+<div class="summary-location">asdfasdf<%= listing.escape("address") %></div>
