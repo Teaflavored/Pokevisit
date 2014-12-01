@@ -120,7 +120,7 @@ div.show-about{
   width:100%;
   border-top:1px solid #dce0e0;
   background:#f5f5f5;
-  min-height:700px;
+  min-height:1300px;
 }
 
 div.show-container.container{
@@ -139,7 +139,7 @@ div.summary-location{
 }
 
 div.listing-about-main.container{
-  color:#333333;
+  color:#565a5c;
   margin-top:20px;
   position:relative;
   width:83%;
@@ -158,9 +158,30 @@ div.about-content{
 }
 
 div.about-content div.about-img{
-  width:85%;
+  margin-top:20px;
+  width:100%;
+  margin-bottom:30px;
 }
 
 div.about-content div.about-img img{
   width:100%;
+}
+
+hr{
+  margin-top:15px;
+  margin-bottom:15px;
+  border:0;
+  border-top:1px solid #dce0e0;
+}
+
+div.info-label{
+  font-size:14px;
+}
+
+strong.info-info{
+  font-size:1.2em;
+}
+
+div.info-container{
+  height:90px;
 }
