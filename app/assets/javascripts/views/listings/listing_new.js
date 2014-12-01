@@ -89,6 +89,8 @@ Pokevisit.Views.ListingNew = Backbone.CompositeView.extend({
       this.model.save({},{
         success: function(){
 
+          Pokevisit.ownListings.add(this.model)
+
           var successCB = function(modelId){
             //need to edit to your listings later or add options if it's your listing
             Backbone.history.navigate("#/listings/" + modelId, { trigger: true })
