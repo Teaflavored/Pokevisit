@@ -5,6 +5,7 @@ Pokevisit.Views.User = Backbone.CompositeView.extend({
 
   initialize: function(){
     this.setFilepicker();
+    this.listenTo(Pokevisit.allUserImages, "sync", this.render)
   },
 
   events: {
@@ -22,9 +23,8 @@ Pokevisit.Views.User = Backbone.CompositeView.extend({
   uploadPicture: function(){
     filepicker.pick(function(Blob){
       //update the picture
-      var userImage = Pokevisit.allUserImages.findWhere({user_id: Pokevisit.currentUserId})
-      userImage.set({url: Blob.url})
-      userImage.save({}, {
+      this.userImage.set({url: Blob.url})
+      this.userImage.save({}, {
         success: function(){
           $("img.header-img").attr("src", userImage.get("url"))
           this.$("img.profile-picture-pic").attr("src", userImage.get("url"))
@@ -36,7 +36,11 @@ Pokevisit.Views.User = Backbone.CompositeView.extend({
 
   render: function(){
     this.setFilepicker();
-    var renderedContent = this.template()
+    this.userImage = Pokevisit.allUserImages.findWhere({user_id: Pokevisit.currentUserId})
+
+    var renderedContent = this.template({
+      image: this.userImage
+    })
     this.$el.html(renderedContent)
 
     return this;
