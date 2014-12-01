@@ -15,7 +15,7 @@
 
 
 <div class="reservation-image">
-  <img src='<%= img.escape("url") %>'>
+  <img src='<%= img ? img.escape("url") : "/assets/user_image_placeholder.jpg" %>'>
 </div>
 
 <div class="reservation-description"><%= listing.get("address") %></div>

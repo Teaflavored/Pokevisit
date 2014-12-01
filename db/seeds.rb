@@ -38,8 +38,8 @@ end
 
 def create_reservations_for(user, listings)
   listing = listings.sample
-  start_date = Faker::Date.between(listing.date_avail, listing.date_end)
-  end_date = listing.date_end
+  start_date = Faker::Date.between(listing.date_avail, listing.date_end - 1.day)
+  end_date = start_date + 1.day
   user.reservations.create(listing: listing,
                        start_date: start_date,
                        end_date: end_date)

@@ -25,7 +25,7 @@
 
 <div class="reservation-user-info">User</div>
 <div class="reservation-user-img">
-  <img src='<%= image.escape("url") %>' alt="IMG" class="reservation-user-img-icon">
+  <img src='<%= user.escape("image_url") %>' alt="IMG" class="reservation-user-img-icon">
 </div>
 
 <button class="approve-reservation btn" data-reservation=<%= reservation.id %> >Approve</button>
