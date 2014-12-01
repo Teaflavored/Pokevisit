@@ -1,4 +1,8 @@
-<div class="edit-your-page-notice">Scroll Down and Edit Your Listing's Information</div>
+<% if (showNotice) { %>
+  <div class="edit-your-page-notice">Scroll Down and Edit Your Listing's Information</div>
+<% } %>
+
+
 <div class="about-content">
   <h1>About This Listing</h1>
   <% var description = listing.escape("description") ? listing.escape("description") : "The guest apartment has its own entrance located on the ground level of our home. The private apartment is 720 sq and has 8 ft ceilings. The living room and kitchen are new and the bath and the two bedrooms are remodeled."%>

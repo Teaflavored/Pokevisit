@@ -166,8 +166,8 @@ Pokevisit.Views.ListingRequest = Backbone.CompositeView.extend({
   },
 
   render: function(){
-      var renderedContent = this.template({
-      listing: this.model
+    var renderedContent = this.template({
+      listing: this.model,
     });
 
     this.$el.html(renderedContent);

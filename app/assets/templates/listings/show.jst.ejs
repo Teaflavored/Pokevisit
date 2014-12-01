@@ -15,7 +15,7 @@
       </div>
     <% }) %>
 
-    <div class="pricing">
+    <div class="pricing <%= addFixed ? "fixed-pricing" : "" %>">
       <div class="price">$ <%= listing.get("price") %></div>
       <div class="per-night">Per Night</div>
     </div>
@@ -39,7 +39,7 @@
 
   </div>
 
-  <div class="show-request">
+  <div class="show-request <%= addFixed ? "fixed-request" : "" %> ">
 
   </div>
 </div>

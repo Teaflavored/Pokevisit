@@ -67,10 +67,12 @@ Pokevisit.Views.ListingAbout = Backbone.CompositeView.extend({
     var images = this.model.images().models
     var imagesLength = images.length
     var image = images[_.random(0, imagesLength - 1)]
-
+    var showNotice = $("body").scrollTop() > 0 ? false : true;
+    
     var renderedContent = this.template()({
       listing: this.model,
-      image: image
+      image: image,
+      showNotice: showNotice
     })
 
     this.$el.html(renderedContent)

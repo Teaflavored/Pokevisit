@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201172829) do
+ActiveRecord::Schema.define(version: 20141201225012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,18 +26,19 @@ ActiveRecord::Schema.define(version: 20141201172829) do
   add_index "listing_images", ["listing_id"], name: "index_listing_images_on_listing_id", using: :btree
 
   create_table "listings", force: true do |t|
-    t.integer  "user_id",     null: false
-    t.string   "hometype",    null: false
-    t.string   "roomtype",    null: false
-    t.integer  "accomodates", null: false
+    t.integer  "user_id",                                             null: false
+    t.string   "hometype",                                            null: false
+    t.string   "roomtype",                                            null: false
+    t.integer  "accomodates",                                         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.float    "lat",         null: false
-    t.float    "lng",         null: false
-    t.integer  "price",       null: false
+    t.float    "lat",                                                 null: false
+    t.float    "lng",                                                 null: false
+    t.integer  "price",                                               null: false
     t.datetime "date_avail"
     t.datetime "date_end"
     t.string   "address"
+    t.text     "description", default: "What a great place to live!"
   end
 
   add_index "listings", ["accomodates"], name: "index_listings_on_accomodates", using: :btree

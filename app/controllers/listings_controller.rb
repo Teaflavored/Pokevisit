@@ -20,6 +20,15 @@ class ListingsController < ApplicationController
     end
   end
 
+  def update
+    @listing = Listing.find(params[:id])
+    if @listing.update(listing_params)
+      render :show
+    else
+      render json: @listing.errors.full_messages, status: 422
+    end
+  end
+
   def own_listings
     #get list of user's own listings then ride off of index json
     #use for approve and deny
@@ -30,6 +39,6 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:hometype, :roomtype, :accomodates, :date_avail, :date_end, :address, :price)
+    params.require(:listing).permit(:hometype, :roomtype, :accomodates, :description,:date_avail, :date_end, :address, :price)
   end
 end

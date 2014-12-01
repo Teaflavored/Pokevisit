@@ -43,9 +43,14 @@ Pokevisit.Views.ListingShow = Backbone.CompositeView.extend({
   },
 
   render: function(){
+    if ($("div.pricing").hasClass("fixed-pricing")){
+      var addFixed = true;
+    }
+
     var renderedContent = this.template({
       listing: this.model,
-      images: this.model.images()
+      images: this.model.images(),
+      addFixed: addFixed,
     })
 
     this.$el.html(renderedContent);
