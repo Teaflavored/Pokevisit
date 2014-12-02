@@ -13,6 +13,8 @@ Pokevisit.Views.ListingAbout = Backbone.CompositeView.extend({
   events: {
     "click img.saveDesc": "saveDesc",
     "click img.eraseDesc": "clearDesc",
+    "click img.saveDescSummary": "saveDescSummary",
+    "click img.eraseDescSummary": "clearDescSummary",
     "keyup textarea.listing-description-textbox": "descriptionPreview",
     "changeTime #check-in-time": "updateListingCheckInTime",
     "changeTime #check-out-time": "updateListingCheckOutTime"
@@ -35,7 +37,7 @@ Pokevisit.Views.ListingAbout = Backbone.CompositeView.extend({
   },
 
   initialize: function(){
-    this.listenTo(this.model, "sync change:description", this.render)
+    this.listenTo(this.model, "sync change:description change:description_summary", this.render)
     this.showState = "show"
 
     //adding header to notify users they have to scroll down to edit
@@ -72,6 +74,15 @@ Pokevisit.Views.ListingAbout = Backbone.CompositeView.extend({
     this.$("textarea.listing-description-textbox").val("")
   },
 
+  saveDescSummary: function(event){
+    var desc = this.$("textarea.listing-description-summary-textbox").val()
+    this.model.set({"description_summary": desc})
+    this.model.save({},{})
+  },
+
+  clearDescSummary: function(){
+    this.$("textarea.listing-description-summary-textbox").val("")
+  },
 
   setShowState: function(){
     if (this.model.get("user_id") === Pokevisit.currentUserId){
