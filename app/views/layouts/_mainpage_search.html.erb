@@ -35,19 +35,31 @@
 </div>
 
 <link href="/assets/bootstrap-select.min.css" rel="stylesheet" type="text/css">
+<link href="/assets/datepicker.css" rel="stylesheet" type="text/css">
 <script src="/assets/bootstrap-select.min"></script>
+<script src="/assets/bootstrap-datepicker"></script>
 <script>
   $(function(){
+
+    var mainSearchData = {
+      checkin: "",
+      checkout: "",
+      location: "",
+      guests: 1,
+    }
+
     $("select#guests").selectpicker();
     var placeSearch = document.getElementById("location")
 
     var autoComplete = new google.maps.places.Autocomplete(placeSearch);
 
     google.maps.event.addListener(autoComplete, "place_changed", function(){
-      console.log(autoComplete.getPlace())
+      mainSearchData.location = autoComplete.getPlace();
     })
     //need to grab all the data, store it in window var then use it when starting up backbone
     $("button#submit_location").on("click", function(event){
+      //grab all the main search Data in window object
+
       event.preventDefault();
       var $form_modal = $('.cd-user-modal'),
       $form_login = $form_modal.find('#cd-login'),
@@ -66,6 +78,48 @@
       $form_forgot_password.removeClass('is-selected');
       $tab_login.addClass('selected');
       $tab_signup.removeClass('selected');
+
+      var queryString = "?checkin=" + mainSearchData.checkin.valueOf() + "?checkout=" + mainSearchData.checkout.valueOf() +
+                        "?lat=" + mainSearchData.location.geometry.location.lat() +
+                        "?lng=" + mainSearchData.location.geometry.location.lng() +
+                        "?guests=" + mainSearchData.guests
+
+      $("#main-modal-login").attr("data-query", queryString)
+    })
+
+    var nowTemp = new Date();
+    var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+    var checkin = $('#checkin').datepicker({
+      onRender: function(date) {
+        return date.valueOf() < now.valueOf() ? 'disabled' : '';
+      }
+    }).on('changeDate', function(ev) {
+
+      //need to trigger for checkin
+      mainSearchData.checkin = ev.date
+      if (ev.date.valueOf() > checkout.date.valueOf()) {
+        var newDate = new Date(ev.date)
+        newDate.setDate(newDate.getDate() + 1);
+        checkout.setValue(newDate);
+        mainSearchData.checkout = newDate
+      }
+      checkin.hide();
+      $('#checkout')[0].focus();
+    }.bind(this)).data('datepicker');
+    var checkout = $('#checkout').datepicker({
+      onRender: function(date) {
+        return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+      }
+    }).on('changeDate', function(ev) {
+
+      checkout.hide();
+      //need to trigger for checkout
+      mainSearchData.checkout = ev.date
+    }.bind(this)).data('datepicker');
+
+    $("#guests").on("change", function(event){
+      mainSearchData.guests = $(event.currentTarget).val();
     })
   })
 </script>

@@ -10,6 +10,7 @@ Pokevisit.Views.MapMain = Backbone.CompositeView.extend({
       zoom: 10
     }
     window.pokevisitMap = this._map = new google.maps.Map(this.el, this._mapOptions)
+
     window.pokevisitMapInfo = new google.maps.InfoWindow()
     //grabbing button
     var input = document.getElementById("form-search")
@@ -52,8 +53,8 @@ Pokevisit.Views.MapMain = Backbone.CompositeView.extend({
   handleMapMove: function(){
     //when map moves, need to update collection
     var bounds = this._map.getBounds()
-    latRange = [bounds.Ea.k, bounds.Ea.j]
-    lngRange = [bounds.va.j, bounds.va.k]
+    latRange = [bounds.Fa.k, bounds.Fa.j]
+    lngRange = [bounds.wa.j, bounds.wa.k]
 
     Pokevisit.filteredListings.trigger("filterResult", {
       "filter": "location",

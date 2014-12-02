@@ -116,12 +116,7 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
       },
 
       checkin: function(listing){
-        if (new Date(listing.get("date_avail")) < this._currentDate){
-          //if date available is before current date, don't show it
-          return false;
-        } else {
           return true;
-        }
       },
 
       checkout: function(listing){
