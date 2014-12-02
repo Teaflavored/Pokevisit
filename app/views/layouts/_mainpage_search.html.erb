@@ -1,7 +1,7 @@
 <div class="main-page-search">
   <form id="search_form">
     <div class="location-wrapper">
-      <input type="text" class="" autocomplete="off" id="location" name="location" placeholder="Where do you want to go?">
+      <input type="text" id="location" name="location" placeholder="Where do you want to go?">
       <p id="enter_location_error_message" class="bad hide">
       Please set location
       </p>
@@ -38,6 +38,34 @@
 <script src="/assets/bootstrap-select.min"></script>
 <script>
   $(function(){
-    $("select#guests").selectpicker()
+    $("select#guests").selectpicker();
+    var placeSearch = document.getElementById("location")
+
+    var autoComplete = new google.maps.places.Autocomplete(placeSearch);
+
+    google.maps.event.addListener(autoComplete, "place_changed", function(){
+      console.log(autoComplete.getPlace())
+    })
+    //need to grab all the data, store it in window var then use it when starting up backbone
+    $("button#submit_location").on("click", function(event){
+      event.preventDefault();
+      var $form_modal = $('.cd-user-modal'),
+      $form_login = $form_modal.find('#cd-login'),
+      $form_signup = $form_modal.find('#cd-signup'),
+      $form_forgot_password = $form_modal.find('#cd-reset-password'),
+      $form_modal_tab = $('.cd-switcher'),
+      $tab_login = $form_modal_tab.children('li').eq(0).children('a'),
+      $tab_signup = $form_modal_tab.children('li').eq(1).children('a'),
+      $forgot_password_link = $form_login.find('.cd-form-bottom-message a'),
+      $back_to_login_link = $form_forgot_password.find('.cd-form-bottom-message a')
+
+      $form_modal.addClass('is-visible')
+
+      $form_login.addClass('is-selected');
+      $form_signup.removeClass('is-selected');
+      $form_forgot_password.removeClass('is-selected');
+      $tab_login.addClass('selected');
+      $tab_signup.removeClass('selected');
+    })
   })
 </script>
