@@ -1,5 +1,6 @@
 Pokevisit.Routers.AppRouter = Backbone.Router.extend({
   routes: {
+    "?checkin=:checkin&checkout=:checkout&lat=:lat&lng=:lng&guests=:guests": "main",
     "": "main",
     "own_listings": "indexYourListings",
     "reservations": "showReservations",
@@ -19,7 +20,9 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
     })
   },
 
-  main: function(){
+  main: function(checkin){
+    //how to get query params here 
+    // need to pass queries to main view and to listing index to change filter settings inside index init
     var mainView = new Pokevisit.Views.MainView()
     this._swapView(mainView)
   },

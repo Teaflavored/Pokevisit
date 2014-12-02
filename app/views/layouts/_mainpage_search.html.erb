@@ -42,11 +42,14 @@
   $(function(){
 
     var mainSearchData = {
-      checkin: "",
-      checkout: "",
-      location: "",
+      checkin: null,
+      checkout: null,
+      location: null,
       guests: 1,
     }
+
+    //so we can use it in other places
+    window.initialSearchData = mainSearchData;
 
     $("select#guests").selectpicker();
     var placeSearch = document.getElementById("location")
@@ -79,12 +82,13 @@
       $tab_login.addClass('selected');
       $tab_signup.removeClass('selected');
 
-      var queryString = "?checkin=" + mainSearchData.checkin.valueOf() + "?checkout=" + mainSearchData.checkout.valueOf() +
-                        "?lat=" + mainSearchData.location.geometry.location.lat() +
-                        "?lng=" + mainSearchData.location.geometry.location.lng() +
-                        "?guests=" + mainSearchData.guests
+      window.initialQueryString = "?checkin=" + (mainSearchData.checkin ? mainSearchData.checkin.valueOf() : "null") +
+                                  "&checkout=" + (mainSearchData.checkout ? mainSearchData.checkout.valueOf() : "null") +
+                                  "&lat=" + (mainSearchData.location ? mainSearchData.location.geometry.location.lat() : "null") +
+                                  "&lng=" + (mainSearchData.location ? mainSearchData.location.geometry.location.lng() : "null") +
+                                  "&guests=" + mainSearchData.guests
 
-      $("#main-modal-login").attr("data-query", queryString)
+      $("#main-modal-login").attr("data-query", window.initialQueryString)
     })
 
     var nowTemp = new Date();
@@ -103,6 +107,7 @@
         newDate.setDate(newDate.getDate() + 1);
         checkout.setValue(newDate);
         mainSearchData.checkout = newDate
+        debugger
       }
       checkin.hide();
       $('#checkout')[0].focus();

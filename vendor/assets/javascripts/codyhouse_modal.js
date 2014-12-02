@@ -74,6 +74,7 @@ jQuery(document).ready(function($){
     $form_forgot_password.removeClass('is-selected');
     $tab_login.addClass('selected');
     $tab_signup.removeClass('selected');
+
   }
 
   function signup_selected(){
