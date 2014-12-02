@@ -1,7 +1,18 @@
 Pokevisit.Views.YourListingsItem = Backbone.CompositeView.extend({
   template: JST["listings/your_listings_item"],
 
-  className: "your-listing-item",
+  className: function(){
+    var classString = "your-listing-item "
+    var randomN = Math.random();
+    if (randomN < 0.4) {
+      classString += "item"
+    } else if (randomN < 0.8){
+      classString += "itemw2"
+    } else {
+      classString += "itemw3"
+    }
+    return classString
+  },
 
   events: {
     "click button.edit-listing": "showListing",
@@ -25,7 +36,23 @@ Pokevisit.Views.YourListingsItem = Backbone.CompositeView.extend({
       image: image
     })
     this.$el.html(renderedContent)
+    this.$(".flipbook").flip({
+      axis: 'x',
+      trigger: 'hover'
+    })
 
+    setTimeout(function(){
+      $("div.flip").css("width", "100%")
+      $("div.flip").css("height", "100%")
+
+      $("#listing-container").imagesLoaded( function(){
+        $("#listing-container").masonry({
+          columnWidth: 0,
+          itemSelector: '.item'
+        });
+      })
+
+    }, 0)
     return this;
   }
 

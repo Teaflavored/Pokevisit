@@ -6,6 +6,7 @@ Pokevisit.Views.YourListings = Backbone.CompositeView.extend({
     this.listenTo(this.collection, "add", this.addView)
     this.listenTo(this.collection, "remove", this.removeView)
 
+
     this.collection.each(function(listing){
       this.addView(listing)
     }.bind(this))
@@ -16,6 +17,16 @@ Pokevisit.Views.YourListings = Backbone.CompositeView.extend({
       model: listing
     })
     this.addSubview(this.listingItemsSelector, listingItemView)
+  },
+
+  attachSubview: function (selector, subview) {
+    this.$(this.listingItemsSelector).masonry()
+    this.$(selector).append(subview.$el).masonry('appended', subview.$el);
+    subview.delegateEvents();
+
+    if (subview.attachSubviews) {
+      subview.attachSubviews();
+    }
   },
 
   removeView: function(listing){
@@ -30,7 +41,7 @@ Pokevisit.Views.YourListings = Backbone.CompositeView.extend({
     var renderedContent = this.template();
     this.$el.html(renderedContent);
     this.attachSubviews();
-
+    this.$(this.listingItemsSelector).masonry()
     return this;
   }
 

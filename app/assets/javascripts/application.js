@@ -21,6 +21,9 @@
 //= require bootstrap-select.min
 //= require jquery.serializejson.min
 //= require jquery.timepicker
+//= require jquery.flip
+//= require masonry.pkgd.min
+//= require imagesloaded.pkgd.min
 //= require pokevisit
 //= require_tree ../templates
 //= require_tree ./models
