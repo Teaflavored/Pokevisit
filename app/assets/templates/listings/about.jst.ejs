@@ -24,37 +24,27 @@
   </div>
 
   <hr>
-
   <div class="price-information info-container">
-    <div class="col-xs-3 info-label"><strong>The Space</strong></div>
+    <div class="col-xs-3 info-label"><strong>Price</strong></div>
     <div class="col-xs-9">
       <div class="col-xs-6">
-        <div>Home: <strong class="info-info"><%= listing.escape("hometype") %></strong></div>
-        <div>Accomodates: <strong class="info-info"><%= listing.escape("accomodates") %></strong></div>
+        <div>Weekly Price: $ <strong class="info-info"><%= listing.get("price") * 7 %></strong></div>
       </div>
       <div class="col-xs-6">
-        <div>Room: <strong class="info-info"><%= listing.escape("roomtype") %></strong></div>
-        <div>CheckIn: <strong class="info-info"></strong></div>
-        <div>CheckOut: <strong class="info-info"></strong></div>
+        <div>Monthly Price: $ <strong class="info-info"><%= listing.get("price") * 30 %></strong></div>
       </div>
     </div>
   </div>
 
 
+
   <hr>
 
-  <div class="price-information info-container">
-    <div class="col-xs-3 info-label"><strong>The Space</strong></div>
+    <div class="more-description-information info-container">
+    <div class="col-xs-3 info-label"><strong>Description</strong></div>
     <div class="col-xs-9">
-      <div class="col-xs-6">
-        <div>Home: <strong class="info-info"><%= listing.escape("hometype") %></strong></div>
-        <div>Accomodates: <strong class="info-info"><%= listing.escape("accomodates") %></strong></div>
-      </div>
-      <div class="col-xs-6">
-        <div>Room: <strong class="info-info"><%= listing.escape("roomtype") %></strong></div>
-        <div>CheckIn: <strong class="info-info"></strong></div>
-        <div>CheckOut: <strong class="info-info"></strong></div>
-      </div>
+    <% var descriptionSummary = listing.escape("description_summary") ? listing.escape("description_summary") : "The guest apartment has its own entrance located on the ground level of our home. The private apartment is 720 sq and has 8 ft ceilings. The living room and kitchen are new and the bath and the two bedrooms are remodeled."%>
+      <div class="col-xs-12"><%= descriptionSummary%></div>
     </div>
   </div>
 

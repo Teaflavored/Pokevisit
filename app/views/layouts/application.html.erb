@@ -11,8 +11,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render "layouts/header" %>
-<%= yield %>
 
+<div class="background-wrapper">
+  <%= render "layouts/header" %>
+  <%= yield %>
+
+  <% if !logged_in? %>
+    <%= render "layouts/mainpage_search"%>
+  <% end %>
+</div>
+<% if !logged_in? %>
+  <%= render "layouts/mainpage_bottom" %>
+<% end %>
 </body>
 </html>
