@@ -82,7 +82,7 @@
       $tab_login.addClass('selected');
       $tab_signup.removeClass('selected');
 
-      window.initialQueryString = "?checkin=" + (mainSearchData.checkin ? mainSearchData.checkin.valueOf() : "null") +
+      window.initialQueryString = "#checkin=" + (mainSearchData.checkin ? mainSearchData.checkin.valueOf() : "null") +
                                   "&checkout=" + (mainSearchData.checkout ? mainSearchData.checkout.valueOf() : "null") +
                                   "&lat=" + (mainSearchData.location ? mainSearchData.location.geometry.location.lat() : "null") +
                                   "&lng=" + (mainSearchData.location ? mainSearchData.location.geometry.location.lng() : "null") +
@@ -107,7 +107,6 @@
         newDate.setDate(newDate.getDate() + 1);
         checkout.setValue(newDate);
         mainSearchData.checkout = newDate
-        debugger
       }
       checkin.hide();
       $('#checkout')[0].focus();

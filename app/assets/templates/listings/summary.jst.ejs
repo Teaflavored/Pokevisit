@@ -3,7 +3,7 @@
 
 <div class="date-avail-label">Date Available</div>
 <% var dateIn = new Date(listing.get("date_avail")) %>
-<% dateIn.setDate(dateIn.getDate() + 1) %>
+<% dateIn.setDate(dateIn.getDate()) %>
 
 <div class="date-avail">
   <time class="icon">
@@ -15,7 +15,7 @@
 
 <div class="date-end-label">Date End</div>
 <% var dateOut = new Date(listing.get("date_end")) %>
-<% dateOut.setDate(dateOut.getDate() + 1) %>
+<% dateOut.setDate(dateOut.getDate()) %>
 
 <div class="date-end">
   <time  class="icon">

@@ -27,6 +27,8 @@ Pokevisit.Views.ListingIndex = Backbone.CompositeView.extend({
     this.collection.each(function(listing){
       this.addView(listing);
     }.bind(this))
+
+    //if we have query params
   },
 
   updateFilter: function(filterData){
