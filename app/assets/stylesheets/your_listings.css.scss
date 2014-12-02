@@ -10,16 +10,16 @@
 
 div.your-listing-item.item{
   height:300px;
-  width:25%;
+  width:33.33%;
 }
 
 div.your-listing-item.itemw2{
-  width:25%;
+  width:33.33%;
   height:400px;
 }
 
 div.your-listing-item.itemw3{
-  width:25%;
+  width:33.33%;
   height:500px;
 }
 
@@ -57,5 +57,13 @@ div.your-listings-header{
   text-align:center;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#565a5c;
+}
 
+div.your-listings-header h1{
+  margin-top:0px;
+}
+
+.listings-pokeball{
+  width:50px;
+  height:50px;
 }
