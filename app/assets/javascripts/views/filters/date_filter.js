@@ -105,6 +105,25 @@ Pokevisit.Views.DateFilter = Backbone.CompositeView.extend({
       if (window.initialQueryParams.guests){
         var guests = parseInt(window.initialQueryParams.guests)
         $('#select-accomodates-filter').selectpicker('val', guests)
+
+        Pokevisit.filteredListings.trigger("filterResult", {
+          "filter": "accomodates",
+          data: function(listing){
+            if (listing.get("accomodates") >= guests){
+              return true;
+            } else {
+              return false;
+            }
+          }
+
+        })
+      }
+
+      if (window.initialQueryParams.lat && window.initialQueryParams.lng &&
+          window.initialQueryParams.lat !== "null" && window.initialQueryParams.lng !== "null"){
+
+        window.pokevisitMap.setCenter({lat: parseFloat(window.initialQueryParams.lat), lng: parseFloat(window.initialQueryParams.lng)})
+        window.pokevisitMap.setZoom(15)
       }
 
       //delete them after using
