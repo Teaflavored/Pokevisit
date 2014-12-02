@@ -1,8 +1,14 @@
 <div class="main-page-search">
-  <form action= id="search_form">
-    <div class="location-wrapper"><input type="text" class="form-inline location input-large input-contrast" autocomplete="off" id="location" name="location" placeholder="Where do you want to go?"><p id="enter_location_error_message" class="bad hide">
+  <form id="search_form">
+    <div class="location-wrapper">
+      <input type="text" class="" autocomplete="off" id="location" name="location" placeholder="Where do you want to go?">
+      <p id="enter_location_error_message" class="bad hide">
       Please set location
-    </p></div><input type="text" id="checkin" class="form-inline checkin search-option input-large input-contrast ui-datepicker-target" name="checkin" placeholder="Check In"><input type="text" id="checkout" class="form-inline checkout search-option input-large input-contrast ui-datepicker-target" name="checkout" placeholder="Check Out"><div class="select select-large">
+      </p>
+    </div>
+    <input type="text" id="checkin" class="" name="checkin" placeholder="Check In">
+    <input type="text" id="checkout" name="checkout" placeholder="Check Out">
+    <div class="select select-large">
       <select id="guests" name="guests">
         <option value="1">1 Guest</option>
         <option value="2">2 Guests</option>
@@ -21,8 +27,17 @@
         <option value="15">15 Guests</option>
         <option value="16">16+ Guests</option>
       </select>
-    </div><input type="hidden" name="source" value="bb"><button type="submit" class="search-button form-inline btn btn-primary btn-large" id="submit_location">
+    </div>
+    <button type="submit" class="btn btn-primary btn-large" id="submit_location">
       Search
     </button>
   </form>
 </div>
+
+<link href="/assets/bootstrap-select.min.css" rel="stylesheet" type="text/css">
+<script src="/assets/bootstrap-select.min"></script>
+<script>
+  $(function(){
+    $("select#guests").selectpicker()
+  })
+</script>
