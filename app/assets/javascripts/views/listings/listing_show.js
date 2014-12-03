@@ -55,7 +55,7 @@ Pokevisit.Views.ListingShow = Backbone.CompositeView.extend({
 
     this.$el.html(renderedContent);
     this.attachSubviews();
-    
+
     return this;
   }
 })

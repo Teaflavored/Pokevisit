@@ -62,6 +62,7 @@ Pokevisit.Views.ListingIndexItem = Backbone.CompositeView.extend({
 
     //styling every list item, need to convert to carousel
 
+
     if(this.images.length > 0){
       this.$("div.listing-item-img").css({
         "background-image": "url(" + this.images.models[0].escape("url") + ")",

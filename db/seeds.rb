@@ -139,5 +139,5 @@ Listing.transaction do
                           description: "Come for a stay in the city, You'll enjoy it! Pika Pika~")
   pikachu.listings.first.listing_images.create(url: "/assets/light_city/light_city_1.jpg")
 
-  
+
 end

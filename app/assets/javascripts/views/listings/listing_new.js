@@ -118,6 +118,7 @@ Pokevisit.Views.ListingNew = Backbone.CompositeView.extend({
     image.save({},{
       success: function(){
         if (urls.length > 0){
+          this.model.images().add(image)
           this.createImages(listingId, urls, successCB)
         } else {
           successCB(listingId)

@@ -14,6 +14,10 @@ Pokevisit.Views.YourListingsItem = Backbone.CompositeView.extend({
     return classString
   },
 
+  initialize: function(options){
+    this.listenTo(this.model, "sync", this.render)
+  },
+
   events: {
     "click button.edit-listing": "showListing",
     "click button.show-reservations": "showListingReservations"
@@ -31,6 +35,9 @@ Pokevisit.Views.YourListingsItem = Backbone.CompositeView.extend({
 
   render: function(){
     var image = this.model.images().models[0]
+    if (!image){
+      this.model.fetch()
+    }
     var renderedContent = this.template({
       listing: this.model,
       image: image
