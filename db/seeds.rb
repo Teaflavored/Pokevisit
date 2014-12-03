@@ -118,5 +118,26 @@ Listing.transaction do
   ash.listings.second.listing_images.create(url: "/assets/plains/plains_4.jpg")
   ash.listings.second.listing_images.create(url: "/assets/plains/plains_5.jpg")
 
+  ash.listings.create(roomtype: "water",
+                      hometype: "underwater",
+                      address: "Teasure Island, San Francisco, CA",
+                      date_avail: Date.new(2014, 12, 3),
+                      date_end: Date.new(2020,1,1),
+                      price: 699,
+                      accomodates: 11,
+                      description: "Come dive under the sea to experience all the ocean has to offer!")
+  ash.listings.third.listing_images.create(url: "/assets/underwater/underwater_1.jpg")
+
+
+  pikachu.listings.create(roomtype: "city",
+                          hometype: "land",
+                          address: "3282 Mission St, San Francisco, CA, 94110",
+                          date_avail: Date.new(2014, 12, 3),
+                          date_end: Date.new(2020,1,1),
+                          price: 329,
+                          accomodates: 6,
+                          description: "Come for a stay in the city, You'll enjoy it! Pika Pika~")
+  pikachu.listings.first.listing_images.create(url: "/assets/light_city/light_city_1.jpg")
+
   
 end
