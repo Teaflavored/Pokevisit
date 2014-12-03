@@ -18,6 +18,8 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
         $("img.header-img").attr("src", Pokevisit.allUsers.findWhere({id: Pokevisit.currentUserId}).get("image_url"))
       }
     })
+
+    //set up button
   },
 
   main: function(checkin, checkout, lat, lng, guests){
@@ -29,13 +31,14 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
       lng: lng,
       guests: guests
     }
-    
+
     // need to pass queries to main view and to listing index to change filter settings inside index init
     var mainView = new Pokevisit.Views.MainView()
     this._swapView(mainView)
   },
 
   new: function(){
+    this.setUpAutoComplete()
     var listing = new Pokevisit.Models.Listing();
     var newView = new Pokevisit.Views.ListingNew({
       model: listing
@@ -44,6 +47,7 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
   },
 
   editUserProfile: function(){
+    this.setUpAutoComplete()
     var userView = new Pokevisit.Views.User()
     //need model here?
 
@@ -51,6 +55,7 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
   },
 
   showReservations: function(){
+    this.setUpAutoComplete()
     var reservationView = new Pokevisit.Views.ReservationIndex({
       collection: Pokevisit.yourPendingReservations
     })
@@ -60,6 +65,7 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
   },
 
   show: function(id){
+    this.setUpAutoComplete()
     //need to fill with show view
     var listing = Pokevisit.listings.getOrFetch(id)
     var showView = new Pokevisit.Views.ListingShow({
@@ -69,6 +75,7 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
   },
 
   indexYourListings: function(){
+    this.setUpAutoComplete()
     var yourListingsView = new Pokevisit.Views.YourListings({
       collection: Pokevisit.ownListings
     })
@@ -77,7 +84,7 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
   },
 
   reservationIndex: function(id){
-
+    this.setUpAutoComplete()
     var listing = Pokevisit.ownListings.getOrFetch(id);
     if (Pokevisit.currentUserId != listing.get("user_id")){
       return;
@@ -93,6 +100,34 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
     this._currentView && this._currentView.remove()
     this._currentView = view
     this.$rootEl.html(this._currentView.render().$el)
-  }
+  },
+
+  setUpAutoComplete: function(){
+    debugger
+    var input = document.getElementById("form-search")
+    //prevent enter submitting
+    $(input).keydown(function(event){
+      if (event.which == 13){
+        event.preventDefault();
+      }
+    })
+
+    this._autocomplete = new google.maps.places.Autocomplete(input);
+
+    google.maps.event.addListener(this._autocomplete, "place_changed", function(){
+      this.handlePlaceChange();
+    }.bind(this))
+  },
+
+  handlePlaceChange: function(){
+    var place = this._autocomplete.getPlace();
+    if (!place.geometry) {
+      return;
+    }
+    var lat = place.geometry.location.lat();
+    var lng = place.geometry.location.lng();
+    window.location.hash = "checkin=null&checkout=null&lat=" + lat +"&lng=" + lng + "&guests=1"
+
+  },
 
 })

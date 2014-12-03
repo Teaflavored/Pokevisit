@@ -41,13 +41,14 @@ Pokevisit.Views.MapMain = Backbone.CompositeView.extend({
     if (!place.geometry) {
       return;
     }
-
+      //on main page
     if (place.geometry.viewport) {
       this._map.fitBounds(place.geometry.viewport);
     } else {
       this._map.setCenter(place.geometry.location);
       this._map.setZoom(17);
     }
+
   },
 
   handleMapMove: function(){
