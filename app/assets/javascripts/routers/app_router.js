@@ -16,10 +16,14 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
     Pokevisit.allUsers.fetch({
       success: function(){
         $("img.header-img").attr("src", Pokevisit.allUsers.findWhere({id: Pokevisit.currentUserId}).get("image_url"))
-      }
+        //adjust header width after image loaded
+        
+        this.adjustHeaderDropDownWidth();
+      }.bind(this)
     })
 
     //set up button
+
   },
 
   main: function(checkin, checkout, lat, lng, guests){
@@ -128,5 +132,10 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
     Backbone.history.navigate("#/checkin=null&checkout=null&lat=" + lat +"&lng=" + lng + "&guests=1", { trigger: true })
 
   },
+
+  adjustHeaderDropDownWidth: function(){
+    var width = $("a.dropdown-toggle").css("width")
+    $("ul.dropdown-menu").css("width", width)
+  }
 
 })
