@@ -2,19 +2,24 @@
 #
 # Table name: listings
 #
-#  id          :integer          not null, primary key
-#  user_id     :integer          not null
-#  hometype    :string(255)      not null
-#  roomtype    :string(255)      not null
-#  accomodates :integer          not null
-#  created_at  :datetime
-#  updated_at  :datetime
-#  lat         :float            not null
-#  lng         :float            not null
-#  price       :integer          not null
-#  date_avail  :datetime
-#  date_end    :datetime
-#  address     :string(255)
+#  id                  :integer          not null, primary key
+#  user_id             :integer          not null
+#  hometype            :string(255)      not null
+#  roomtype            :string(255)      not null
+#  accomodates         :integer          not null
+#  created_at          :datetime
+#  updated_at          :datetime
+#  lat                 :float            not null
+#  lng                 :float            not null
+#  price               :integer          not null
+#  date_avail          :datetime
+#  date_end            :datetime
+#  address             :string(255)
+#  description         :text             default("What a great place to live!")
+#  checkintime         :string(255)
+#  checkouttime        :string(255)
+#  description_summary :text
+#
 
 class Listing < ActiveRecord::Base
   validates :user, :hometype, :roomtype, :accomodates, presence: true

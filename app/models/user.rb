@@ -8,6 +8,7 @@
 #  session_token   :string(255)      not null
 #  created_at      :datetime
 #  updated_at      :datetime
+#  image_url       :string(255)      default("/assets/default_user_pic.jpg")
 #
 
 class User < ActiveRecord::Base
@@ -17,6 +18,7 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
   # after_validation :create_user_image
+  before_save :email_down_case
 
   #associations
   has_many :listings
@@ -28,7 +30,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_by_credentials(email, password)
-    user = User.find_by(email: email)
+    user = User.find_by(email: email.downcase)
     return nil unless user && user.is_password?(password)
 
     user
@@ -58,5 +60,9 @@ class User < ActiveRecord::Base
     if(!self.user_image)
       UserImage.create(user: self)
     end
+  end
+
+  def email_down_case
+    self.email = self.email.downcase
   end
 end

@@ -123,7 +123,7 @@ Pokevisit.Views.DateFilter = Backbone.CompositeView.extend({
           window.initialQueryParams.lat !== "null" && window.initialQueryParams.lng !== "null"){
 
         window.pokevisitMap.setCenter({lat: parseFloat(window.initialQueryParams.lat), lng: parseFloat(window.initialQueryParams.lng)})
-        window.pokevisitMap.setZoom(15)
+        window.pokevisitMap.setZoom(11)
       }
 
       //delete them after using

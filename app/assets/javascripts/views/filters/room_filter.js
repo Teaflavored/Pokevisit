@@ -4,7 +4,7 @@ Pokevisit.Views.RoomFilter = Backbone.CompositeView.extend({
   className: "room-filter filter",
 
   listenToCheckBox: function(){
-    
+
     this.$("input").labelauty({
       checked_label: "Unselect",
       unchecked_label: "Select"
