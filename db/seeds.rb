@@ -60,7 +60,6 @@ Listing.transaction do
                         description: "Beautiful water area to relax for the weekend!")
 
   misty.listings.first.listing_images.create(url: "/assets/sea/sea_1.jpg")
-  misty.listings.first.listing_images.create(url: "/assets/sea/sea_2.jpg")
 
   oak.listings.create(roomtype: "plains",
                       hometype: "land",
@@ -103,8 +102,9 @@ Listing.transaction do
                         price: 49,
                         accomodates: 5,
                         description: "Legendary tower for you to view the Ho-Oh")
-  misty.listings.second.listing_images.create(url: "/assets/eruteak/eruteak_1.jpg")
-  misty.listings.second.listing_images.create(url: "/assets/eruteak/eruteak_2.png")
+
+  misty.listings.second.listing_images.create(url: "/assets/ecruteak/ecruteak_1.jpg")
+  misty.listings.second.listing_images.create(url: "/assets/ecruteak/ecruteak_2.png")
 
   ash.listings.create(roomtype: "plains",
                       hometype: "land",
@@ -116,4 +116,5 @@ Listing.transaction do
                       description: "Plains so wide your eyes can't see the end!")
   ash.listings.second.listing_images.create(url: "/assets/plains/plains_3.jpg")
   ash.listings.second.listing_images.create(url: "/assets/plains/plains_4.jpg")
+  ash.listings.second.listing_images.create(url: "/assets/plains/plains_5.jpg")
 end
