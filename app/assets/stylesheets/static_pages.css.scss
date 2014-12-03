@@ -154,3 +154,29 @@ button#submit_location{
   line-height:1.4;
   border-radius:0px;
 }
+
+
+div.front-page-big-text{
+  width:100%;
+  position:absolute;
+  top:200px;
+}
+
+div.front-page-big-text h1{
+  text-align:center;
+  text-transform:uppercase;
+  font-size:60px;
+  color:#2c3e50;
+  line-height: 1.1;
+  font-weight:900;
+  font-family:Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+div.front-page-big-text h4{
+  text-align:center;
+  color:#2c3e50;
+  line-height: 1.1;
+  font-size:18px;
+  font-weight:bold;
+  font-family:Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
