@@ -73,4 +73,47 @@ Listing.transaction do
 
   oak.listings.first.listing_images.create(url: "/assets/plains/plains_1.jpg")
   oak.listings.first.listing_images.create(url: "/assets/plains/plains_2.jpg")
+
+  gary.listings.create(roomtype: "city",
+                       hometype: "land",
+                       address: "2170 Bryant St, San Francisco, CA, 94110",
+                       date_avail: Date.new(2014, 12, 3),
+                       date_end: Date.new(2020, 1, 1),
+                       price: 499,
+                       accomodates: 16,
+                       description: "Luxurious castle because you deserve it for catching them all!")
+  gary.listings.first.listing_images.create(url: "/assets/castle/castle_1.png")
+
+  brock.listings.create(roomtype: "plains",
+                        hometype: "land",
+                        address: "406 Dewey Blvd, San Francisco, CA, 94116",
+                        date_avail: Date.new(2014, 12, 3),
+                        date_end: Date.new(2020, 1, 1),
+                        price: 333,
+                        accomodates: 6,
+                        description: "Catch a pikachu here! Everyone does :)")
+  brock.listings.second.listing_images.create(url: "/assets/viridian_forest/viridian_1.jpg")
+  brock.listings.second.listing_images.create(url: "/assets/viridian_forest/viridian_2.jpg")
+
+  misty.listings.create(roomtype: "city",
+                        hometype: "land",
+                        address: "127 Serramonte Center, Daly City, CA, 94015",
+                        date_avail: Date.new(2014, 12, 3),
+                        date_end: Date.new(2020, 1, 1),
+                        price: 49,
+                        accomodates: 5,
+                        description: "Legendary tower for you to view the Ho-Oh")
+  misty.listings.second.listing_images.create(url: "/assets/eruteak/eruteak_1.jpg")
+  misty.listings.second.listing_images.create(url: "/assets/eruteak/eruteak_2.png")
+
+  ash.listings.create(roomtype: "plains",
+                      hometype: "land",
+                      address: "3420 Judah St, San Francisco, CA, 94122",
+                      date_avail: Date.new(2014, 12, 3),
+                      date_end: Date.new(2020,1,1),
+                      price: 250,
+                      accomodates: 8,
+                      description: "Plains so wide your eyes can't see the end!")
+  ash.listings.second.listing_images.create(url: "/assets/plains/plains_3.jpg")
+  ash.listings.second.listing_images.create(url: "/assets/plains/plains_4.jpg")
 end
