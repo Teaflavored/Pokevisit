@@ -1,7 +1,9 @@
 <div class="main-page-search">
   <form id="search_form">
     <div class="location-wrapper">
-      <input type="text" id="location" name="location" placeholder="Where do you want to go?">
+      <input type="text" id="location" class="tooltip"
+             title="Type in San Francisco and select it to get started!"
+             name="location" placeholder="Where do you want to go?">
       <p id="enter_location_error_message" class="bad hide">
       Please set location
       </p>
@@ -36,11 +38,19 @@
 
 <link href="/assets/bootstrap-select.min.css" rel="stylesheet" type="text/css">
 <link href="/assets/datepicker.css" rel="stylesheet" type="text/css">
+<link href="/assets/tooltipster.css" rel="stylesheet" type="text/css">
 <script src="/assets/bootstrap-select.min"></script>
 <script src="/assets/bootstrap-datepicker"></script>
+<script src="/assets/jquery.tooltipster"></script>
+
 
 <script>
   $(function(){
+
+
+    $('.tooltip').tooltipster({
+      timer:1300,
+    })
 
     var mainSearchData = {
       checkin: null,

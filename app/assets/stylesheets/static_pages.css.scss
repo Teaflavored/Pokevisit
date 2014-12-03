@@ -121,6 +121,10 @@ form#search_form{
 #search_form input{
   height:44px;
   width:290px;
+  position:relative;
+  opacity:1;
+  font-size:16px;
+  font-family:"PT Sans", sans-serif;
 }
 
 #search_form input#checkin,
