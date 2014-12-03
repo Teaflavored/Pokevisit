@@ -27,6 +27,7 @@ $(function(){
         printChar(str, pwstr)
       },25)
     }
+
     printChar(string, pwstring)
 
 

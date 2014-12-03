@@ -43,6 +43,10 @@ Pokevisit.Views.User = Backbone.CompositeView.extend({
     })
     this.$el.html(renderedContent)
 
+    setTimeout(function(){
+      this.$(".tooltip").tooltipster();
+    },0)
+
     return this;
   }
 })

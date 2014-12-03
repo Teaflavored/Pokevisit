@@ -24,6 +24,7 @@
 //= require jquery.flip
 //= require masonry.pkgd.min
 //= require imagesloaded.pkgd.min
+//= require jquery.tooltipster
 //= require pokevisit
 //= require_tree ../templates
 //= require_tree ./models

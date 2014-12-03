@@ -1,6 +1,6 @@
 <h1 class="change-profile-picture">Change Your Profile Picture!</h1>
 <div class="profile-picture">
-  <div class="profile-picture-holder">
+  <div class="profile-picture-holder tooltip" title="Click on image to replace profile picture.">
     <img class="profile-picture-pic" src=
     '<%= user ? user.escape("image_url") : "/assets/user_image_placeholder.jpg" %>'>
   </div>
