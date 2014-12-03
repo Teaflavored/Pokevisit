@@ -117,4 +117,6 @@ Listing.transaction do
   ash.listings.second.listing_images.create(url: "/assets/plains/plains_3.jpg")
   ash.listings.second.listing_images.create(url: "/assets/plains/plains_4.jpg")
   ash.listings.second.listing_images.create(url: "/assets/plains/plains_5.jpg")
+
+  
 end
