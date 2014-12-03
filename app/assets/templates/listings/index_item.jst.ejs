@@ -1,5 +1,8 @@
 <div class="listing-item-img">
   <div class="listing-item-price"><h6>$</h6><span class="price"><%= listing.get("price") %></span></div>
+  <% if (user) { %>
+    <div class="listing-item-user-img"><img src='<%= user.get("image_url") %>'></div>
+  <% } %>
 
 
 </div>

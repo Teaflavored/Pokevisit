@@ -319,6 +319,23 @@ div.listing-item-img div.listing-item-price{
   bottom:30px;
   padding: 0px 10px;
 }
+
+div.listing-item-img div.listing-item-user-img{
+  position:absolute;
+  bottom:0;
+  right:0;
+  border:3px white solid;
+  width:55px;
+  height:55px;
+  border-radius:50%;
+}
+
+div.listing-item-img div.listing-item-user-img img{
+  border-radius:50%;
+  width:100%;
+  height:100%;
+}
+
 div.listing-item-img div.listing-item-price h6{
   display:inline-block;
 }

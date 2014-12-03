@@ -25,6 +25,7 @@ Pokevisit.Views.ListingIndexItem = Backbone.CompositeView.extend({
   initialize: function(options){
     this._markers = options._markers
     this.listenTo(this.model, "sync", this.render)
+    this.listenTo(Pokevisit.allUsers, "sync", this.render)
     this.images = this.model.images()
   },
 
@@ -50,8 +51,11 @@ Pokevisit.Views.ListingIndexItem = Backbone.CompositeView.extend({
 
   render: function(){
 
+    var user = Pokevisit.allUsers.findWhere({ id: this.model.get("user_id")})
+
     var renderedContent = this.template({
-      listing: this.model
+      listing: this.model,
+      user: user
     })
 
     this.$el.html(renderedContent)
@@ -63,6 +67,7 @@ Pokevisit.Views.ListingIndexItem = Backbone.CompositeView.extend({
         "background-image": "url(" + this.images.models[0].escape("url") + ")",
       })
     }
+
     return this;
   }
 })
