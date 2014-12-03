@@ -24,6 +24,7 @@ $(function(){
 
   $form_signup.on('submit', function(event){
     event.preventDefault();
+    var queryString = $("#main-modal-signup").data("query")
     var userParams = $form_signup.find("form").serializeJSON();
     $.ajax({
       url: "/users",
@@ -31,7 +32,11 @@ $(function(){
       dataType: "json",
       data: userParams,
       success: function(){
-        window.location = "/main"
+        if (queryString){
+          window.location = "/main" + queryString
+        } else {
+          window.location = "/main"
+        }
       }
     })
   });

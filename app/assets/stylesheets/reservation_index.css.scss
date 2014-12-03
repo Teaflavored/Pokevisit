@@ -1,8 +1,20 @@
 div.reservations-index{
-  margin: 30px auto;
+  margin: 0 auto;
   width:100%;
   height:auto;
 }
+
+
+div.reservations-header{
+  margin-top:0;
+  color:#565a5c;
+  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+div.reservations-header h1.reservationh1{
+  margin-top:0;
+}
+
 
 div.reservation-index-item{
   position:relative;

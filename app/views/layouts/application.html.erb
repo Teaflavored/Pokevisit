@@ -24,6 +24,7 @@
   <%= yield %>
 
   <% if !logged_in? %>
+    
     <%= render "layouts/mainpage_search"%>
   <% end %>
 </div>
