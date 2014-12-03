@@ -103,7 +103,6 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
   },
 
   setUpAutoComplete: function(){
-    debugger
     var input = document.getElementById("form-search")
     //prevent enter submitting
     $(input).keydown(function(event){
@@ -126,7 +125,7 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
     }
     var lat = place.geometry.location.lat();
     var lng = place.geometry.location.lng();
-    window.location.hash = "checkin=null&checkout=null&lat=" + lat +"&lng=" + lng + "&guests=1"
+    Backbone.history.navigate("#/checkin=null&checkout=null&lat=" + lat +"&lng=" + lng + "&guests=1", { trigger: true })
 
   },
 

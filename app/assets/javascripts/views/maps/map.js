@@ -10,7 +10,10 @@ Pokevisit.Views.Map = Backbone.CompositeView.extend({
   render: function(){
     var renderedContent = this.template();
     this.$el.html(renderedContent);
-
+    this.attachSubviews();
+    setTimeout(function(){
+      google.maps.event.trigger(window.pokevisitMap, 'resize')
+    }, 0);
     return this;
   },
 
