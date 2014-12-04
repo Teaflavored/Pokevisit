@@ -4,6 +4,6 @@
 
 <div class="reviewer-text"><%= review.get("review_text") %>
   <% var date = new Date(review.get("created_at")) %>
-  <div class="review-date"><%= months[date.getMonth()]%>, <%= date.getFullYear() %></div>
+  <div class="review-date">Posted: <%= months[date.getMonth()]%>, <%= date.getFullYear() %></div>
 </div>
 <hr>
