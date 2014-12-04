@@ -36,8 +36,16 @@ Pokevisit.Views.ListingReview = Backbone.CompositeView.extend({
         this.updatePointsClientSide();
         this.$("textarea.new-listing-review-text").html("")
         this.$("#create-review").attr("disabled", true);
-        this.$("div.no-review").html("");
-
+        this.$("div.no-review").remove();
+        if (this.$("div.yes-review").length === 0){
+          //if the reviews aren't there we want to show it
+          this.$("div.current-review-pts").prepend($("<div class=\"yes-review\"></div>"))
+          setTimeout(function(){
+            this.$("div.yes-review").raty({
+              score: newReview.get("rating")
+            })
+          }.bind(this), 0)
+        }
 
         $('html, body').animate({
           scrollTop: $(document).height()-$(window).height()},
