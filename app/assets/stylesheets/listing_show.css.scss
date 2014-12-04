@@ -192,6 +192,10 @@ div.carousel-inner div.pricing.fixed-pricing{
   z-index:9001;
 }
 
+div.carousel-inner div.item{
+  cursor:pointer;
+}
+
 div.show-request.fixed-request{
   top:40px;
   position:fixed;

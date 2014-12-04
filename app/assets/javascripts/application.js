@@ -26,6 +26,7 @@
 //= require imagesloaded.pkgd.min
 //= require jquery.tooltipster
 //= require jquery.raty
+//= require jquery.magnific-popup
 //= require pokevisit
 //= require_tree ../templates
 //= require_tree ./models

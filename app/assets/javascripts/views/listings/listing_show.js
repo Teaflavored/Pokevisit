@@ -59,6 +59,16 @@ Pokevisit.Views.ListingShow = Backbone.CompositeView.extend({
     if (this.model.get("user_id") === Pokevisit.currentUserId){
       this.$("div.show-about").css("min-height", "1400px")
     }
+
+    setTimeout(function(){
+      this.$("div.carousel-inner").magnificPopup({
+        delegate: 'div.item',
+        type: 'image',
+        gallery: {
+          enabled: true
+        },
+      })
+    }, 0)
     return this;
   }
 })
