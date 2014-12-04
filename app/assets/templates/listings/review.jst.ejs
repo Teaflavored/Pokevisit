@@ -1,5 +1,13 @@
 <div class="listing-review container">
   <div class="listing-review-header"><h1>Reviews For This Listing</h1></div>
+  <div class="listing-reviews"></div>
+
+  <% if (listing.get("user_id") !== Pokevisit.currentUserId){ %>
+    <div class="new-listing-review">
+      <textarea class="new-listing-review-text" placeholder="Write your review here."></textarea>
+    </div>
+  <% } %>
+
   <div class="listing-review-content">
   </div>
 </div>
