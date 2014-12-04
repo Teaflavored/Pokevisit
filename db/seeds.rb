@@ -41,7 +41,7 @@ Listing.transaction do
 
   ash.listings.first.reviews.create(user: brock, rating:3.3, review_text: "It was an enjoyable stay, ash really treated us well here. Every thing was just as we expected, except there was no Nurse Joy!")
   ash.listings.first.reviews.create(user: misty, rating:4, review_text: "I loved the inn, I'll probably try to find time to come back here again.")
-  sleep(1)
+  sleep(3)
   ash.listings.first.update_score
 
 
@@ -57,7 +57,7 @@ Listing.transaction do
   brock.listings.first.listing_images.create(url: "/assets/city/city_2.jpg")
   brock.listings.first.reviews.create(user: oak, rating:1.5, review_text: "Bad city vibe, brock misled us on this place!")
   brock.listings.first.reviews.create(user: gary, rating:1, review_text: "Came here with grandpa, I found this place to be terrible. Way too many wild pokemon running amok. Not worth the money.")
-  sleep(1)
+  sleep(3)
   brock.listings.first.update_score
 
   misty.listings.create(roomtype: "water",
@@ -71,7 +71,7 @@ Listing.transaction do
 
   misty.listings.first.listing_images.create(url: "/assets/sea/sea_1.jpg")
   misty.listings.first.reviews.create(user: ash, rating:4.3, review_text: "Beautiful place, I got to see many water pokemon. I might even become a fan myself now!")
-  sleep(1)
+  sleep(3)
   misty.listings.first.update_score
 
   oak.listings.create(roomtype: "plains",
@@ -88,7 +88,7 @@ Listing.transaction do
   oak.listings.first.reviews.create(user: ash, rating: 3, review_text: "Average place, I've seen many similar areas during my adventures, it's just like Route whatever!")
   oak.listings.first.reviews.create(user: brock, rating: 3.5, review_text: "Had an enjoyable time here, I saw a few cool pokemon, and not to mention we also bumped into Nurse Joy!!")
   oak.listings.first.reviews.create(user: misty, rating: 3.8, review_text: "Not a bad place, I prefer the sea much better though. The plains are kind of boring, but it was beautiful.")
-  sleep(1)
+  sleep(3)
   oak.listings.first.update_score
 
   gary.listings.create(roomtype: "city",
@@ -101,7 +101,7 @@ Listing.transaction do
                        description: "Luxurious castle because you deserve it for catching them all!")
   gary.listings.first.listing_images.create(url: "/assets/castle/castle_1.png")
   gary.listings.first.reviews.create(user: ash, rating: 4, review_text: "I actually quite enjoyed the stay at my rival's castle. I mean I'm not jealous or anything, but why does he have a castle! I won the Championship!!")
-  sleep(1)
+  sleep(3)
   gary.listings.first.update_score
 
   brock.listings.create(roomtype: "plains",
@@ -116,7 +116,7 @@ Listing.transaction do
   brock.listings.second.listing_images.create(url: "/assets/viridian_forest/viridian_2.jpg")
   brock.listings.first.reviews.create(user: ash, rating: 5, review_text: "I remember viridian forest like it was yesterday, I caught my best friend pikachu here.")
   brock.listings.first.reviews.create(user: gary, rating:3, review_text: "Good place, I love coming here to train my pokemon, it's pretty enjoyable.")
-  sleep(1)
+  sleep(3)
   brock.listings.first.update_score
 
 
@@ -133,7 +133,7 @@ Listing.transaction do
   misty.listings.second.listing_images.create(url: "/assets/ecruteak/ecruteak_2.png")
   misty.listings.second.reviews.create(user: gary, rating: 3.4, review_text: "Came here with my grandpa, loved seeing the legendary pokemon. I'll probably attempt to catch it for myself one day.")
   misty.listings.second.reviews.create(user: oak, rating:5, review_text: "It's not everyday you get to see Ho-Oh. Boy I wish I had a master ball with me, would have caught that bird in a second.")
-  sleep(1)
+  sleep(3)
   misty.listings.second.update_score
 
   misty.listings.create(roomtype: "water",
@@ -158,7 +158,7 @@ Listing.transaction do
   ash.listings.second.listing_images.create(url: "/assets/plains/plains_4.jpg")
   ash.listings.second.listing_images.create(url: "/assets/plains/plains_5.jpg")
   ash.listings.second.reviews.create(user: brock, rating:2, review_text: "Probably one of the most boring places I've stayed at, no girls (Nurse Joy). I want a refund.")
-  sleep(1)
+  sleep(3)
   ash.listings.second.update_score
 
   ash.listings.create(roomtype: "water",
@@ -173,7 +173,7 @@ Listing.transaction do
   ash.listings.third.reviews.create(user: oak, rating:4, review_text: "Was not disappointed, this place was just as advertised. I had a great time seeing all the underwater pokemon.")
   ash.listings.third.reviews.create(user: brock, rating: 5, review_text: "Best place, we happened to bump into Nurse Joy here! Loved seeing the pokemon as well. Beautiful place!")
   ash.listings.third.reviews.create(user: misty, rating: 5, review_text: "Since I am a fan of water-type pokemon, this place was a definite go-to place for me. I'll probably take more vacations in this area.")
-  sleep(1)
+  sleep(3)
   ash.listings.third.update_score
 
 
@@ -187,7 +187,7 @@ Listing.transaction do
                           description: "Come for a stay in the city, You'll enjoy it! Pika Pika~")
   pikachu.listings.first.listing_images.create(url: "/assets/light_city/light_city_1.jpg")
   pikachu.listings.first.reviews.create(user: ash, rating:4, review_text: "Great city, it's nice to just stay in civilization, away from the pokemon for awhile.")
-  sleep(1)
+  sleep(3)
   pikachu.listings.first.update_score
 
   pikachu.listings.create(roomtype: "plains",
