@@ -31,7 +31,7 @@ a.navbar-brand span{
 
 div.main-page-bottom{
   background-color:#edefed;
-  min-height:500px;
+  min-height:570px;
   width:100%;
   text-align:center;
   position:relative;
@@ -186,4 +186,21 @@ canvas.pikachu-run{
   position:absolute;
   bottom:100px;
   height:50px;
+}
+
+
+div#footer{
+  width:100%;
+  background-image:url("/assets/background_footer.png");
+  color:#fff;
+  height:200px;
+}
+
+div#footer div.row{
+  text-align:center;
+}
+
+div#footer div.row h2{
+  font-size:22px;
+  margin-top:50px;
 }
