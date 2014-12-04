@@ -34,9 +34,14 @@ Listing.transaction do
                       date_end: Date.new(2020,1,1),
                       price: 200,
                       accomodates: 8,
-                      description: "The best inn in the pokemon land!")
+                      description: "The best inn in the pokemon land!",
+                      description_summary: "This inn is one of the best places you can bring your pokemon to. Pikachu and I come here quite often we enjoy this place alot.")
   ash.listings.first.listing_images.create(url: "/assets/inn/inn_1.jpg")
   ash.listings.first.listing_images.create(url: "/assets/inn/inn_2.jpg")
+
+  ash.listings.first.reviews.create(user: brock, rating:3.3, review_text: "It was an enjoyable stay, ash really treated us well here. Every thing was just as we expected, except there was no Nurse Joy!")
+  ash.listings.first.reviews.create(user: misty, rating:4, review_text: "I loved the inn, I'll probably try to find time to come back here again.")
+  misty.reviews.first.listing.update_score
 
 
   brock.listings.create(roomtype: "city",
