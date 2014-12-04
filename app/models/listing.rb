@@ -19,6 +19,7 @@
 #  checkintime         :string(255)
 #  checkouttime        :string(255)
 #  description_summary :text
+#  avg_rating          :float
 #
 
 class Listing < ActiveRecord::Base

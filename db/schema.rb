@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202002418) do
+ActiveRecord::Schema.define(version: 20141204015428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20141202002418) do
     t.string   "checkintime"
     t.string   "checkouttime"
     t.text     "description_summary"
+    t.float    "avg_rating"
   end
 
   add_index "listings", ["accomodates"], name: "index_listings_on_accomodates", using: :btree
@@ -62,6 +63,18 @@ ActiveRecord::Schema.define(version: 20141202002418) do
 
   add_index "reservations", ["listing_id"], name: "index_reservations_on_listing_id", using: :btree
   add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
+
+  create_table "reviews", force: true do |t|
+    t.integer  "listing_id",  null: false
+    t.integer  "user_id",     null: false
+    t.integer  "rating",      null: false
+    t.text     "review_text", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["listing_id"], name: "index_reviews_on_listing_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "user_images", force: true do |t|
     t.integer  "user_id",                                             null: false
