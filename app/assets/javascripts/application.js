@@ -27,6 +27,7 @@
 //= require jquery.tooltipster
 //= require jquery.raty
 //= require jquery.magnific-popup
+//= require kinetic-v5.1.0.min
 //= require pokevisit
 //= require_tree ../templates
 //= require_tree ./models

@@ -10,7 +10,8 @@ Pokevisit.Views.User = Backbone.CompositeView.extend({
 
   events: {
     "click h1.change-profile-picture": "uploadPicture",
-    "click img.profile-picture-pic": "uploadPicture"
+    "click img.profile-picture-pic": "uploadPicture",
+    "click button#create-pikachus": "createPikachu"
   },
 
   setFilepicker: function(){
@@ -34,6 +35,79 @@ Pokevisit.Views.User = Backbone.CompositeView.extend({
     }.bind(this));
   },
 
+  createPikachu: function(){
+    var x = _.random(100, 900);
+    var y = _.random(0, 140);
+    var pika = new Kinetic.Sprite(this._pikaOptions(x,y))
+    this._layer.add(pika)
+    pika.start()
+    pika.on("click", function(){
+      var animations = ["run", "idle", "thundershock", "rolling"]
+      var animation = animations[_.random(0, animations.length - 1)]
+      pika.animation(animation)
+    })
+  },
+
+  sprite: function(){
+    this._stage = new Kinetic.Stage({
+      container: "sprite-container",
+      width:1000,
+      height:200,
+    })
+
+    this._layer = new Kinetic.Layer();
+
+    this._imageObj = new Image();
+
+    this._imageObj.onload = function() {
+      this._pikaOptions = function(x, y){
+        return {
+          x: x,
+          y: y,
+          image: this._imageObj,
+          animation: 'idle',
+          animations: {
+            idle: [
+            // x, y, width, height (4 frames)
+            8, 29, 41, 44,
+            49, 29, 34, 42,
+            87, 29, 34, 41,
+            124, 29, 33, 42,
+            ],
+            run: [
+            6, 161, 51, 32,
+            61, 167, 54, 25,
+            119, 163, 52, 28,
+            178, 166, 51, 24,
+            ],
+
+            thundershock: [
+            17, 286, 40, 38,
+            65, 286, 40, 38,
+            116, 276, 33, 56,
+            317, 193, 36, 45
+            ],
+
+            rolling: [
+            12, 420, 30, 44,
+            48, 425, 44, 30,
+            100, 415, 30, 43,
+            134, 423, 43, 30
+            ]
+
+          },
+          frameRate: 5,
+          frameIndex: 0,
+          draggable: true,
+        }
+      }
+    }.bind(this);
+
+    this._stage.add(this._layer)
+
+    this._imageObj.src = '/assets/pikachu_big_sprite2.png';
+  },
+
   render: function(){
     this.setFilepicker();
     this.user = Pokevisit.allUsers.findWhere({id: Pokevisit.currentUserId})
@@ -45,7 +119,9 @@ Pokevisit.Views.User = Backbone.CompositeView.extend({
 
     setTimeout(function(){
       this.$(".tooltip").tooltipster();
-    },0)
+      this.$("#create-pikachus").tooltipster();
+      this.sprite();
+    }.bind(this),0)
 
     return this;
   }

@@ -494,7 +494,23 @@ ul.nav.navbar-nav li img{
   height:20px;
 }
 
-img.header-pokemon{
-  height:50px;
+div.extra-fun{
+  margin-top:50px;
+}
 
+div.extra-fun div.pikachu-header{
+  z-index:30;
+
+}
+
+div#sprite-container{
+  position:relative;
+  margin-top:20px;
+  margin-left:auto;
+  margin-right:auto;
+  background-color:#cde364;
+  background-image: radial-gradient(#fff 10%, transparent 10%),
+  radial-gradient(#fff 10%, transparent 10%);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
 }
