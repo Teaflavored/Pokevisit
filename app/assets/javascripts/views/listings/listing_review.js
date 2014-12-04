@@ -39,7 +39,7 @@ Pokevisit.Views.ListingReview = Backbone.CompositeView.extend({
         this.$("div.no-review").remove();
         if (this.$("div.yes-review").length === 0){
           //if the reviews aren't there we want to show it
-          this.$("div.current-review-pts").prepend($("<div class=\"yes-review\"></div>"))
+          this.$("div.current-review-pts").prepend("<div class=\"yes-review-text\">Current Rating: </div><div class=\"yes-review\"></div>")
           setTimeout(function(){
             this.$("div.yes-review").raty({
               score: newReview.get("rating")
