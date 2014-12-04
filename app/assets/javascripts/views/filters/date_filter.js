@@ -72,6 +72,7 @@ Pokevisit.Views.DateFilter = Backbone.CompositeView.extend({
 
   selectFilter: function(){
     this.$("#select-accomodates-filter").on("change", function(event){
+
       var optionValue = $(event.currentTarget).val();
       Pokevisit.filteredListings.trigger("filterResult", {
         "filter": "accomodates",

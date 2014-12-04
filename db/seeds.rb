@@ -139,5 +139,36 @@ Listing.transaction do
                           description: "Come for a stay in the city, You'll enjoy it! Pika Pika~")
   pikachu.listings.first.listing_images.create(url: "/assets/light_city/light_city_1.jpg")
 
+  pikachu.listings.create(roomtype: "plains",
+                          hometype: "land",
+                          address: "Berkeley, CA",
+                          date_avail: Date.new(2014, 12, 3),
+                          date_end: Date.new(2020,1,1),
+                          price:333,
+                          accomodates:7,
+                          description: "Even though this place is dry, it'still worth visiting"
+                          )
+  pikachu.listings.second.listing_images.create(url: "/assets/desolate/desolate_1.jpg")
 
+  pikachu.listings.create(roomtype: "water",
+                          hometype: "sea",
+                          address: "San Bruno, CA",
+                          date_avail: Date.new(2014, 12, 3),
+                          date_end: Date.new(2020,1,1),
+                          price:444,
+                          accomodates:7,
+                          description: "Legendary place where Lugia supposedly dwells"
+                          )
+  pikachu.listings.third.listing_images.create(url: "/assets/lugia/lugia_cave_1.jpg")
+
+end
+
+Reservation.transaction do
+  pikachu = User.find_by(email: "pikachu@pokemon.io")
+  ash = User.find_by(email: "ashketchum@pokemon.io")
+  pikachu.reservations.create(listing: ash.listings.first, guests: 3, start_date: Date.new(2015,1,1), end_date: Date.new(2015,6,1))
+  pikachu.reservations.create(listing: ash.listings.second, guests: 3, start_date: Date.new(2015,1,1), end_date: Date.new(2015,6,1))
+  pikachu.reservations.create(listing: ash.listings.third, guests: 3, start_date: Date.new(2015,1,1), end_date: Date.new(2015,6,1))
+  ash.listings.first.reservations.first.approve!
+  ash.listings.second.reservations.first.deny!
 end
