@@ -1,5 +1,5 @@
 div.listing-review{
-
+  color:#565a5c;
 }
 
 
@@ -7,4 +7,8 @@ div.listing-review div.listing-review-content{
   display:inline-block;
   width:66%;
   float:left;
+}
+
+div.listing-review-header h1{
+  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
