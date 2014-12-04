@@ -11,6 +11,7 @@ Pokevisit.Views.ReservationIndexItem = Backbone.CompositeView.extend({
     this.listing = Pokevisit.listings.getOrFetch(this.model.get("listing_id"))
     this.listenTo(this.listing, "sync", this.render)
     this.listenTo(this.model, "change:status", this.render)
+    this.listenTo(Pokevisit.allUsers, "sync", this.render)
   },
 
   redirectToListingPage: function(event){
@@ -18,6 +19,8 @@ Pokevisit.Views.ReservationIndexItem = Backbone.CompositeView.extend({
   },
 
   render: function(){
+    var user = Pokevisit.allUsers.findWhere( { id: this.listing.get("user_id") })
+
     if (!this.listing.get("user_id")){
       //that means listing isn't fetched, just return this with empty element
       return this;
@@ -35,7 +38,8 @@ Pokevisit.Views.ReservationIndexItem = Backbone.CompositeView.extend({
       reservation: this.model,
       status: status,
       listing: this.listing,
-      img: this.listing.images().models[0]
+      img: this.listing.images().models[0],
+      user: user
     })
 
     this.$el.html(renderedContent)

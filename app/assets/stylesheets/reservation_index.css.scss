@@ -85,3 +85,19 @@ div.reservation-description{
 .denied{
   background: url("/assets/denied.png")
 }
+
+div.reservation-user-img{
+  position:absolute;
+  top:0;
+  right:0;
+  border:3px white solid;
+  width:55px;
+  height:55px;
+  border-radius:50%;
+}
+
+div.reservation-user-img img{
+  border-radius:50%;
+  width:100%;
+  height:100%;
+}

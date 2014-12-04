@@ -19,3 +19,6 @@
 </div>
 
 <div class="reservation-description"><%= listing.get("address") %></div>
+<div class="reservation-user-img">
+  <img src='<%= user ? user.get("image_url") : "/assets/default_user_pic.jpg" %>'>
+</div>
