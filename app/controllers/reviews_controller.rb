@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :redirect_unless_logged_in
 
   def create
-    @review = Review.new(review_params)
+    @review = current_user.reviews.new(review_params)
     if @review.save
       render :show
     else

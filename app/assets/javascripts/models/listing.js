@@ -11,12 +11,19 @@ Pokevisit.Models.Listing = Backbone.Model.extend({
     return this._reservations
   },
 
+  reviews: function(){
+    this._reviews = this._reviews || new Pokevisit.Collections.Reviews()
+    return this._reviews
+  },
+
   parse: function(jsonResp){
     this.images().set(jsonResp.images)
     this.reservations().set(jsonResp.reservations)
+    this.reviews().set(jsonResp.reviews)
 
     delete jsonResp.images
     delete jsonResp.reservations
+    delete jsonResp.reviews
 
     return jsonResp
   }
