@@ -1,1 +1,1 @@
-json.extract!(listing, :id, :user_id, :hometype, :description_summary, :roomtype, :checkintime, :checkouttime, :description, :accomodates, :lat, :lng, :price, :date_avail, :date_end, :address)
+json.extract!(listing, :id, :user_id, :avg_rating, :hometype, :description_summary, :roomtype, :checkintime, :checkouttime, :description, :accomodates, :lat, :lng, :price, :date_avail, :date_end, :address)

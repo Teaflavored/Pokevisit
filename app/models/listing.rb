@@ -38,6 +38,13 @@ class Listing < ActiveRecord::Base
     Listing.where("user_id != ?", user.id)
   end
 
+  def update_score
+    self.avg_rating = Review.where("reviews.listing_id = ?", self.id).average(:rating)
+    self.save!
+
+    true
+  end
+
   private
 
   def get_check_in_check_out_times

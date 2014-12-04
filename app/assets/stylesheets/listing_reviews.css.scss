@@ -88,3 +88,18 @@ button#create-review:disabled{
 hr.new-review-hr{
   margin-top:40px;
 }
+div.no-review,div.yes-review{
+  margin-bottom:30px;
+  font-size:22px;
+  display:inline-block;
+}
+
+div.current-review-pts{
+  height:50px;
+}
+
+div.yes-review-text{
+  margin-right:15px;
+  font-size:18px;
+  display:inline-block;
+}

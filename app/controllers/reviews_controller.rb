@@ -3,7 +3,8 @@ class ReviewsController < ApplicationController
 
   def create
     @review = current_user.reviews.new(review_params)
-    if @review.save
+    #need to update listing's avg rating
+    if @review.save && @review.listing.update_score
       render :show
     else
       render @review.errors.full_messages, status: 422

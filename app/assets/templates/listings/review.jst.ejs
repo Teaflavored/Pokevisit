@@ -1,6 +1,14 @@
 <div class="listing-review container">
   <div class="listing-review-header"><h1>Reviews For This Listing</h1></div>
-  <div class="listing-reviews"></div>
+
+  <div class="current-review-pts">
+  <% if (!listing.get("avg_rating")){ %>
+    <div class="no-review">*No Current Reviews For this Listing</div>
+  <% } else { %>
+    <div class="yes-review-text">Current Rating: </div><div class="yes-review"></div>
+  <% } %>
+  <hr>
+  </div>
 
   <% if (listing.get("user_id") !== Pokevisit.currentUserId){ %>
     <div class="new-listing-review">

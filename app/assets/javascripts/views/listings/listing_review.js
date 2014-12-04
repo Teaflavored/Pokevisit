@@ -33,8 +33,29 @@ Pokevisit.Views.ListingReview = Backbone.CompositeView.extend({
     newReview.save({}, {
       success: function(){
         this.model.reviews().add(newReview);
-        this.$("#create-review").attr("disabled", true)
+        this.updatePointsClientSide();
+        this.$("textarea.new-listing-review-text").html("")
+        this.$("#create-review").attr("disabled", true);
+        this.$("div.no-review").html("");
+
+
+        $('html, body').animate({
+          scrollTop: $(document).height()-$(window).height()},
+          1400
+        );
+
+
       }.bind(this)
+    })
+  },
+
+  updatePointsClientSide: function(){
+    var totalPoints = 0
+    this.model.reviews().each(function(review){
+      totalPoints += review.get("rating")
+    })
+    this.$("div.yes-review").raty({
+      score: totalPoints / this.model.reviews().length
     })
   },
 
@@ -57,7 +78,7 @@ Pokevisit.Views.ListingReview = Backbone.CompositeView.extend({
     this.$("#new-listing-rating").raty({
       half: true,
       click: function(score, event){
-        this._reviewParams.review.rating = score;
+        this._reviewParams.review.rating = score + 1;
         this.updateButton();
       }.bind(this)
     })
@@ -80,7 +101,16 @@ Pokevisit.Views.ListingReview = Backbone.CompositeView.extend({
     this.updateButton();
   },
 
+  attachListingRating: function(){
+    this.$("div.yes-review").raty({
+      score: this.model.get("avg_rating"),
+      readOnly: true
+    })
+
+  },
+
   render: function(){
+
     var renderedContent = this.template({
       listing: this.model
     })
@@ -89,7 +119,8 @@ Pokevisit.Views.ListingReview = Backbone.CompositeView.extend({
 
     setTimeout(function(){
       //rating
-      this.attachRating()
+      this.attachRating();
+      this.attachListingRating();
     }.bind(this),0)
 
     return this;
