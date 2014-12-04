@@ -35,6 +35,11 @@ Pokevisit.Views.ListingReview = Backbone.CompositeView.extend({
     this.$el.html(renderedContent)
     this.attachSubviews()
 
+    setTimeout(function(){
+      //rating
+      this.$("#new-listing-rating").raty()
+    },0)
+
     return this;
   }
 })

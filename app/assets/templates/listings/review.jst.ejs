@@ -5,8 +5,10 @@
   <% if (listing.get("user_id") !== Pokevisit.currentUserId){ %>
     <div class="new-listing-review">
       <textarea class="new-listing-review-text" placeholder="Write your review here."></textarea>
+      <div id="new-listing-rating"></div>
     </div>
   <% } %>
+  <hr>
 
   <div class="listing-review-content">
   </div>

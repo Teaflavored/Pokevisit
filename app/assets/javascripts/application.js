@@ -25,6 +25,7 @@
 //= require masonry.pkgd.min
 //= require imagesloaded.pkgd.min
 //= require jquery.tooltipster
+//= require jquery.raty
 //= require pokevisit
 //= require_tree ../templates
 //= require_tree ./models
