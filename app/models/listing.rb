@@ -32,6 +32,7 @@ class Listing < ActiveRecord::Base
   belongs_to :user
   has_many :listing_images
   has_many :reservations
+  has_many :reviews
 
   def self.all_except_current_user(user)
     Listing.where("user_id != ?", user.id)
