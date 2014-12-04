@@ -56,6 +56,9 @@ Pokevisit.Views.ListingShow = Backbone.CompositeView.extend({
     this.$el.html(renderedContent);
     this.attachSubviews();
 
+    if (this.model.get("user_id") === Pokevisit.currentUserId){
+      this.$("div.show-about").css("min-height", "1400px")
+    }
     return this;
   }
 })
