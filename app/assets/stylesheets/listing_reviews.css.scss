@@ -75,11 +75,14 @@ div#new-listing-rating{
 }
 button#create-review{
   background:#9b59b6;
-  cursor:pointer;
   color:#fff;
   border-radius:1px;
   float:right;
   display:inline-block;
+}
+
+button#create-review:disabled{
+  background:#95a5a6;
 }
 
 hr.new-review-hr{

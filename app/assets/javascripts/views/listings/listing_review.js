@@ -68,8 +68,10 @@ Pokevisit.Views.ListingReview = Backbone.CompositeView.extend({
     if (this._reviewParams.review.listing_id && this._reviewParams.review.rating &&
         this._reviewParams.review.review_text && this._reviewParams.review.review_text.length > 0){
       $button.removeAttr("disabled")
+      $button.html("Add Review")
     } else {
       $button.attr("disabled", true)
+      $button.html("Please rate/write before submitting")
     }
   },
 
