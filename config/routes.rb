@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "listings/own_listings", to: "listings#own_listings", as: "own_listing"
   resources :listings, defaults: { format: :json }, only: [:index, :show, :create, :update]
   resources :user_images, defaults: { format: :json }, only: [:update, :index]
+  resources :reviews, defaults: { format: :json }, only: [:create, :show, :index]
   resources :reservations, defaults: { format: :json}, only: [:index, :create, :destroy] do
     get "approve"
     get "deny"

@@ -9,3 +9,9 @@ json.reservations do
     json.partial!("reservations/reservation", reservation: reservation)
   end
 end
+
+json.reviews do
+  json.array!(@listing.reviews) do |review|
+    json.partial!("reviews/review", review: review)
+  end
+end

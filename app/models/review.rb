@@ -12,7 +12,7 @@
 #
 
 class Review < ActiveRecord::Base
-  validates :listing_id, :user_id, :rating, :review_text
+  validates :listing_id, :user_id, :rating, :review_text, presence: true
   belongs_to :listing
   belongs_to :user
 end
