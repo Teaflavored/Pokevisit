@@ -36,6 +36,8 @@ Pokevisit.Views.User = Backbone.CompositeView.extend({
   },
 
   createPikachu: function(){
+    var width = $("#sprite-container").width()
+    var height = $("#sprite-container").height()
     var x = _.random(100, 900);
     var y = _.random(0, 140);
     var pika = new Kinetic.Sprite(this._pikaOptions(x,y))
@@ -49,10 +51,12 @@ Pokevisit.Views.User = Backbone.CompositeView.extend({
   },
 
   sprite: function(){
+    var width = $("#sprite-container").width()
+    var height = $("#sprite-container").height()
     this._stage = new Kinetic.Stage({
       container: "sprite-container",
-      width:1000,
-      height:200,
+      width:width,
+      height:height,
     })
 
     this._layer = new Kinetic.Layer();
