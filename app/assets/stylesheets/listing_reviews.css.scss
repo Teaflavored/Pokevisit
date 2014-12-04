@@ -12,3 +12,47 @@ div.listing-review div.listing-review-content{
 div.listing-review-header h1{
   font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+
+
+div.review-item{
+  height:160px;
+}
+
+div.review-item div.reviewer-img{
+  margin-top:30px;
+  margin-left:15px;
+  display:inline-block;
+  width:20%;
+  height:100px;
+  border:3px solid #fff;
+  border-radius:50%;
+}
+
+div.review-item div.reviewer-img img{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+}
+
+div.reviewer-text{
+  width:70%;
+  vertical-align:top;
+  margin-top:15px;
+  position:relative;
+  display:inline-block;
+  height:100%;
+  overflow:hidden;
+  white-space:no-wrap;
+  text-overflow:ellipsis;
+}
+
+div.review-item hr{
+  margin-top:0;
+  margin-bottom:0;
+}
+
+div.review-date{
+  position:absolute;
+  left:0;
+  bottom:0;
+}

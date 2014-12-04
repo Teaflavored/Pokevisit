@@ -1,1 +1,9 @@
-<%= review.get("review_text") %>
+<div class="reviewer-img">
+  <img src='<%= user ? user.get("image_url") : "/assets/default_user_pic.jpg" %>'>
+</div>
+
+<div class="reviewer-text"><%= review.get("review_text") %>
+  <% var date = new Date(review.get("created_at")) %>
+  <div class="review-date"><%= months[date.getMonth()]%>, <%= date.getFullYear() %></div>
+</div>
+<hr>
