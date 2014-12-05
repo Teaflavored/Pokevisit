@@ -17,7 +17,7 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
       success: function(){
         $("img.header-img").attr("src", Pokevisit.allUsers.findWhere({id: Pokevisit.currentUserId}).get("image_url"))
         //adjust header width after image loaded
-        
+
         this.adjustHeaderDropDownWidth();
       }.bind(this)
     })
@@ -90,9 +90,6 @@ Pokevisit.Routers.AppRouter = Backbone.Router.extend({
   reservationIndex: function(id){
     this.setUpAutoComplete()
     var listing = Pokevisit.ownListings.getOrFetch(id);
-    if (Pokevisit.currentUserId != listing.get("user_id")){
-      return;
-    }
     var listingReservationIndexView = new Pokevisit.Views.ListingReservationIndex({
       model:listing,
       collection: listing.reservations()
