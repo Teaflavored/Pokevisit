@@ -53,13 +53,15 @@ Pokevisit.Views.MapMain = Backbone.CompositeView.extend({
 
   handleMapMove: function(){
     //when map moves, need to update collection
-    var bounds = this._map.getBounds()
-    if (bounds.Fa){
+    var bounds = this._map.getBounds();
+    
+    if (bounds.Fa) {
       var latRange = [bounds.Fa.k, bounds.Fa.j];
     } else if (bounds.Ea){
       var latRange = [bounds.Ea.k, bounds.Ea.j];
     }
-    debugger
+
+
     var lngRange = [bounds.wa.j, bounds.wa.k]
 
     Pokevisit.filteredListings.trigger("filterResult", {
