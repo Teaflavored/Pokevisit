@@ -59,7 +59,7 @@ Pokevisit.Views.MapMain = Backbone.CompositeView.extend({
     } else if (bounds.Ea){
       var latRange = [bounds.Ea.k, bounds.Ea.j];
     }
-
+    debugger
     var lngRange = [bounds.wa.j, bounds.wa.k]
 
     Pokevisit.filteredListings.trigger("filterResult", {
